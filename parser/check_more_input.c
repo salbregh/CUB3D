@@ -1,21 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   my_pixel_put.c                                     :+:    :+:            */
+/*   check_more_input.c                                 :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/06/25 17:39:12 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/06/25 17:43:18 by salbregh      ########   odam.nl         */
+/*   Created: 2020/10/21 13:20:16 by salbregh      #+#    #+#                 */
+/*   Updated: 2020/10/21 13:58:03 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "../cub3D.h"
 
-void	my_mlx_pixel_put(t_vars *vars, int x, int y, int color)
+int		ft_other_identifier(t_master *m)
 {
-	char	*dst;
-
-	dst = vars->addr + (y * vars->line_length + x * (vars->bits_per_pixel / 8));
-	*(unsigned int*)dst = color;
+	// check the resolution
+	m->game.sh = 500;
+	m->game.sw = 500;
+	// check the color from floor and ceiling
+	return (0);
 }

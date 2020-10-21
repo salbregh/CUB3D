@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/20 13:18:50 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/10/21 10:53:06 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/10/21 13:24:50 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ static void	ft_null_game(t_game *game)
 	game->pos_y = 0;
 	game->pos_x = 0;
 	game->pos = 0;
-	// m->game.sh = 0;
-	// m->game.sw = 0;
+	game->sh = 0;
+	game->sw = 0;
 	game->dir_x = 0;
 	game->dir_y = 0;
 	game->plane_x = 0;

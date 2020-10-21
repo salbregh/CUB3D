@@ -6,34 +6,28 @@
 #    By: salbregh <salbregh@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/06/25 15:16:40 by salbregh      #+#    #+#                  #
-#    Updated: 2020/10/21 11:54:17 by salbregh      ########   odam.nl          #
+#    Updated: 2020/10/21 13:28:27 by salbregh      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 NAME =		cub3D
 
 SRCS =		main.c \
-			my_pixel_put.c \
-			ft_start_raycasting.c \
-			movement.c \
+			./movement/my_pixel_put.c \
+			./movement/ft_start_raycasting.c \
+			./movement/movement.c \
+			./movement/mlx_hooks.c \
 			./parser/get_input.c \
 			./parser/check_input.c \
 			./parser/floodfill.c \
+			./parser/check_more_input.c \
 			sort_struct.c
-			# input.c\
-			# paths.c
-
+			
 OFILES =	$(SRCS:.c=.o)
 
 INCLUDES =	./get_next_line \
 			./libft \
 			./mlx
-
-			# /Users/sannealbreghs/Desktop/CUB3D/get_next_line \
-			# /Users/sannealbreghs/Desktop/CUB3D/libft \
-			# /Users/sannealbreghs/Desktop/CUB3D/mlx
-
-			
 			
 all:		$(OFILES) $(INCLUDES)
 			make -C libft/

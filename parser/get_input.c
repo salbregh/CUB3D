@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/08 12:30:20 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/10/21 09:19:55 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/10/21 13:22:38 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,7 +138,7 @@ int				ft_get_input(int fd, t_master *m)
 		m->input.ceiling == NULL || m->input.floor == NULL)
 			return (-1);
 	m->input.mapsplit = ft_split(m->input.map, '\n');
-	if (ft_check_input(m) == -1)
-		return (-1); 
+	if (ft_check_input(m) == -1 || ft_other_identifier(m) == -1)
+		return (-1);
 	return (0);
 }

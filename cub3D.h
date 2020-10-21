@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/06/25 16:31:18 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/10/21 08:49:15 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/10/21 13:22:52 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,8 @@ typedef struct	s_input
 
 typedef struct	s_game
 {
-	int			screenheight; // change
-	int			screenwidth; // change
+	int			sh; // change
+	int			sw; // change
 	double		pos_x;
 	double		pos_y;
 	char		pos;
@@ -105,21 +105,11 @@ int		move_down(t_master *m);
 int		move_rigth(t_master *m);
 int		move_left(t_master *m);
 int		rotate_right(t_master *m);
-// int		rotate_right(t_master *m);
 
-// INPUT
-// int		ft_input_main(int fd, t_master *m);
-
-// PATHS
-// void		ft_set_north(t_master *m, char *line);
-// void		ft_set_south(t_master *m, char *line);
-// void		ft_set_east(t_master *m, char *line);
-// void		ft_set_west(t_master *m, char *line);
-// void		ft_set_sprite(t_master *m, char *line);
-// char		*ft_path_trim(char *line, char *set);
-
+// PARSER
 int				ft_get_input(int fd, t_master *m);
 int				ft_check_input(t_master *m);
 int				ft_validate_map(t_master *m);
+int				ft_other_identifier(t_master *m);
 
 #endif
