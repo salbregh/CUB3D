@@ -1,0 +1,19 @@
+R 1920 1080
+NO ./path_to_the_north
+SO ./path_to_the_south
+WE ./path_to_the_west
+EA ./path_to_the_east
+
+S ./path_to_sprite
+F 220,100,0
+C 220,0,0
+
+
+1111111111
+1000000001
+1000000001
+1000000001
+1000000001
+1000000001
+10000W0001
+1111111111
