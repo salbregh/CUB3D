@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/06/25 15:15:23 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/10/21 13:59:47 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/10/22 21:26:50 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,17 +57,19 @@ int				main(int argc, char **argv)
 		printf("error in cub file\n");
 		return (-1);
 	}
-	m.vars.mlx = mlx_init();
-	m.vars.win = mlx_new_window(m.vars.mlx, m.game.sw, m.game.sh, "CUB3D");
-	m.vars.img = mlx_new_image(m.vars.mlx, m.game.sw, m.game.sh);
-	m.vars.addr = mlx_get_data_addr(m.vars.img, &m.vars.bits_per_pixel,
-				&m.vars.line_length, &m.vars.endian);
-	ft_start_raycasting(&m);
-	mlx_put_image_to_window(m.vars.mlx, m.vars.win, m.vars.img, 0, 0);
-	mlx_hook(m.vars.win, 17, 0L, close_button, &m.vars);
-	mlx_hook(m.vars.win, 02, (1L << 0), key_press, &m.vars);
-	mlx_loop_hook(m.vars.mlx, move_bitch, &m);
-	mlx_hook(m.vars.win, 03, (1L << 1), key_release, &m.vars);
-	mlx_loop(m.vars.mlx);
-	return (0);
+	printf("no errors");
+	// m.vars.mlx = mlx_init();
+	// m.vars.win = mlx_new_window(m.vars.mlx, m.game.sw, m.game.sh, "CUB3D");
+	// m.vars.img = mlx_new_image(m.vars.mlx, m.game.sw, m.game.sh);
+	// m.vars.addr = mlx_get_data_addr(m.vars.img, &m.vars.bits_per_pixel,
+	// 			&m.vars.line_length, &m.vars.endian);
+	// ft_start_raycasting(&m);
+	// // mlx_put_image_to_window(m.vars.mlx, m.vars.win, m.vars.img, 0, 0);
+	// mlx_hook(m.vars.win, 17, 0L, close_button, &m.vars);
+	// mlx_hook(m.vars.win, 02, (1L << 0), key_press, &m.vars);
+	// mlx_loop_hook(m.vars.mlx, move_bitch, &m);
+	// mlx_hook(m.vars.win, 03, (1L << 1), key_release, &m.vars);
+	// mlx_loop(m.vars.mlx);
+	// return (0);
+	system("leaks cub3D");
 }

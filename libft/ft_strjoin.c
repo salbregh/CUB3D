@@ -3,6 +3,18 @@
 /*                                                        ::::::::            */
 /*   ft_strjoin.c                                       :+:    :+:            */
 /*                                                     +:+                    */
+/*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2020/10/22 15:06:22 by salbregh      #+#    #+#                 */
+/*   Updated: 2020/10/22 15:06:29 by salbregh      ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   ft_strjoin.c                                       :+:    :+:            */
+/*                                                     +:+                    */
 /*   By: salbregh <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/06 13:45:13 by salbregh      #+#    #+#                 */
@@ -35,7 +47,6 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		str[i + j] = s2[j];
 		j++;
 	}
-	str[i + j] = '\n';
-	str[i + j + 1] = '\0';
+	str[i + j] = '\0';
 	return (str);
 }

@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/06/25 16:31:18 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/10/21 13:22:52 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/10/22 21:35:58 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,9 @@ typedef struct	s_input
 	char		*we;
 	char		*sprite;
 	char		*ceiling;
+	int			c[3];
 	char		*floor;
+	int			f[3];
 	char		*resolution;
 	char		*map;
 	int			checkmap;
@@ -59,8 +61,8 @@ typedef struct	s_input
 
 typedef struct	s_game
 {
-	int			sh; // change
-	int			sw; // change
+	int			sh;
+	int			sw;
 	double		pos_x;
 	double		pos_y;
 	char		pos;

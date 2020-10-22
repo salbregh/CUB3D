@@ -6,7 +6,7 @@
 /*   By: sannealbreghs <sannealbreghs@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/21 13:28:37 by sannealbreg   #+#    #+#                 */
-/*   Updated: 2020/05/25 11:42:33 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/10/22 15:09:00 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ char	*ft_strdup(const char *s1);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 char	*ft_strrchr(const char *s, int c);
 char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_strjoincub(char const *s1, char const *s2);
 char	*ft_strtrim(char const *s1, char const *set);
 size_t	ft_strlcat(char *dst, const char *src,
 		size_t dstsize);

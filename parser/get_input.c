@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/08 12:30:20 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/10/21 13:22:38 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/10/22 15:08:00 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ static int		ft_check_identifier(char *line, t_master *m)
 		if (m->input.lineinmap == 1)
 			return (-1);
 		m->input.checkmap = 1;
-		m->input.map = ft_strjoin(tmp, line);
+		m->input.map = ft_strjoincub(tmp, line);
 		free(tmp);
 	}
 	else
