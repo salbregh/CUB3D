@@ -6,7 +6,7 @@
 #    By: salbregh <salbregh@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/06/25 15:16:40 by salbregh      #+#    #+#                  #
-#    Updated: 2020/10/21 13:28:27 by salbregh      ########   odam.nl          #
+#    Updated: 2020/10/24 14:50:13 by salbregh      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ SRCS =		main.c \
 			./parser/check_input.c \
 			./parser/floodfill.c \
 			./parser/check_more_input.c \
+			./parser/set_colors.c \
 			sort_struct.c
 			
 OFILES =	$(SRCS:.c=.o)
@@ -36,11 +37,13 @@ all:		$(OFILES) $(INCLUDES)
 			cp mlx/libmlx.dylib .
 			make -C get_next_line/
 			cp get_next_line/libgnl.a .
-			$(CC) -Lmlx -lmlx -Llibft -lft -Lget_next_line -lgnl -framework \
-			OpenGL -framework AppKit -o $(NAME) $(OFILES) -Wall -Werror -Wextra
+			$(CC) -Lmlx -lmlx -Llibft -lft -Lget_next_line -lgnl -framework\
+			OpenGL -framework AppKit -o $(NAME) $(OFILES) -Wall -Werror -Wextra 
+			#-g -fsanitize=address
 
 %.o:		%.c
-			gcc -Ilibft -Imlx -c $< -o $@ -Wall -Werror -Wextra
+			gcc -Ilibft -Imlx -c $< -o $@ -Wall -Werror -Wextra 
+			#-g -fsanitize=address
 
 clean:
 			/bin/rm -f $(OFILES)

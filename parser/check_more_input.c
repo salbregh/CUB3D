@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/21 13:20:16 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/10/22 22:12:41 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/10/24 14:50:53 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,34 @@ static int	ft_get_resolution(char *res, t_master *m)
 	return (0);
 }
 
-static int	ft_get_color(char *color, t_master *m)
+static int	ft_get_more_color(char *c1, char* c2, char* c3,
+			t_master *m, int which)
+{
+	if (ft_check_string(c1) == -1 || ft_check_string(c2) == -1 ||
+	ft_check_string(c3) == -1)
+		return (-1);
+	if (which == 0) // color for floor
+	{
+		m->input.f[0] = ft_atoi(c1);
+		free(c1);
+		m->input.f[1] = ft_atoi(c2);
+		free(c2);
+		m->input.f[2] = ft_atoi(c3);
+		free(c3);
+	}
+	else if (which == 1) // color for ceiling
+	{
+		m->input.c[0] = ft_atoi(c1);
+		free(c1);
+		m->input.c[1] = ft_atoi(c2);
+		free(c2);
+		m->input.c[2] = ft_atoi(c3);
+		free(c3);
+	}
+	return (0);
+}
+
+static int	ft_get_color(char *color, t_master *m, int which)
 {
 	char	*check1;
 	char	*check2;
@@ -61,35 +88,32 @@ static int	ft_get_color(char *color, t_master *m)
 
 	i = 0;
 	j = 0;
-	printf("value of color in ft_get_color: %s\n", color);
 	while (color[i] != ' ' && color[i] != ',')
 		i++;
 	check1 = ft_substr(color, 0, i);
-	printf("value of check1: %s\n", check1);
 	while (color[i] == ' ' || color[i] == ',')
 		i++;
 	j = i;
 	while (color[i] != ' ' && color[i] != ',')
 		i++;
 	check2 = ft_substr(color, j, i - j);
-	printf("value of check2: %s\n", check2);
 	while (color[i] == ' ' || color[i] == ',')
 		i++;
 	check3 = ft_substr(color, i, ft_strlen(color) - i);
-	printf("value of check3: %s\n", check3);
-	(void)m;
+	if (ft_get_more_color(check1, check2, check3, m, which) == -1)
+		return (-1);
 	return (0);
 }
 
 int			ft_other_identifier(t_master *m)
 {
-	printf("resolution line:\n%s\n", m->input.resolution);
-	printf("color ceiling line:\n%s\n", m->input.ceiling);
-	printf("color floor line:\n%s\n", m->input.floor);
-	// check the color from floor and ceiling
 	if ((ft_get_resolution(m->input.resolution, m)) == -1 ||
-	(ft_get_color(m->input.floor, m) == -1) ||
-	(ft_get_color(m->input.ceiling, m) == -1))
+	(ft_get_color(m->input.floor, m, 0) == -1) ||
+	(ft_get_color(m->input.ceiling, m, 1) == -1))
 		return (-1);
+	if (ft_set_colors(m) == -1)
+		return (-1);
+	// printf("input floor color:\nf0: %i\nf1: %i\nf2: %i\n", m->input.f[0], m->input.f[1], m->input.f[2]);
+	// printf("input ceiling color:\nf0: %i\nf1: %i\nf2: %i\n", m->input.c[0], m->input.c[1], m->input.c[2]);
 	return (0);
 }

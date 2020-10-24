@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/06/30 10:23:10 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/10/21 12:51:18 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/10/24 17:45:41 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ int	move_left(t_master *m)
 	if (m->move.left == 1)
 	{
 		if (m->input.mapsplit[(int)(m->game.pos_y + (m->game.dir_y * speed))]
-		[(int)(m->game.pos_x + (m->game.dir_x * speed))] == 48)
+		[(int)(m->game.pos_x + (m->game.dir_x * speed))] == '0')
 		{
 			m->game.pos_x += m->game.dir_y * speed;
 			m->game.pos_y += m->game.dir_x * speed;
@@ -102,7 +102,7 @@ int	move_up(t_master *m)
 	double	posx;
 	double	posy;
 
-	speed = 0.1;
+	speed = 0.2;
 	posx = m->game.pos_x;
 	posy = m->game.pos_y;
 	if (m->move.up == 1)

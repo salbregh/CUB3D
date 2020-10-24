@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/06/25 18:11:54 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/10/21 14:19:38 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/10/24 18:17:53 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,10 +72,54 @@ static void	ft_sidedist(t_master *m)
 **	performing DDA
 */
 
-// static void	ft_DDA(t_master *m)
-// {
+static void	ft_DDA(t_master *m)
+{
+	int	hit;
 	
-// }
+	hit = 0;
+	while (hit == 0)
+	{
+		// jump to next map square in x or y direction
+		if (m->game.sidedist_x < m->game.sidedist_y)
+		{
+			m->game.sidedist_x += m->game.deltadist_x;
+			m->game.map_x += m->game.step_x;
+			m->game.side = 0;
+		}
+		else
+		{
+			m->game.sidedist_y += m->game.deltadist_y;
+			m->game.map_y += m->game.step_y;
+			m->game.side = 1;
+		}
+		if (m->input.mapsplit[m->game.map_y][m->game.map_x] != '0')
+			hit = 1;
+	}
+}
+
+/*
+**	calculating the distance projected on camera direction
+*/
+
+static void	ft_direction(t_master *m)
+{
+	if (m->game.side == 0)
+		{
+			if (m->game.raydir_x == 0)
+				m->game.perpwalldist = 0;
+			else
+				m->game.perpwalldist = ((m->game.map_x - m->game.pos_x +
+				(1.0 - m->game.step_x) / 2.0) / m->game.raydir_x);
+		}
+		else
+		{
+			if (m->game.raydir_y == 0)
+				m->game.perpwalldist = 0;
+			else
+				m->game.perpwalldist = (m->game.map_y - m->game.pos_y +
+				(1.0 - m->game.step_y) / 2.0) / m->game.raydir_y;
+		}
+}
 
 /*
 **	calculation for every x on the screen
@@ -84,7 +128,7 @@ static void	ft_sidedist(t_master *m)
 
 void		ft_start_raycasting(t_master *m)
 {
-	int		hit;
+	// int		hit;
 	int		x;
 
 	x = 0;
@@ -92,62 +136,30 @@ void		ft_start_raycasting(t_master *m)
 	{
 		ft_start_values(m, x);
 		ft_sidedist(m);
-		hit = 0;
-		while (hit == 0)
-		{
-			// jump to next map square in x or y direction
-			if (m->game.sidedist_x < m->game.sidedist_y)
-			{
-				m->game.sidedist_x += m->game.deltadist_x;
-				m->game.map_x += m->game.step_x;
-				m->game.side = 0;
-			}
-			else
-			{
-				m->game.sidedist_y += m->game.deltadist_y;
-				m->game.map_y += m->game.step_y;
-				m->game.side = 1;
-			}
-			if (m->input.mapsplit[m->game.map_y][m->game.map_x] != '0')
-				hit = 1;
-		}
-		// calculate the disctance projected on camera direction
-		if (m->game.side == 0)
-		{
-			if (m->game.raydir_x == 0)
-				m->game.perpwalldist = 0;
-			else
-				m->game.perpwalldist = ((m->game.map_x - m->game.pos_x + (1.0 - m->game.step_x) / 2.0) / m->game.raydir_x);
-		}
-		else
-		{
-			if (m->game.raydir_y == 0)
-				m->game.perpwalldist = 0;
-			else
-				m->game.perpwalldist = (m->game.map_y - m->game.pos_y + (1.0 - m->game.step_y) / 2.0) / m->game.raydir_y;
-		}
+		ft_DDA(m);
+		ft_direction(m);
 
 		// calculate the height of the line to draw on the screen
 		// also calculate lowest and highest pixel to fill in current stripe
-		int		line_height;
+		// int		line_height;
 		int		draw_start;
 		int		draw_end;
 
-		line_height = (int)(m->game.sh / m->game.perpwalldist);
-		printf("value lineheight: %i\n", line_height);
-		draw_start = -line_height / 2 + m->game.sh / 2;
+		m->game.line_height = (int)(m->game.sh / m->game.perpwalldist);
+		// printf("value lineheight: %i\n", line_height);
+		draw_start = -m->game.line_height / 2 + m->game.sh / 2;
 		if (draw_start < 0)
 			draw_start = 0;
-		draw_end = line_height / 2 + m->game.sh / 2;
+		draw_end = m->game.line_height / 2 + m->game.sh / 2;
 		if (draw_end >= m->game.sh)
 			draw_end = m->game.sh - 1;
 		// colors CHANGE THIS
 		unsigned int	color;
-		if (m->input.mapsplit[m->game.map_y][m->game.map_x] == '0')
-			color = 0x00000000;
-		if (m->input.mapsplit[m->game.map_y][m->game.map_x] == '1')
+		if (m->input.mapsplit[m->game.map_y][m->game.map_x] == '0') // open ruimte?
+			color = 0x0F000000;
+		if (m->input.mapsplit[m->game.map_y][m->game.map_x] == '1') // muur dus ook textures
 			color = 0x0FFF00FF;
-		if (m->input.mapsplit[m->game.map_y][m->game.map_x] == '2')
+		if (m->input.mapsplit[m->game.map_y][m->game.map_x] == '2') // moet sprite worden
 			color = 0x00FF000F;
 		if (m->game.side == 1)
 			color = color / 2;
@@ -155,10 +167,10 @@ void		ft_start_raycasting(t_master *m)
 		int a = 0;
 		while (a < draw_start) // change
 		{
-			my_mlx_pixel_put(&m->vars, x, a, 0x00000000);
+			my_mlx_pixel_put(&m->vars, x, a, m->game.ceilingcolor);
 			a++;
 		}
-		while (draw_start <= draw_end)
+		while (draw_start <= draw_end) // dit wordt texture
 		{
 			my_mlx_pixel_put(&m->vars, x, draw_start, color / 1.5);
 			draw_start++;
@@ -166,7 +178,7 @@ void		ft_start_raycasting(t_master *m)
 		int b = draw_start;
 		while (b < m->game.sh) // change
 		{
-			my_mlx_pixel_put(&m->vars, x, b, 0x00000000);
+			my_mlx_pixel_put(&m->vars, x, b, m->game.floorcolor);
 			b++;
 		}
 		mlx_new_image(m->vars.mlx, m->game.sw, m->game.sh);

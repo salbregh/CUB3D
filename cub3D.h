@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/06/25 16:31:18 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/10/22 21:35:58 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/10/24 18:14:18 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,9 @@ typedef struct	s_game
 {
 	int			sh;
 	int			sw;
+	int			ceilingcolor;
+	int			floorcolor;
+	int			line_height;
 	double		pos_x;
 	double		pos_y;
 	char		pos;
@@ -113,5 +116,6 @@ int				ft_get_input(int fd, t_master *m);
 int				ft_check_input(t_master *m);
 int				ft_validate_map(t_master *m);
 int				ft_other_identifier(t_master *m);
+int				ft_set_colors(t_master *m);
 
 #endif
