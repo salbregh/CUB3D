@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/06/25 18:11:54 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/10/24 18:17:53 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/10/25 09:16:19 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,10 +128,16 @@ static void	ft_direction(t_master *m)
 
 void		ft_start_raycasting(t_master *m)
 {
-	// int		hit;
 	int		x;
 
 	x = 0;
+	// // new part
+	// unsigned int	texWidth = m->game.sw / 10;
+	// unsigned int	texHeight = m->game.sh / 10;
+	// unsigned int	buffer[m->game.sh][m->game.sw];
+	
+
+
 	while (x < m->game.sw)
 	{
 		ft_start_values(m, x);
@@ -181,7 +187,6 @@ void		ft_start_raycasting(t_master *m)
 			my_mlx_pixel_put(&m->vars, x, b, m->game.floorcolor);
 			b++;
 		}
-		mlx_new_image(m->vars.mlx, m->game.sw, m->game.sh);
 		mlx_put_image_to_window(m->vars.mlx, m->vars.win, m->vars.img, 0, 0);
 		x++;
 	}

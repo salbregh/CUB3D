@@ -6,27 +6,18 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/21 12:48:51 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/10/24 18:16:57 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/10/25 09:19:51 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3D.h"
 
-int	move_bitch(t_master *m)
-{
-	if (move_up(m) == 1 || move_down(m) == 1 ||
-		move_rigth(m) == 1 || move_left(m) == 1)
-	{
-		// mlx_clear_window(m->vars.mlx, m->vars.win);
-		ft_start_raycasting(m);
-	}
-	return (0);
-}
-
 int	close_button(t_master *m)
 {
 	mlx_clear_window(m->vars.mlx, m->vars.win);
 	mlx_destroy_window(m->vars.mlx, m->vars.win);
+	// clear all structs
+	free(m->vars.mlx);
 	exit(0);
 }
 
@@ -40,10 +31,10 @@ int	key_release(int keycode, t_master *m)
 		m->move.left = 0;
 	if (keycode == 2)
 		m->move.right = 0;
-	// if (keycode == 123)
-	// 	m->move.rotate_left = 0;
-	// if (keycode == 124)
-	// 	m->move.rotate_right = 0;
+	if (keycode == 123)
+		m->move.rotate_left = 0;
+	if (keycode == 124)
+		m->move.rotate_right = 0;
 	return (0);
 }
 
@@ -63,9 +54,18 @@ int	key_press(int keycode, t_master *m)
 		m->move.left = 1;
 	if (keycode == 2)
 		m->move.right = 1;
-	// if (keycode == 123)
-	// 	m->move.rotate_left = 1;
-	// if (keycode == 124)
-	// 	m->move.rotate_right = 1;
+	if (keycode == 123)
+		m->move.rotate_left = 1;
+	if (keycode == 124)
+		m->move.rotate_right = 1;
 	return (0);
+}
+
+int	move_bitch(t_master *m)
+{
+	if (move_up(m) == 1 || move_down(m) == 1 ||
+	move_rigth(m) == 1 || move_left(m) == 1 ||
+	rotate_right(m) == 1 || rotate_left(m) == 1)
+		ft_start_raycasting(m);
+	return (1);
 }

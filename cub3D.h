@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/06/25 16:31:18 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/10/24 18:14:18 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/10/25 09:06:13 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,7 @@ int		move_down(t_master *m);
 int		move_rigth(t_master *m);
 int		move_left(t_master *m);
 int		rotate_right(t_master *m);
+int		rotate_left(t_master *m);
 
 // PARSER
 int				ft_get_input(int fd, t_master *m);
@@ -117,5 +118,8 @@ int				ft_check_input(t_master *m);
 int				ft_validate_map(t_master *m);
 int				ft_other_identifier(t_master *m);
 int				ft_set_colors(t_master *m);
+
+
+void	main_raycast(t_master *m);
 
 #endif
