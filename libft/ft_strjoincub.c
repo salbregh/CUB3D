@@ -6,7 +6,7 @@
 /*   By: salbregh <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/06 13:45:13 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/10/22 15:09:54 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/01 19:15:59 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*ft_strjoincub(char const *s1, char const *s2)
 
 	if (s1 == NULL || s2 == NULL)
 		return (0);
-	str = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	str = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 2));
 	if (str == NULL)
 		return (0);
 	i = 0;

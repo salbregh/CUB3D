@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/09 16:52:58 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/10/21 11:43:11 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/01 18:24:43 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,10 @@ static void		ft_check_position(t_master *m)
 	}
 	else if (m->game.pos == 'W')
 	{
-		printf("W\n");
 		m->game.dir_x = -1;
 		m->game.dir_y = 0;
 		m->game.plane_x = 0;
-		m->game.plane_y = 0.66;
+		m->game.plane_y = -0.66;
 	}
 	else if (m->game.pos == 'N')
 	{
@@ -48,7 +47,6 @@ static void		ft_check_position(t_master *m)
 	}
 	else if (m->game.pos == 'S')
 	{
-		printf("goes in south\n");
 		m->game.dir_x = 0;
 		m->game.dir_y = 1;
 		m->game.plane_x = -0.66;

@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/20 13:18:50 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/10/24 18:03:32 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/01 18:31:53 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,8 @@ static void	ft_null_vars(t_vars *vars)
 	vars->win = NULL;
 	vars->img = NULL;
 	vars->addr = NULL;
-	vars->bits_per_pixel = 0;
-	vars->line_length = 0;
+	vars->bpp = 0;
+	vars->ll = 0;
 	vars->endian = 0;
 }
 

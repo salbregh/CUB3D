@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/06/25 15:15:23 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/10/25 09:06:39 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/01 18:56:40 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,34 +38,54 @@
 // 	printf("side: %i\n", m->game.side);
 // }
 
-int				main(int argc, char **argv)
+static int		more_main(t_master *m, int argc, char **argv)
 {
-	t_master	m;
 	int			fd;
-
-	ft_sort_master(&m);
 	if (argc != 2)
-		printf("add the cub exstention\n");
+		printf("add cub extension\n");
 	fd = open(argv[1], O_RDONLY);
+	char *tmp = ft_substr(argv[1], ft_strlen(argv[1] - 5), 4);
+	printf("TMP: %s", tmp);
 	if (fd == -1)
 	{
 		printf("fd error\n");
 		return (-1);
 	}
-	if (ft_get_input(fd, &m) == -1)
+	if (ft_get_input(fd, m) == -1)
 	{
 		printf("error in cub file\n");
 		return (-1);
 	}
-	system("leaks cub3D");
-	printf("no errors");
+	return (0);
+}
+
+int				main(int argc, char **argv)
+{
+	t_master	m;
+	// int			fd;
+
+	ft_sort_master(&m);
+	more_main(&m, argc, argv);
+	// if (argc != 2)
+		// printf("add the cub exstention\n");
+	// fd = open(argv[1], O_RDONLY);
+	// if (fd == -1)
+	// {
+	// 	printf("fd error\n");
+	// 	return (-1);
+	// }
+	// if (ft_get_input(fd, &m) == -1)
+	// {
+	// 	printf("error in cub file\n");
+	// 	return (-1);
+	// }
+	// system("leaks cub3D");
+	// printf("no errors");
 	m.vars.mlx = mlx_init();
 	m.vars.win = mlx_new_window(m.vars.mlx, m.game.sw, m.game.sh, "CUB3D");
 	m.vars.img = mlx_new_image(m.vars.mlx, m.game.sw, m.game.sh);
-	m.vars.addr = mlx_get_data_addr(m.vars.img, &m.vars.bits_per_pixel,
-				&m.vars.line_length, &m.vars.endian);
+	m.vars.addr = mlx_get_data_addr(m.vars.img, &m.vars.bpp, &m.vars.ll, &m.vars.endian);
 	ft_start_raycasting(&m);
-	// mlx_put_image_to_window(m.vars.mlx, m.vars.win, m.vars.img, 0, 0);
 	mlx_hook(m.vars.win, 17, 0L, close_button, &m.vars);
 	mlx_hook(m.vars.win, 02, (1L << 0), key_press, &m.vars);
 	mlx_loop_hook(m.vars.mlx, move_bitch, &m);

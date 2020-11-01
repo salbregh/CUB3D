@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/14 14:00:24 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/10/21 13:17:51 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/01 17:44:42 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,54 +15,46 @@
 // delete printstatements
 static int	ft_check_x(char **map, int x, int y)
 {
-	if (map[y][x + 1])
-		if (map[y][x + 1] != '1' && (map[y][x + 1]) != 'x')
-		{
-			printf("0 not surrounded correctly on the right");
-			return (-1);
-		}
-	if (map[y][x - 1])
-		if (map[y][x - 1] != '1' && (map[y][x - 1]) != 'x')
-		{
-			printf("0 not surrounded correctly on the left");
-			return (-1);
-		}
-	if (map[y - 1][x])
-		if (map[y - 1][x] != '1' && (map[y - 1][x]) != 'x')
-		{
-			printf("0 not surrounded correctly on the top");
-			return (-1);
-		}
-	if (map[y + 1][x])
-		if (map[y + 1][x] != '1' && (map[y + 1][x]) != 'x')
-		{
-			printf("0 not surrounded correctly on the bottom");
-			return (-1);
-		}
-	if (map[y + 1][x + 1])
-		if (map[y + 1][x + 1] != '1' && map[y + 1][x + 1] != 'x')
-		{
-			printf("0 not surrounded correctly upright");
-			return (-1);
-		}
-	if (map[y + 1][x - 1])
-		if (map[y + 1][x - 1] != '1' && map[y + 1][x - 1] != 'x')
-		{
-			printf("0 not surrounded correctly upleft");
-			return (-1);
-		}
-	if (map[y - 1][x + 1])
-		if (map[y - 1][x + 1] != '1' && map[y - 1][x + 1] != 'x')
-		{
-			printf("0 not surrounded correctly downright");
-			return (-1);
-		}
-	if (map[y - 1][x - 1])
-		if (map[y - 1][x - 1] != '1' && map[y - 1][x - 1] != 'x')
-		{
-			printf("0 not surrounded correctly downleft");
-			return (-1);
-		}
+	if (map[y][x + 1] != '1' && (map[y][x + 1]) != 'x')
+	{
+		printf("0 not surrounded correctly on the right");
+		return (-1);
+	}
+	if (map[y][x - 1] != '1' && (map[y][x - 1]) != 'x')
+	{
+		printf("0 not surrounded correctly on the left");
+		return (-1);
+	}
+	if (map[y - 1][x] != '1' && (map[y - 1][x]) != 'x')
+	{
+		printf("0 not surrounded correctly on the top");
+		return (-1);
+	}
+	if (map[y + 1][x] != '1' && (map[y + 1][x]) != 'x')
+	{
+		printf("0 not surrounded correctly on the bottom");
+		return (-1);
+	}
+	if (map[y + 1][x + 1] != '1' && map[y + 1][x + 1] != 'x')
+	{
+		printf("0 not surrounded correctly upright");
+		return (-1);
+	}
+	if (map[y + 1][x - 1] != '1' && map[y + 1][x - 1] != 'x')
+	{
+		printf("0 not surrounded correctly upleft");
+		return (-1);
+	}
+	if (map[y - 1][x + 1] != '1' && map[y - 1][x + 1] != 'x')
+	{
+		printf("0 not surrounded correctly downright");
+		return (-1);
+	}
+	if (map[y - 1][x - 1] != '1' && map[y - 1][x - 1] != 'x')
+	{
+		printf("0 not surrounded correctly downleft");
+		return (-1);
+	}
 	return (0);
 }
 
@@ -116,9 +108,20 @@ static char	**ft_floodfill(char **map, int x, int y)
 int			ft_validate_map(t_master *m)
 {
 	m->input.x = ft_split(m->input.map, '\n');
-	// printf("pos x: %d, pos y: %d\n", (int)m->game.pos_x, (int)m->game.pos_y);
 	m->input.x[(int)m->game.pos_y][(int)m->game.pos_x] = '0';
 	m->input.x = ft_floodfill(m->input.x, m->game.pos_x, m->game.pos_y);
+	int i = 0;
+	while (m->input.x[i])
+	{
+		printf("%s\n", m->input.x[i]);
+		i++;
+	}
+	i = 0;
+	while (m->input.mapsplit[i])
+	{
+		printf("%s\n", m->input.mapsplit[i]);
+		i++;
+	}
 	if (ft_check_map(m->input.x) == -1)
 		return (-1);
 	return (0);

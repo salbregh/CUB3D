@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/06/25 18:11:54 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/10/25 09:16:19 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/01 18:32:17 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,8 +135,6 @@ void		ft_start_raycasting(t_master *m)
 	// unsigned int	texWidth = m->game.sw / 10;
 	// unsigned int	texHeight = m->game.sh / 10;
 	// unsigned int	buffer[m->game.sh][m->game.sw];
-	
-
 
 	while (x < m->game.sw)
 	{

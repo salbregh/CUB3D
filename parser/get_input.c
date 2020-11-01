@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/08 12:30:20 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/10/22 15:08:00 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/01 19:10:35 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ static char*	ft_trim_rest(char *line, char *set)
 
 static int		ft_check_path(char *line, t_master *m)
 {
+	if (m->input.checkmap == 1)
+		return (-1);
 	if (ft_strstr(line, "NO") && m->input.no == NULL)
 		m->input.no = ft_trim_paths(line, "NO");
 	else if (ft_strstr(line, "SO") && m->input.so == NULL)
@@ -90,21 +92,27 @@ static int		ft_check_identifier(char *line, t_master *m)
 		(ft_strstr(line, "WE")) || (ft_strstr(line, "EA")) ||
 		(ft_strstr(line, "S ")) || (ft_strstr(line, "R")) ||
 		(ft_strstr(line, "C")) || (ft_strstr(line, "F")))
-		// for "S" or "S " use m->input.checkmap != 0
 		{
 		if (ft_check_path(line, m) == -1)
 			return (-1);
 		}
 	else if (ft_strchr(line, '1'))
 	{
+		printf("goes in else if\n");
 		if (m->input.lineinmap == 1)
 			return (-1);
 		m->input.checkmap = 1;
+		m->input.map = NULL;
 		m->input.map = ft_strjoincub(tmp, line);
+		printf("goes in with: %s\n", line);
+		printf("tmp: %s\n", tmp);
+		printf("MAP:\n%s$\n", m->input.map);
+		tmp = NULL;
 		free(tmp);
 	}
 	else
 	{
+		printf("goes in else\n");
 		if (m->input.checkmap == 1)
 			m->input.lineinmap = 1;
 		while (line[i])

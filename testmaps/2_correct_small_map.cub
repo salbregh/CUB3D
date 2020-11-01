@@ -1,0 +1,12 @@
+R 400 400
+NO ./pics/eagle.png
+SO ./pics/bluestone.png
+WE ./pics/wood.png
+EA ./pics/greystone.png
+S ./pics/barrel.png
+F 102,102,153
+C 240,248,255
+
+111
+1E1
+111

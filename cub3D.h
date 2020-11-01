@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/06/25 16:31:18 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/10/25 09:06:13 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/01 18:30:01 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ typedef struct	s_vars
 	void		*win;
 	void		*img;
 	char		*addr;
-	int			bits_per_pixel;
-	int			line_length;
+	int			bpp;
+	int			ll;
 	int			endian;
 }				t_vars;
 
