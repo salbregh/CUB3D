@@ -6,7 +6,7 @@
 #    By: salbregh <salbregh@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/06/25 15:16:40 by salbregh      #+#    #+#                  #
-#    Updated: 2020/10/24 14:50:13 by salbregh      ########   odam.nl          #
+#    Updated: 2020/11/02 18:37:52 by salbregh      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,9 @@ SRCS =		main.c \
 			./parser/floodfill.c \
 			./parser/check_more_input.c \
 			./parser/set_colors.c \
-			sort_struct.c
+			error.c \
+			sort_struct.c \
+			textures.c
 			
 OFILES =	$(SRCS:.c=.o)
 

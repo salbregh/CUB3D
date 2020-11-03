@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/09 16:52:58 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/01 18:24:43 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/01 22:14:31 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,24 @@ static int		ft_maplines(t_master *m)
 	while (m->input.mapsplit[i])
 		i++;
 	return (i);
+}
+
+static void		ft_check_more_position(t_master *m)
+{
+	if (m->game.pos == 'N')
+	{
+		m->game.dir_x = 0;
+		m->game.dir_y = -1;
+		m->game.plane_x = 0.66;
+		m->game.plane_y = 0;
+	}
+	else if (m->game.pos == 'S')
+	{
+		m->game.dir_x = 0;
+		m->game.dir_y = 1;
+		m->game.plane_x = -0.66;
+		m->game.plane_y = 0;
+	}
 }
 
 static void		ft_check_position(t_master *m)
@@ -38,20 +56,8 @@ static void		ft_check_position(t_master *m)
 		m->game.plane_x = 0;
 		m->game.plane_y = -0.66;
 	}
-	else if (m->game.pos == 'N')
-	{
-		m->game.dir_x = 0;
-		m->game.dir_y = -1;
-		m->game.plane_x = 0.66;
-		m->game.plane_y = 0;
-	}
-	else if (m->game.pos == 'S')
-	{
-		m->game.dir_x = 0;
-		m->game.dir_y = 1;
-		m->game.plane_x = -0.66;
-		m->game.plane_y = 0;
-	}
+	else
+		ft_check_more_position(m);
 }
 
 static int		ft_start_position(t_master *m)
@@ -80,7 +86,6 @@ static int		ft_start_position(t_master *m)
 		y++;
 		x = 0;
 	}
-	ft_check_position(m);
 	return (0);
 }
 
@@ -90,5 +95,6 @@ int		ft_check_input(t_master *m)
 		return (-1);
 	if (ft_validate_map(m) == -1)
 		return (-1);
+	ft_check_position(m);
 	return (0);
 }

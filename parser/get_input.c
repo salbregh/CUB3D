@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/08 12:30:20 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/01 19:10:35 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/02 19:12:32 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,21 +98,14 @@ static int		ft_check_identifier(char *line, t_master *m)
 		}
 	else if (ft_strchr(line, '1'))
 	{
-		printf("goes in else if\n");
 		if (m->input.lineinmap == 1)
 			return (-1);
 		m->input.checkmap = 1;
-		m->input.map = NULL;
 		m->input.map = ft_strjoincub(tmp, line);
-		printf("goes in with: %s\n", line);
-		printf("tmp: %s\n", tmp);
-		printf("MAP:\n%s$\n", m->input.map);
-		tmp = NULL;
 		free(tmp);
 	}
 	else
 	{
-		printf("goes in else\n");
 		if (m->input.checkmap == 1)
 			m->input.lineinmap = 1;
 		while (line[i])
@@ -135,7 +128,6 @@ int				ft_get_input(int fd, t_master *m)
 	while (linereturn != 0)
 	{
 		linereturn = get_next_line(fd, &line);
-		printf("Line: %s\n", &*line);
 		if (ft_check_identifier(&*line, m) == -1)
 			return (-1);
 		free(line);

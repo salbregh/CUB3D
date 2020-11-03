@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/20 13:18:50 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/01 18:31:53 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/03 22:09:00 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ static void	ft_null_game(t_game *game)
 	game->line_height = 0;
 	game->sh = 0;
 	game->sw = 0;
+	game->draw_start = 0;
+	game->draw_end = 0;
 	game->ceilingcolor = 0;
 	game->floorcolor = 0;
 	game->dir_x = 0;
@@ -83,6 +85,20 @@ static void	ft_null_vars(t_vars *vars)
 	vars->bpp = 0;
 	vars->ll = 0;
 	vars->endian = 0;
+
+	// texture
+	vars->texture1 = 0;
+	vars->addr1 = 0;
+	vars->w1 = 0;
+	vars->h1 = 0;
+	vars->bpp1 = 0;
+	vars->ll1 = 0;
+	vars->wall_x = 0;
+	vars->tex_step = 0;
+	vars->color = 0;
+	vars->tex_x = 0;
+	vars->tex_y = 0;
+	vars->tex_pos = 0;
 }
 
 void		ft_sort_master(t_master *m)

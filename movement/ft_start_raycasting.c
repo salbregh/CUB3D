@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/06/25 18:11:54 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/01 18:32:17 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/03 22:39:30 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,26 +99,30 @@ static void	ft_DDA(t_master *m)
 
 /*
 **	calculating the distance projected on camera direction
+**	calculate the height of the line to draw on the screen
+**	also calculate lowest and highest pixel to fill in current stripe
 */
 
-static void	ft_direction(t_master *m)
+static void	ft_distance(t_master *m)
 {
 	if (m->game.side == 0)
-		{
-			if (m->game.raydir_x == 0)
-				m->game.perpwalldist = 0;
-			else
-				m->game.perpwalldist = ((m->game.map_x - m->game.pos_x +
-				(1.0 - m->game.step_x) / 2.0) / m->game.raydir_x);
-		}
+	{
+		if (m->game.raydir_x == 0)
+			m->game.perpwalldist = 0;
 		else
-		{
-			if (m->game.raydir_y == 0)
-				m->game.perpwalldist = 0;
-			else
-				m->game.perpwalldist = (m->game.map_y - m->game.pos_y +
-				(1.0 - m->game.step_y) / 2.0) / m->game.raydir_y;
-		}
+			m->game.perpwalldist = ((m->game.map_x - m->game.pos_x +
+			(1.0 - m->game.step_x) / 2.0) / m->game.raydir_x);
+	}
+	else
+	{
+		if (m->game.raydir_y == 0)
+			m->game.perpwalldist = 0;
+		else
+			m->game.perpwalldist = (m->game.map_y - m->game.pos_y +
+			(1.0 - m->game.step_y) / 2.0) / m->game.raydir_y;
+	}
+	m->game.line_height = (int)(m->game.sh / m->game.perpwalldist);
+	m->game.draw_start = -m->game.line_height / 2 + m->game.sh / 2;
 }
 
 /*
@@ -130,33 +134,25 @@ void		ft_start_raycasting(t_master *m)
 {
 	int		x;
 
-	x = 0;
-	// // new part
-	// unsigned int	texWidth = m->game.sw / 10;
-	// unsigned int	texHeight = m->game.sh / 10;
-	// unsigned int	buffer[m->game.sh][m->game.sw];
-
+	x = 1;
+	if (ft_load_texture(m) == -1)
+		ft_error(m, "error in texture");
 	while (x < m->game.sw)
 	{
 		ft_start_values(m, x);
 		ft_sidedist(m);
 		ft_DDA(m);
-		ft_direction(m);
+		ft_distance(m);
 
-		// calculate the height of the line to draw on the screen
-		// also calculate lowest and highest pixel to fill in current stripe
 		// int		line_height;
-		int		draw_start;
-		int		draw_end;
 
-		m->game.line_height = (int)(m->game.sh / m->game.perpwalldist);
-		// printf("value lineheight: %i\n", line_height);
-		draw_start = -m->game.line_height / 2 + m->game.sh / 2;
-		if (draw_start < 0)
-			draw_start = 0;
-		draw_end = m->game.line_height / 2 + m->game.sh / 2;
-		if (draw_end >= m->game.sh)
-			draw_end = m->game.sh - 1;
+		// m->game.line_height = (int)(m->game.sh / m->game.perpwalldist);
+		// m->game.draw_start = -m->game.line_height / 2 + m->game.sh / 2;
+		if (m->game.draw_start < 0)
+			m->game.draw_start = 0;
+		m->game.draw_end = m->game.line_height / 2 + m->game.sh / 2;
+		if (m->game.draw_end >= m->game.sh)
+			m->game.draw_end = m->game.sh - 1;
 		// colors CHANGE THIS
 		unsigned int	color;
 		if (m->input.mapsplit[m->game.map_y][m->game.map_x] == '0') // open ruimte?
@@ -169,21 +165,16 @@ void		ft_start_raycasting(t_master *m)
 			color = color / 2;
 		mlx_clear_window(m->vars.mlx, m->vars.win);
 		int a = 0;
-		while (a < draw_start) // change
+		while (a < m->game.draw_start) // change
 		{
 			my_mlx_pixel_put(&m->vars, x, a, m->game.ceilingcolor);
 			a++;
 		}
-		while (draw_start <= draw_end) // dit wordt texture
+		ft_texturing(m, x, color);
+		while (m->game.draw_start < m->game.sh) // change
 		{
-			my_mlx_pixel_put(&m->vars, x, draw_start, color / 1.5);
-			draw_start++;
-		}
-		int b = draw_start;
-		while (b < m->game.sh) // change
-		{
-			my_mlx_pixel_put(&m->vars, x, b, m->game.floorcolor);
-			b++;
+			my_mlx_pixel_put(&m->vars, x, m->game.draw_start, m->game.floorcolor);
+			m->game.draw_start++;
 		}
 		mlx_put_image_to_window(m->vars.mlx, m->vars.win, m->vars.img, 0, 0);
 		x++;

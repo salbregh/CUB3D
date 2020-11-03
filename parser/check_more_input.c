@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/21 13:20:16 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/10/24 14:50:53 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/01 22:12:16 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,10 @@ static int	ft_get_resolution(char *res, t_master *m)
 	width = ft_substr(res, 0, i);
 	if (ft_check_string(width) == -1)
 		return (-1);
-	printf("value of width: %s\n", width);
 	m->game.sw = ft_atoi(width);
 	while (res[i] == ' ')
 		i++;
 	height = ft_substr(res,i , ft_strlen(res));
-	printf("value of heigth: %s\n", height);
 	if (ft_check_string(height) == -1)
 		return (-1);
 	m->game.sh = ft_atoi(height);
@@ -57,7 +55,7 @@ static int	ft_get_more_color(char *c1, char* c2, char* c3,
 	if (ft_check_string(c1) == -1 || ft_check_string(c2) == -1 ||
 	ft_check_string(c3) == -1)
 		return (-1);
-	if (which == 0) // color for floor
+	if (which == 0)
 	{
 		m->input.f[0] = ft_atoi(c1);
 		free(c1);
@@ -66,7 +64,7 @@ static int	ft_get_more_color(char *c1, char* c2, char* c3,
 		m->input.f[2] = ft_atoi(c3);
 		free(c3);
 	}
-	else if (which == 1) // color for ceiling
+	else if (which == 1)
 	{
 		m->input.c[0] = ft_atoi(c1);
 		free(c1);
@@ -113,7 +111,5 @@ int			ft_other_identifier(t_master *m)
 		return (-1);
 	if (ft_set_colors(m) == -1)
 		return (-1);
-	// printf("input floor color:\nf0: %i\nf1: %i\nf2: %i\n", m->input.f[0], m->input.f[1], m->input.f[2]);
-	// printf("input ceiling color:\nf0: %i\nf1: %i\nf2: %i\n", m->input.c[0], m->input.c[1], m->input.c[2]);
 	return (0);
 }

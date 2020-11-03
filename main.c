@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/06/25 15:15:23 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/01 18:56:40 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/01 22:10:24 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,21 +41,26 @@
 static int		more_main(t_master *m, int argc, char **argv)
 {
 	int			fd;
-	if (argc != 2)
-		printf("add cub extension\n");
+	
+	if (argc == 3)
+	{
+		// check if argument is save
+		// if not: error
+		// if yes save the screen
+		// dont resize
+	}
+	else if (argc != 2)
+		ft_error(m, "No second argument.");
 	fd = open(argv[1], O_RDONLY);
-	char *tmp = ft_substr(argv[1], ft_strlen(argv[1] - 5), 4);
-	printf("TMP: %s", tmp);
 	if (fd == -1)
-	{
-		printf("fd error\n");
-		return (-1);
-	}
+		ft_error(m, "The file your trying to open does not exist.\n");
+	if (ft_strncmp(ft_substr(argv[1], ft_strlen(argv[1]) - 4, ft_strlen(argv[1])),".cub", 4) != 0) // ".cub leaks"
+		ft_error(m, "No .cub extension");
 	if (ft_get_input(fd, m) == -1)
-	{
-		printf("error in cub file\n");
-		return (-1);
-	}
+		ft_error(m, "error in cub file.\n");
+	// check path files
+	// open file paths, if not able to send error
+
 	return (0);
 }
 
@@ -66,21 +71,9 @@ int				main(int argc, char **argv)
 
 	ft_sort_master(&m);
 	more_main(&m, argc, argv);
-	// if (argc != 2)
-		// printf("add the cub exstention\n");
-	// fd = open(argv[1], O_RDONLY);
-	// if (fd == -1)
-	// {
-	// 	printf("fd error\n");
+	// if (more_main(&m, argc, argv) == -1)
 	// 	return (-1);
-	// }
-	// if (ft_get_input(fd, &m) == -1)
-	// {
-	// 	printf("error in cub file\n");
-	// 	return (-1);
-	// }
-	// system("leaks cub3D");
-	// printf("no errors");
+	system("leaks cub3D");
 	m.vars.mlx = mlx_init();
 	m.vars.win = mlx_new_window(m.vars.mlx, m.game.sw, m.game.sh, "CUB3D");
 	m.vars.img = mlx_new_image(m.vars.mlx, m.game.sw, m.game.sh);

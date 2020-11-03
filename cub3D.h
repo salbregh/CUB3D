@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/06/25 16:31:18 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/01 18:30:01 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/03 22:25:04 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,19 @@ typedef struct	s_vars
 	int			bpp;
 	int			ll;
 	int			endian;
+	void		*texture1;
+	char		*addr1;
+	int			w1;
+	int			h1;
+	int			bpp1;
+	int			ll1;
+	int 		color; // nodig?
+	float		wall_x;
+	float		tex_step;
+	int			line_height;
+	int			tex_x;
+	int			tex_y;
+	int			tex_pos;
 }				t_vars;
 
 typedef struct	s_input
@@ -63,6 +76,8 @@ typedef struct	s_game
 {
 	int			sh;
 	int			sw;
+	int			draw_start;
+	int			draw_end;
 	int			ceilingcolor;
 	int			floorcolor;
 	int			line_height;
@@ -96,9 +111,9 @@ typedef struct	s_master
 	t_input		input;
 }				t_master;
 
-void	my_mlx_pixel_put(t_vars *vars, int x, int y, int color);
 void	ft_start_raycasting(t_master *master);
 void	ft_sort_master(t_master *m);
+void	ft_error(t_master *m, char *message);
 
 // MOVEMENT .C
 int		key_press(int keycode, t_master *master);
@@ -111,6 +126,7 @@ int		move_rigth(t_master *m);
 int		move_left(t_master *m);
 int		rotate_right(t_master *m);
 int		rotate_left(t_master *m);
+void	my_mlx_pixel_put(t_vars *vars, int x, int y, int color);
 
 // PARSER
 int				ft_get_input(int fd, t_master *m);
@@ -119,7 +135,9 @@ int				ft_validate_map(t_master *m);
 int				ft_other_identifier(t_master *m);
 int				ft_set_colors(t_master *m);
 
-
-void	main_raycast(t_master *m);
+// texture crap
+int				ft_load_texture(t_master *m);
+void			ft_my_pixel_get(t_master *m, int y, int x);
+void			ft_texturing(t_master *m, int x, unsigned int color);
 
 #endif
