@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/06/25 16:31:18 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/03 22:25:04 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/06 18:53:41 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ typedef struct	s_vars
 	int			h1;
 	int			bpp1;
 	int			ll1;
-	int 		color; // nodig?
+	unsigned int 		color; // nodig?
 	float		wall_x;
 	float		tex_step;
 	int			line_height;
@@ -74,6 +74,7 @@ typedef struct	s_input
 
 typedef struct	s_game
 {
+	int			x;
 	int			sh;
 	int			sw;
 	int			draw_start;

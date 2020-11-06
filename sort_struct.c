@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/20 13:18:50 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/03 22:09:00 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/06 18:42:50 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ static void	ft_null_input(t_input *input)
 
 static void	ft_null_game(t_game *game)
 {
+	game->x = 1;
 	game->pos_y = 0;
 	game->pos_x = 0;
 	game->pos = 0;

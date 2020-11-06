@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/06/25 18:11:54 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/03 22:39:30 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/06 18:53:08 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,8 +155,8 @@ void		ft_start_raycasting(t_master *m)
 			m->game.draw_end = m->game.sh - 1;
 		// colors CHANGE THIS
 		unsigned int	color;
-		if (m->input.mapsplit[m->game.map_y][m->game.map_x] == '0') // open ruimte?
-			color = 0x0F000000;
+		// if (m->input.mapsplit[m->game.map_y][m->game.map_x] == '0') // open ruimte?
+		// 	color = 0x0F000000;
 		if (m->input.mapsplit[m->game.map_y][m->game.map_x] == '1') // muur dus ook textures
 			color = 0x0FFF00FF;
 		if (m->input.mapsplit[m->game.map_y][m->game.map_x] == '2') // moet sprite worden
