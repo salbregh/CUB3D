@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/06/25 18:11:54 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/07 14:37:26 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/08 17:17:52 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,23 +146,23 @@ void		ft_start_raycasting(t_master *m)
 
 		// int		line_height;
 
-		// m->game.line_height = (int)(m->game.sh / m->game.perpwalldist);
-		// m->game.draw_start = -m->game.line_height / 2 + m->game.sh / 2;
+		m->game.line_height = (int)(m->game.sh / m->game.perpwalldist);
+		m->game.draw_start = -m->game.line_height / 2 + m->game.sh / 2;
 		if (m->game.draw_start < 0)
 			m->game.draw_start = 0;
 		m->game.draw_end = m->game.line_height / 2 + m->game.sh / 2;
 		if (m->game.draw_end >= m->game.sh)
 			m->game.draw_end = m->game.sh - 1;
 		// colors CHANGE THIS
-		unsigned int	color;
+		// unsigned int	color;
 		// if (m->input.mapsplit[m->game.map_y][m->game.map_x] == '0') // open ruimte?
 		// 	color = 0x0F000000;
-		if (m->input.mapsplit[m->game.map_y][m->game.map_x] == '1') // muur dus ook textures
-			color = 0x0FFF00FF;
-		if (m->input.mapsplit[m->game.map_y][m->game.map_x] == '2') // moet sprite worden
-			color = 0x00FF000F;
-		if (m->game.side == 1)
-			color = color / 2;
+		// if (m->input.mapsplit[m->game.map_y][m->game.map_x] == '1') // muur dus ook textures
+		// 	color = 0x0FFF00FF;
+		// if (m->input.mapsplit[m->game.map_y][m->game.map_x] == '2') // moet sprite worden
+		// 	m->vars.color = 0x00FF000F;
+		// if (m->game.side == 1)
+		// 	color = color / 2;
 		mlx_clear_window(m->vars.mlx, m->vars.win);
 		int a = 0;
 		while (a < m->game.draw_start) // change

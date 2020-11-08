@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/06/25 16:31:18 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/07 22:25:48 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/08 19:20:36 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ typedef struct	s_vars
 	unsigned int 		color; // nodig?
 	double		wall_x;
 	double		tex_step;
-	int			line_height;
+	// int			line_height;
 	int			tex_x;
 	int			tex_y;
 	int			tex_pos;
