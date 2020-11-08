@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/06/25 16:31:18 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/06 18:53:41 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/07 22:25:48 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ typedef struct	s_vars
 	int			bpp1;
 	int			ll1;
 	unsigned int 		color; // nodig?
-	float		wall_x;
-	float		tex_step;
+	double		wall_x;
+	double		tex_step;
 	int			line_height;
 	int			tex_x;
 	int			tex_y;
@@ -139,6 +139,6 @@ int				ft_set_colors(t_master *m);
 // texture crap
 int				ft_load_texture(t_master *m);
 void			ft_my_pixel_get(t_master *m, int y, int x);
-void			ft_texturing(t_master *m, int x, unsigned int color);
+void			ft_texturing(t_master *m, int x);
 
 #endif

@@ -6,34 +6,35 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/02 18:18:30 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/06 19:15:23 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/07 22:40:16 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-// static void PRINT(t_master *m)
-// {
-// 	printf("TESTVALUES:\n");
-// 	printf("texture1: %s\n", m->vars.texture1);
-// 	printf("addr1: %s\n", m->vars.addr1);
-// 	printf("w1: %d\n", m->vars.w1);
-// 	printf("h1: %d\n", m->vars.h1);
-// 	printf("bpp1: %d\n", m->vars.bpp1);
-// 	printf("ll1: %d\n", m->vars.ll1);
-// 	printf("color: %d\n", m->vars.color);
-// 	printf("wall_x: %f\n", m->vars.wall_x);
-// 	printf("tex_step: %f\n", m->vars.tex_step);
-// 	printf("line_heigth: %d\n", m->vars.line_height);
-// 	printf("tex_x: %d\n", m->vars.tex_x);
-// 	printf("tex_y: %d\n", m->vars.tex_y);
-// 	printf("tex_pos: %d\n", m->vars.tex_pos);
-// }
+static void PRINT(t_master *m)
+{
+	printf("TESTVALUES:\n");
+	printf("texture1: %s\n", m->vars.texture1);
+	printf("addr1: %s\n", m->vars.addr1);
+	printf("w1: %d\n", m->vars.w1);
+	printf("h1: %d\n", m->vars.h1);
+	printf("bpp1: %d\n", m->vars.bpp1);
+	printf("ll1: %d\n", m->vars.ll1);
+	printf("color: %d\n", m->vars.color);
+	printf("wall_x: %f\n", m->vars.wall_x);
+	printf("tex_step: %f\n", m->vars.tex_step);
+	printf("line_heigth: %d\n", m->vars.line_height);
+	printf("tex_x: %d\n", m->vars.tex_x);
+	printf("tex_y: %d\n", m->vars.tex_y);
+	printf("tex_pos: %d\n", m->vars.tex_pos);
+	return ;
+}
 
 void	ft_my_pixel_get(t_master *m, int y, int x)
 {
 	char	*dst;
-	// PRINT(m);
+
 	dst = m->vars.addr1 + (x * m->vars.ll1 + y * (m->vars.bpp1 / 8));
 	m->vars.color = *(unsigned int *)dst;
 }
@@ -44,32 +45,25 @@ static void	ver_dot(int x, int y, t_master *m)
 
 	dst = m->vars.addr + (y * m->vars.ll + x *
 	(m->vars.bpp / 8));
-
+	PRINT(m);
+	return ;
 	*(unsigned int*)dst = m->vars.color;
 }
 
-void	ft_texturing(t_master *m, int x, unsigned int color)
+void	ft_texturing(t_master *m, int x)//, unsigned int color)
 {
-	// while (m->game.draw_start < m->game.draw_end)
-	// {
-	// 	my_mlx_pixel_put(&m->vars, x, m->game.draw_start, color / 1.5);
-	// 	m->game.draw_start++;
-	// }
-	(void)color;
 	m->vars.wall_x = m->game.pos_x + m->game.perpwalldist * m->game.dir_x;
 	if (m->game.side == 0)
 		m->vars.wall_x = m->game.pos_y + m->game.perpwalldist * m->game.dir_y;
 	else
 		m->vars.wall_x = m->game.pos_x + m->game.perpwalldist * m->game.dir_x;
 	m->vars.wall_x -= (int)m->vars.wall_x;
-	m->vars.tex_x = (int)(m->vars.wall_x * (float)m->vars.w1);
-	m->vars.tex_y = (int)(m->vars.wall_x * (float)m->vars.w1);
+	m->vars.tex_x = (int)(m->vars.wall_x * (double)m->vars.w1);
+	m->vars.tex_y = (int)(m->vars.wall_x * (double)m->vars.h1);
 	if (m->game.side == 0 && m->game.dir_x > 0)
-		m->vars.tex_y = m->vars.w1 - m->vars.tex_y - 1;
+		m->vars.tex_x = m->vars.w1 - m->vars.tex_y - 1;
 	if (m->game.side == 0 && m->game.dir_y < 0)
 		m->vars.tex_y = m->vars.w1 - m->vars.tex_y - 1;
-	// printf("LINEHEIGHT: %d\n", m->vars.line_height);
-	// printf("LL: %d\n", m->vars.ll);
 	m->vars.tex_step = 1.0 * m->vars.h1 / m->vars.ll;
 	m->vars.tex_pos = (m->game.draw_start - m->game.sh / 2 + m->vars.ll / 2) * m->vars.tex_step;
 	while (m->game.draw_start < m->game.draw_end)
@@ -77,7 +71,7 @@ void	ft_texturing(t_master *m, int x, unsigned int color)
 		m->vars.tex_x = (int)m->vars.tex_pos;
 		m->vars.tex_pos = m->vars.tex_pos + m->vars.tex_step;
 		ft_my_pixel_get(m, m->vars.tex_y, m->vars.tex_x);
-		ver_dot(x, m->game.draw_start, m);
+		ver_dot(x, m->game.draw_start, m); 
 		m->game.draw_start++;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/06/25 18:11:54 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/06 18:53:08 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/07 14:37:26 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -170,7 +170,7 @@ void		ft_start_raycasting(t_master *m)
 			my_mlx_pixel_put(&m->vars, x, a, m->game.ceilingcolor);
 			a++;
 		}
-		ft_texturing(m, x, color);
+		ft_texturing(m, x);
 		while (m->game.draw_start < m->game.sh) // change
 		{
 			my_mlx_pixel_put(&m->vars, x, m->game.draw_start, m->game.floorcolor);
