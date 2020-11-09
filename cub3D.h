@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/06/25 16:31:18 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/08 19:20:36 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/09 11:49:12 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,6 +128,7 @@ int		move_left(t_master *m);
 int		rotate_right(t_master *m);
 int		rotate_left(t_master *m);
 void	my_mlx_pixel_put(t_vars *vars, int x, int y, int color);
+void	ft_draw(t_master *m, int x);
 
 // PARSER
 int				ft_get_input(int fd, t_master *m);

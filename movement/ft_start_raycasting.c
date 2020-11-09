@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/06/25 18:11:54 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/08 17:17:52 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/09 11:50:50 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,16 +70,16 @@ static void	ft_sidedist(t_master *m)
 
 /*
 **	performing DDA
+**	jump to next map square in x or y direction
 */
 
-static void	ft_DDA(t_master *m)
+static void	ft_dda(t_master *m)
 {
 	int	hit;
-	
+
 	hit = 0;
 	while (hit == 0)
 	{
-		// jump to next map square in x or y direction
 		if (m->game.sidedist_x < m->game.sidedist_y)
 		{
 			m->game.sidedist_x += m->game.deltadist_x;
@@ -121,8 +121,8 @@ static void	ft_distance(t_master *m)
 			m->game.perpwalldist = (m->game.map_y - m->game.pos_y +
 			(1.0 - m->game.step_y) / 2.0) / m->game.raydir_y;
 	}
-	m->game.line_height = (int)(m->game.sh / m->game.perpwalldist);
-	m->game.draw_start = -m->game.line_height / 2 + m->game.sh / 2;
+	// m->game.line_height = (int)(m->game.sh / m->game.perpwalldist);
+	// m->game.draw_start = -m->game.line_height / 2 + m->game.sh / 2;
 }
 
 /*
@@ -141,42 +141,20 @@ void		ft_start_raycasting(t_master *m)
 	{
 		ft_start_values(m, x);
 		ft_sidedist(m);
-		ft_DDA(m);
+		ft_dda(m);
 		ft_distance(m);
-
-		// int		line_height;
-
-		m->game.line_height = (int)(m->game.sh / m->game.perpwalldist);
-		m->game.draw_start = -m->game.line_height / 2 + m->game.sh / 2;
-		if (m->game.draw_start < 0)
-			m->game.draw_start = 0;
-		m->game.draw_end = m->game.line_height / 2 + m->game.sh / 2;
-		if (m->game.draw_end >= m->game.sh)
-			m->game.draw_end = m->game.sh - 1;
-		// colors CHANGE THIS
-		// unsigned int	color;
-		// if (m->input.mapsplit[m->game.map_y][m->game.map_x] == '0') // open ruimte?
-		// 	color = 0x0F000000;
-		// if (m->input.mapsplit[m->game.map_y][m->game.map_x] == '1') // muur dus ook textures
-		// 	color = 0x0FFF00FF;
-		// if (m->input.mapsplit[m->game.map_y][m->game.map_x] == '2') // moet sprite worden
-		// 	m->vars.color = 0x00FF000F;
-		// if (m->game.side == 1)
-		// 	color = color / 2;
-		mlx_clear_window(m->vars.mlx, m->vars.win);
-		int a = 0;
-		while (a < m->game.draw_start) // change
-		{
-			my_mlx_pixel_put(&m->vars, x, a, m->game.ceilingcolor);
-			a++;
-		}
-		ft_texturing(m, x);
-		while (m->game.draw_start < m->game.sh) // change
-		{
-			my_mlx_pixel_put(&m->vars, x, m->game.draw_start, m->game.floorcolor);
-			m->game.draw_start++;
-		}
-		mlx_put_image_to_window(m->vars.mlx, m->vars.win, m->vars.img, 0, 0);
+		ft_draw(m, x);
 		x++;
 	}
 }
+
+// colors CHANGE THIS
+// unsigned int	color;
+// if (m->input.mapsplit[m->game.map_y][m->game.map_x] == '0') // open ruimte?
+// 	color = 0x0F000000;
+// if (m->input.mapsplit[m->game.map_y][m->game.map_x] == '1') // muur dus ook textures
+// 	color = 0x0FFF00FF;
+// if (m->input.mapsplit[m->game.map_y][m->game.map_x] == '2') // moet sprite worden
+// 	m->vars.color = 0x00FF000F;
+// if (m->game.side == 1)
+// 	color = color / 2;

@@ -6,7 +6,7 @@
 #    By: salbregh <salbregh@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/06/25 15:16:40 by salbregh      #+#    #+#                  #
-#    Updated: 2020/11/02 18:37:52 by salbregh      ########   odam.nl          #
+#    Updated: 2020/11/09 11:19:13 by salbregh      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,14 +17,15 @@ SRCS =		main.c \
 			./movement/ft_start_raycasting.c \
 			./movement/movement.c \
 			./movement/mlx_hooks.c \
+			./movement/draw_colors.c \
+			./movement/textures.c \
 			./parser/get_input.c \
 			./parser/check_input.c \
 			./parser/floodfill.c \
 			./parser/check_more_input.c \
 			./parser/set_colors.c \
 			error.c \
-			sort_struct.c \
-			textures.c
+			sort_struct.c
 			
 OFILES =	$(SRCS:.c=.o)
 

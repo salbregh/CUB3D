@@ -6,11 +6,11 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/02 18:18:30 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/08 19:49:46 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/09 11:53:13 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "../cub3D.h"
 
 // static void PRINT(t_master *m)
 // {
@@ -53,6 +53,7 @@ static void	ft_vertical_pixel(int x, int y, t_master *m)
 
 void	ft_texturing(t_master *m, int x)
 {
+	// (void)x;
 	// m->vars.wall_x = m->game.pos_x + m->game.perpwalldist * m->game.dir_x;
 	if (m->game.side == 0)
 		m->vars.wall_x = m->game.pos_y + m->game.perpwalldist * m->game.dir_y;
@@ -65,16 +66,14 @@ void	ft_texturing(t_master *m, int x)
 		m->vars.tex_x = m->vars.w1 - m->vars.tex_x - 1;
 	if (m->game.side == 0 && m->game.dir_y < 0)
 		m->vars.tex_y = m->vars.w1 - m->vars.tex_y - 1;
-		printf("value of ll: %d\n", m->vars.ll1);
 	m->vars.tex_step = 1.0 * m->vars.h1 / m->vars.ll1;
-	printf("value of lineheight: %d\n", m->vars.ll1);
 	m->vars.tex_pos = (m->game.draw_start - m->game.sh / 2 + m->vars.ll1 / 2) * m->vars.tex_step;
 	while (m->game.draw_start < m->game.draw_end)
 	{
 		m->vars.tex_y = (int)m->vars.tex_pos;
 		m->vars.tex_pos = m->vars.tex_pos + m->vars.tex_step;
 		ft_my_pixel_get(m, m->vars.tex_y, m->vars.tex_x);
-		ft_vertical_pixel(x, m->game.draw_start, m);
+		// ft_vertical_pixel(x, m->game.draw_start, m);
 		m->game.draw_start++;
 	}
 }

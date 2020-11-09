@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/06/30 10:23:10 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/01 18:24:55 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/09 11:22:48 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,11 +61,11 @@ int		move_up(t_master *m)
 	{
 		if (m->input.mapsplit[(int)(m->game.pos_y + (m->game.dir_y * speed))]
 			[(int)(m->game.pos_x + (m->game.dir_x * speed))] == '0')
-			{
-				m->game.pos_x = m->game.pos_x + m->game.dir_x * speed;
-				m->game.pos_y = m->game.pos_y + m->game.dir_y * speed;
-				return (1);
-			}
+		{
+			m->game.pos_x = m->game.pos_x + m->game.dir_x * speed;
+			m->game.pos_y = m->game.pos_y + m->game.dir_y * speed;
+			return (1);
+		}
 	}
 	return (0);
 }
@@ -79,11 +79,11 @@ int		move_down(t_master *m)
 	{
 		if (m->input.mapsplit[(int)(m->game.pos_y - (m->game.dir_y * speed))]
 			[(int)(m->game.pos_x - (m->game.dir_x * speed))] == '0')
-			{
-				m->game.pos_x = m->game.pos_x - m->game.dir_x * speed;
-				m->game.pos_y = m->game.pos_y - m->game.dir_y * speed;
-				return (1);
-			}
+		{
+			m->game.pos_x = m->game.pos_x - m->game.dir_x * speed;
+			m->game.pos_y = m->game.pos_y - m->game.dir_y * speed;
+			return (1);
+		}
 	}
 	return (0);
 }
