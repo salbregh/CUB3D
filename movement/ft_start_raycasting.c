@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/06/25 18:11:54 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/09 11:50:50 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/09 18:51:06 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,8 +121,6 @@ static void	ft_distance(t_master *m)
 			m->game.perpwalldist = (m->game.map_y - m->game.pos_y +
 			(1.0 - m->game.step_y) / 2.0) / m->game.raydir_y;
 	}
-	// m->game.line_height = (int)(m->game.sh / m->game.perpwalldist);
-	// m->game.draw_start = -m->game.line_height / 2 + m->game.sh / 2;
 }
 
 /*
