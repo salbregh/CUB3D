@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/06/25 16:31:18 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/09 11:49:12 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/09 13:46:46 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ typedef struct	s_vars
 	// int			line_height;
 	int			tex_x;
 	int			tex_y;
-	int			tex_pos;
+	double		tex_pos;
 }				t_vars;
 
 typedef struct	s_input
@@ -139,7 +139,7 @@ int				ft_set_colors(t_master *m);
 
 // texture crap
 int				ft_load_texture(t_master *m);
-void			ft_my_pixel_get(t_master *m, int y, int x);
+// void			ft_my_pixel_get(t_master *m, int y, int x);
 void			ft_texturing(t_master *m, int x);
 
 #endif

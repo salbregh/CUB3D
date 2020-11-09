@@ -6,7 +6,7 @@
 #    By: sannealbreghs <sannealbreghs@student.co      +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/11/21 13:28:31 by sannealbreg   #+#    #+#                  #
-#    Updated: 2020/10/22 15:06:52 by salbregh      ########   odam.nl          #
+#    Updated: 2020/11/09 12:34:06 by salbregh      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -62,7 +62,7 @@ $(NAME): $(LIB)
 			ranlib $(NAME)
 
 %.o: %.c
-			gcc -o $@ -c $< $(FLAGS)
+			gcc -o $@ -c $< $(CFLAGS)
 
 clean:
 			@/bin/rm -f $(LIB)
