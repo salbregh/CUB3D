@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/02 18:18:30 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/09 15:20:45 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/09 23:35:13 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,35 +54,24 @@ static void	ft_my_pixel_get(t_master *m, int x, int y)
 
 void	ft_texturing(t_master *m, int x)
 {
-	// m->vars.wall_x = m->game.pos_x + m->game.perpwalldist * m->game.dir_x;
 	if (m->game.side == 0)
-		m->vars.wall_x = m->game.pos_y + m->game.perpwalldist * m->game.dir_y;
+		m->vars.wall_x = m->game.pos_y + m->game.perpwalldist * m->game.raydir_y;
 	else
-		m->vars.wall_x = m->game.pos_x + m->game.perpwalldist * m->game.dir_x;
+		m->vars.wall_x = m->game.pos_x + m->game.perpwalldist * m->game.raydir_x;
 	m->vars.wall_x -= (int)m->vars.wall_x;
-	m->vars.tex_x = (int)(m->vars.wall_x * m->vars.w1);
-	// m->vars.tex_y = (int)(m->vars.wall_x * (double)m->vars.h1);
-	if (m->game.side == 0 && m->game.dir_x > 0)
-		m->vars.tex_x = m->vars.w1 - m->vars.tex_x;// - 1;
-	if (m->game.side == 0 && m->game.dir_y < 0)
-		m->vars.tex_x = m->vars.w1 - m->vars.tex_x;// - 1;
-	m->vars.tex_step = (double)m->vars.h1 / (double)m->game.line_height;
-	// printf("value of tex_step: %f\n", m->vars.tex_step);
-	// printf("value of draw_start = %d\n", m->game.draw_start);
-	// printf("value of sh: %d\n", m->game.sh);
-	// printf("value of line_height: %d\n", m->game.line_height);
-
-
-
-	m->vars.tex_pos = m->vars.tex_step; //((m->game.draw_start - (m->game.sh / 2) + m->game.line_height / 2) * m->vars.tex_step);
-	// printf("tex_pos: %f\n", m->vars.tex_pos);
+	m->vars.tex_y = (int)(m->vars.wall_x * (double)m->vars.w1);
+	if (m->game.side == 0 && m->game.raydir_x > 0)
+		m->vars.tex_y = m->vars.w1 - m->vars.tex_y - 1;
+	if (m->game.side == 0 && m->game.raydir_y < 0)
+		m->vars.tex_y = m->vars.w1 - m->vars.tex_y - 1;
+	m->vars.tex_step = 1.0 * m->vars.h1 / m->game.line_height;
+	m->vars.tex_pos = (m->game.draw_start - m->game.sh / 2 + m->game.line_height / 2) * m->vars.tex_step;
 	while (m->game.draw_start < m->game.draw_end)
 	{
 		// m->vars.tex_step = (double)m->vars.h1 / (double)m->game.line_height;
 		// m->vars.tex_pos = ((m->game.draw_start - (m->game.sh / 2) + m->game.line_height / 2) * m->vars.tex_step);
-		m->vars.tex_y = (int)m->vars.tex_pos;
+		m->vars.tex_x = (int)m->vars.tex_pos;
 		m->vars.tex_pos = m->vars.tex_pos + m->vars.tex_step;
-		printf("tex_pos: %f\n", m->vars.tex_pos);
 		ft_my_pixel_get(m, m->vars.tex_x, m->vars.tex_y);
 		my_mlx_pixel_put(&m->vars, x, m->game.draw_start, m->vars.color);
 		// ft_vertical_pixel(x, m->game.draw_start, m);
