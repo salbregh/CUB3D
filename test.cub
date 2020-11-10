@@ -1,6 +1,6 @@
 R   500 500
-NO     ./pictures/wallpaper1.png
-SO ./path_to_the_south
+NO     ./pictures/greystone.png
+SO ./pictures/bluestone.png
 WE ./path_to_the_west
 EA ./path_to_the_east
 

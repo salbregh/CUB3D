@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/20 13:18:50 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/09 11:20:46 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/10 18:08:49 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,12 +87,13 @@ static void	ft_null_vars(t_vars *vars)
 	vars->ll = 0;
 	vars->endian = 0;
 	// texture variables
-	vars->texture1 = 0;
-	vars->addr1 = 0;
-	vars->w1 = 0;
-	vars->h1 = 0;
-	vars->bpp1 = 0;
-	vars->ll1 = 0;
+	vars->tex_no = 0;
+	vars->addr_no = 0;
+	vars->w_no = 0;
+	vars->h_no = 0;
+	vars->bpp_no = 0;
+	vars->ll_no = 0;
+	// add so ea and we
 	vars->wall_x = 0;
 	vars->tex_step = 0;
 	vars->color = 0;

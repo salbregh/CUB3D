@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/06/25 16:31:18 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/09 13:46:46 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/10 18:03:39 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,26 +31,35 @@ typedef struct	s_move
 
 typedef struct	s_vars
 {
-	void		*mlx;
-	void		*win;
-	void		*img;
-	char		*addr;
-	int			bpp;
-	int			ll;
-	int			endian;
-	void		*texture1;
-	char		*addr1;
-	int			w1;
-	int			h1;
-	int			bpp1;
-	int			ll1;
-	unsigned int 		color; // nodig?
-	double		wall_x;
-	double		tex_step;
-	// int			line_height;
-	int			tex_x;
-	int			tex_y;
-	double		tex_pos;
+	void			*mlx;
+	void			*win;
+	void			*img;
+	char			*addr;
+	int				bpp;
+	int				ll;
+	int				endian;
+	// north texture
+	void			*tex_no;
+	char			*addr_no;
+	int				w_no;
+	int				h_no;
+	int				bpp_no;
+	int				ll_no;
+	// south texture;
+	void			*tex_so;
+	char			*addr_so;
+	int				w_so;
+	int				h_so;
+	int				bpp_so;
+	int				ll_so;
+	// east texture
+	// west texture
+	unsigned int 	color; // nodig?
+	double			wall_x;
+	double			tex_step;
+	int				tex_x;
+	int				tex_y;
+	double			tex_pos;
 }				t_vars;
 
 typedef struct	s_input
