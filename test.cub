@@ -1,8 +1,8 @@
 R   500 500
-NO     ./pictures/greystone.png
-SO ./pictures/bluestone.png
-WE ./path_to_the_west
-EA ./path_to_the_east
+NO     ./pictures/bluestone.png
+SO ./pictures/mossy.png
+WE ./pictures/greystone.png
+EA ./pictures/wood.png
 
 S ./path_to_sprite
 F  0,0,0     
@@ -20,6 +20,6 @@ C  0,0,50
 111111110000000000011
        1000000000011
        100000000001
-       10000N000001
+       10000S000001
        111111111111
 

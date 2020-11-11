@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/06/25 16:31:18 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/10 18:03:39 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/11 14:03:54 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,27 @@ typedef struct	s_vars
 	int				bpp_so;
 	int				ll_so;
 	// east texture
+	void			*tex_ea;
+	char			*addr_ea;
+	int				w_ea;
+	int				h_ea;
+	int				bpp_ea;
+	int				ll_ea;
 	// west texture
+	void			*tex_we;
+	char			*addr_we;
+	int				w_we;
+	int				h_we;
+	int				bpp_we;
+	int				ll_we;
+	// texture to use
+	void			*tex_;
+	char			*addr_;
+	int				w_;
+	int				h_;
+	int				bpp_;
+	int				ll_;
+	//
 	unsigned int 	color; // nodig?
 	double			wall_x;
 	double			tex_step;

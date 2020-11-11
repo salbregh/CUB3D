@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/09 16:52:58 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/01 22:14:31 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/11 16:30:05 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,14 +42,14 @@ static void		ft_check_more_position(t_master *m)
 
 static void		ft_check_position(t_master *m)
 {
-	if (m->game.pos == 'E')
+	if (m->game.pos == 'W')
 	{
 		m->game.dir_x = 1;
 		m->game.dir_y = 0;
 		m->game.plane_x = 0;
 		m->game.plane_y = -0.66;
 	}
-	else if (m->game.pos == 'W')
+	else if (m->game.pos == 'E')
 	{
 		m->game.dir_x = -1;
 		m->game.dir_y = 0;

@@ -1,16 +1,16 @@
 
 
-EA      ./pics/greystone.png
+EA      ./pictures/greystone.png
 
 R 250 250
 
-NO      ./pics/eagle.png
+NO      ./pictures/eagle.png
 
 F 56,     255, 39
 
-SO ./pics/bluestone.png
+SO ./pictures/bluestone.png
 
-WE ./pics/mossy.png
+WE ./pictures/mossy.png
 
 C 0,198,                    220
 
