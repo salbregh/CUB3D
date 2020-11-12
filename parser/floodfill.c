@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/14 14:00:24 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/01 22:22:29 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/12 15:24:53 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void	ft_check_x(char **map, int x, int y, t_master *m)
 		ft_error(m, "0 not surrounded correctly downleft");
 }
 
-static int	ft_check_map(char **map, t_master *m)
+static void	ft_check_map(char **map, t_master *m)
 {
 	int x;
 	int y;
@@ -50,7 +50,6 @@ static int	ft_check_map(char **map, t_master *m)
 		x = 0;
 		y++;
 	}
-	return (0);
 }
 
 static char	**ft_floodfill(char **map, int x, int y)
@@ -73,11 +72,10 @@ static char	**ft_floodfill(char **map, int x, int y)
 	return (map);
 }
 
-int			ft_validate_map(t_master *m)
+void		ft_validate_map(t_master *m)
 {
 	m->input.x = ft_split(m->input.map, '\n');
 	m->input.x[(int)m->game.pos_y][(int)m->game.pos_x] = '0';
 	m->input.x = ft_floodfill(m->input.x, m->game.pos_x, m->game.pos_y);
 	ft_check_map(m->input.x, m);
-	return (0);
 }

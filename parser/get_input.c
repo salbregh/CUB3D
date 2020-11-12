@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/08 12:30:20 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/02 19:12:32 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/12 15:30:41 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ static int		ft_check_path(char *line, t_master *m)
 {
 	if (m->input.checkmap == 1)
 		return (-1);
-	if (ft_strstr(line, "NO") && m->input.no == NULL)
+	else if (ft_strstr(line, "NO") && m->input.no == NULL)
 		m->input.no = ft_trim_paths(line, "NO");
 	else if (ft_strstr(line, "SO") && m->input.so == NULL)
 		m->input.so = ft_trim_paths(line, "SO");
@@ -81,7 +81,7 @@ static int		ft_check_path(char *line, t_master *m)
 	return (0);
 };
 
-static int		ft_check_identifier(char *line, t_master *m)
+static void		ft_check_identifier(char *line, t_master *m)
 {
 	char		*tmp;
 	int			i;
@@ -94,12 +94,12 @@ static int		ft_check_identifier(char *line, t_master *m)
 		(ft_strstr(line, "C")) || (ft_strstr(line, "F")))
 		{
 		if (ft_check_path(line, m) == -1)
-			return (-1);
+			ft_error(m, "Problem with the identifiers in the map.");
 		}
 	else if (ft_strchr(line, '1'))
 	{
 		if (m->input.lineinmap == 1)
-			return (-1);
+			ft_error(m, "Empty line in map.");
 		m->input.checkmap = 1;
 		m->input.map = ft_strjoincub(tmp, line);
 		free(tmp);
@@ -111,11 +111,10 @@ static int		ft_check_identifier(char *line, t_master *m)
 		while (line[i])
 		{
 			if (line[i] != ' ' && line[i] != '\0')
-				return (-1);
+				ft_error(m, "Invalid test in file.");
 			i++;
 		}
 	}
-	return (0);
 }
 
 int				ft_get_input(int fd, t_master *m)
@@ -128,17 +127,18 @@ int				ft_get_input(int fd, t_master *m)
 	while (linereturn != 0)
 	{
 		linereturn = get_next_line(fd, &line);
-		if (ft_check_identifier(&*line, m) == -1)
-			return (-1);
+		ft_check_identifier(&*line, m);
 		free(line);
 	}
 	if (m->input.no == NULL || m->input.so == NULL ||
 		m->input.we == NULL || m->input.ea == NULL ||
 		m->input.sprite == NULL || m->input.resolution == NULL ||
 		m->input.ceiling == NULL || m->input.floor == NULL)
-			return (-1);
+			ft_error(m, "Missing identifier.");
 	m->input.mapsplit = ft_split(m->input.map, '\n');
-	if (ft_check_input(m) == -1 || ft_other_identifier(m) == -1)
-		return (-1);
+	ft_check_input(m);
+	ft_other_identifier(m);
+	// if (ft_check_input(m) == -1 || ft_other_identifier(m) == -1) // VERANDER
+		// return (-1);
 	return (0);
 }

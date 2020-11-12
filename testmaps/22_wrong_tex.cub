@@ -1,12 +1,12 @@
 R 500 500
 
-NO ./pics/nothing.png
+NO ./pictures/nothing.png
 
-SO ./pics/eagle.png
+SO ./pictures/eagle.png
 
-WE ./pics/moss.png
+WE ./pictures/moss.png
 
-EA ./pics/wood.png
+EA ./pictures/wood.png
 
 S ./pics/pillar.png
 

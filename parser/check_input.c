@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/09 16:52:58 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/11 16:30:05 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/12 15:30:15 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,17 +44,17 @@ static void		ft_check_position(t_master *m)
 {
 	if (m->game.pos == 'W')
 	{
-		m->game.dir_x = 1;
+		m->game.dir_x = -1;
 		m->game.dir_y = 0;
 		m->game.plane_x = 0;
 		m->game.plane_y = -0.66;
 	}
 	else if (m->game.pos == 'E')
 	{
-		m->game.dir_x = -1;
+		m->game.dir_x = 1;
 		m->game.dir_y = 0;
 		m->game.plane_x = 0;
-		m->game.plane_y = -0.66;
+		m->game.plane_y = 0.66;
 	}
 	else
 		ft_check_more_position(m);
@@ -75,7 +75,7 @@ static int		ft_start_position(t_master *m)
 			|| m->input.mapsplit[y][x] == 'E' || m->input.mapsplit[y][x] == 'W')
 			{
 				if (m->game.pos_x != 0 || m->game.pos_y != 0)
-					return (-1);
+					ft_error(m, "multiple players in cub map");
 				m->game.pos_x = x + 0.5;
 				m->game.pos_y = y + 0.5;
 				m->game.pos = m->input.mapsplit[y][x];
@@ -89,12 +89,11 @@ static int		ft_start_position(t_master *m)
 	return (0);
 }
 
-int		ft_check_input(t_master *m)
+void			ft_check_input(t_master *m)
 {
-	if (ft_start_position(m) == -1 || m->game.pos_x == 0 || m->game.pos_y == 0)
-		return (-1);
-	if (ft_validate_map(m) == -1)
-		return (-1);
+	ft_start_position(m);
+	if (m->game.pos_x == 0 || m->game.pos_y == 0)
+		ft_error(m, "no player found in cub map");
+	ft_validate_map(m);
 	ft_check_position(m);
-	return (0);
 }

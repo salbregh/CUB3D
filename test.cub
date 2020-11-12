@@ -4,9 +4,12 @@ SO ./pictures/mossy.png
 WE ./pictures/greystone.png
 EA ./pictures/wood.png
 
-S ./path_to_sprite
+
 F  0,0,0     
 C  0,0,50    
+
+     
+S ./path_to_sprite
 
 111111111111
 100000000001
@@ -22,4 +25,7 @@ C  0,0,50
        100000000001
        10000S000001
        111111111111
+
+
+
 

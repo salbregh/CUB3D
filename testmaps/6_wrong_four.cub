@@ -1,14 +1,14 @@
 R 848 20000
 
-   NO ./pics/bluestone.png
+   NO ./pictures/bluestone.png
 
- SO ./pics/eagle.png
+ SO ./pictures/eagle.png
 
-WE ./pics/mossy.png
+WE ./pictures/mossy.png
 
-EA ./pics/wood.png
+EA ./pictures/wood.png
 
-S ./pics/pillar.png
+S ./pictures/pillar.png
 
 F 184,233,39
 F 184,233,39

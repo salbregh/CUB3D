@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/06/25 15:15:23 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/11 13:47:09 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/12 14:50:52 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,10 @@
 // 	printf("side: %i\n", m->game.side);
 // }
 
-static int		more_main(t_master *m, int argc, char **argv)
+static void		more_main(t_master *m, int argc, char **argv)
 {
 	int			fd;
+	char		*extension;
 	
 	if (argc == 3)
 	{
@@ -53,21 +54,19 @@ static int		more_main(t_master *m, int argc, char **argv)
 		ft_error(m, "No second argument.");
 	fd = open(argv[1], O_RDONLY);
 	if (fd == -1)
-		ft_error(m, "The file your trying to open does not exist.\n");
-	if (ft_strncmp(ft_substr(argv[1], ft_strlen(argv[1]) - 4, ft_strlen(argv[1])),".cub", 4) != 0) // ".cub leaks"
+		ft_error(m, "Problem with opening file");
+	extension = ft_substr(argv[1], ft_strlen(argv[1]) - 4, ft_strlen(argv[1]));
+	if (ft_strncmp(extension,".cub", 4) != 0)
 		ft_error(m, "No .cub extension");
-	if (ft_get_input(fd, m) == -1)
-		ft_error(m, "error in cub file.\n");
-	// check path files
-	// open file paths, if not able to send error
-
-	return (0);
+	free(extension);
+	ft_get_input(fd, m);
+		// ft_error(m, "error in cub file.");
+	close(fd);
 }
 
 int				main(int argc, char **argv)
 {
 	t_master	m;
-	// int			fd;
 
 	ft_sort_master(&m);
 	more_main(&m, argc, argv);

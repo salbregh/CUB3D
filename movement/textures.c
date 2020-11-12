@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/02 18:18:30 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/11 16:32:50 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/12 14:00:30 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,6 @@
 static void	ft_set_texture(t_master *m)
 {
 	// verander dit
-	if (m->game.side == 1 && m->game.raydir_y >= 0)
-	{
-		m->vars.tex_ = m->vars.tex_so;
-		m->vars.addr_ = m->vars.addr_so;
-		m->vars.w_ = m->vars.w_so;
-		m->vars.h_ = m->vars.h_so;
-		m->vars.bpp_ = m->vars.bpp_so;
-		m->vars.ll_ = m->vars.ll_so;
-	}
 	if (m->game.side == 1 && m->game.raydir_y < 0)
 	{
 		m->vars.tex_ = m->vars.tex_no;
@@ -32,15 +23,27 @@ static void	ft_set_texture(t_master *m)
 		m->vars.h_ = m->vars.h_no;
 		m->vars.bpp_ = m->vars.bpp_no;
 		m->vars.ll_ = m->vars.ll_no;
+		// m->vars.tex_ = m->vars.tex_so;
+		// m->vars.addr_ = m->vars.addr_so;
+		// m->vars.w_ = m->vars.w_so;
+		// m->vars.h_ = m->vars.h_so;
+		// m->vars.bpp_ = m->vars.bpp_so;
+		// m->vars.ll_ = m->vars.ll_so;
 	}
-	if (m->game.side == 0 && m->game.raydir_x < 0)
+	if (m->game.side == 1 && m->game.raydir_y >= 0)
 	{
-		m->vars.tex_ = m->vars.tex_we;
-		m->vars.addr_ = m->vars.addr_we;
-		m->vars.w_ = m->vars.w_we;
-		m->vars.h_ = m->vars.h_we;
-		m->vars.bpp_ = m->vars.bpp_we;
-		m->vars.ll_ = m->vars.ll_we;
+		m->vars.tex_ = m->vars.tex_so;
+		m->vars.addr_ = m->vars.addr_so;
+		m->vars.w_ = m->vars.w_so;
+		m->vars.h_ = m->vars.h_so;
+		m->vars.bpp_ = m->vars.bpp_so;
+		m->vars.ll_ = m->vars.ll_so;
+		// m->vars.tex_ = m->vars.tex_no;
+		// m->vars.addr_ = m->vars.addr_no;
+		// m->vars.w_ = m->vars.w_no;
+		// m->vars.h_ = m->vars.h_no;
+		// m->vars.bpp_ = m->vars.bpp_no;
+		// m->vars.ll_ = m->vars.ll_no;
 	}
 	if (m->game.side == 0 && m->game.raydir_x >= 0)
 	{
@@ -50,6 +53,27 @@ static void	ft_set_texture(t_master *m)
 		m->vars.h_ = m->vars.h_ea;
 		m->vars.bpp_ = m->vars.bpp_ea;
 		m->vars.ll_ = m->vars.ll_ea;
+		// m->vars.tex_ = m->vars.tex_we;
+		// m->vars.addr_ = m->vars.addr_we;
+		// m->vars.w_ = m->vars.w_we;
+		// m->vars.h_ = m->vars.h_we;
+		// m->vars.bpp_ = m->vars.bpp_we;
+		// m->vars.ll_ = m->vars.ll_we;
+	}
+	if (m->game.side == 0 && m->game.raydir_x < 0)
+	{
+		m->vars.tex_ = m->vars.tex_we;
+		m->vars.addr_ = m->vars.addr_we;
+		m->vars.w_ = m->vars.w_we;
+		m->vars.h_ = m->vars.h_we;
+		m->vars.bpp_ = m->vars.bpp_we;
+		m->vars.ll_ = m->vars.ll_we;
+		// m->vars.tex_ = m->vars.tex_ea;
+		// m->vars.addr_ = m->vars.addr_ea;
+		// m->vars.w_ = m->vars.w_ea;
+		// m->vars.h_ = m->vars.h_ea;
+		// m->vars.bpp_ = m->vars.bpp_ea;
+		// m->vars.ll_ = m->vars.ll_ea;
 	}
 }
 

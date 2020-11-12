@@ -1,14 +1,14 @@
 R  500 500
 
-NO ./pics/bluestone.png
+NO ./pictures/bluestone.png
 
-SO ./pics/eagle.png
+SO ./pictures/eagle.png
 
-WE ./pics/wood.png
+WE ./pictures/wood.png
 
-EA ./pics/mossy.png
+EA ./pictures/mossy.png
 
-S ./pics/barrel.png
+S ./pictures/barrel.png
 
 F 250,50,40
 
