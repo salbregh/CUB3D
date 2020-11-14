@@ -6,7 +6,7 @@
 #    By: salbregh <salbregh@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/06/25 15:16:40 by salbregh      #+#    #+#                  #
-#    Updated: 2020/11/10 18:52:36 by salbregh      ########   odam.nl          #
+#    Updated: 2020/11/14 16:47:57 by salbregh      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,8 @@ SRCS =		main.c \
 			./movement/mlx_hooks.c \
 			./movement/draw_colors.c \
 			./movement/textures.c \
+			./movement/load_pictures.c \
+			./movement/sprites.c \
 			./parser/get_input.c \
 			./parser/check_input.c \
 			./parser/floodfill.c \
@@ -41,10 +43,12 @@ all:		$(OFILES) $(INCLUDES)
 			make -C get_next_line/
 			cp get_next_line/libgnl.a .
 			$(CC) -Lmlx -lmlx -Llibft -lft -Lget_next_line -lgnl -framework\
-			OpenGL -framework AppKit -o $(NAME) $(OFILES) -Wall -Werror -Wextra -g -fsanitize=address
+			OpenGL -framework AppKit -o $(NAME) $(OFILES) -Wall -Werror -Wextra 
+			#-g -fsanitize=address
 
 %.o:		%.c
-			gcc -Ilibft -Imlx -c $< -o $@ -Wall -Werror -Wextra \
+			gcc -Ilibft -Imlx -c $< -o $@ -Wall -Werror -Wextra 
+			#\
 			-g -fsanitize=address
 
 clean:

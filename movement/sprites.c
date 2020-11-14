@@ -1,22 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   my_pixel_put.c                                     :+:    :+:            */
+/*   sprites.c                                          :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/06/25 17:39:12 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/09 11:40:16 by salbregh      ########   odam.nl         */
+/*   Created: 2020/11/14 16:48:07 by salbregh      #+#    #+#                 */
+/*   Updated: 2020/11/14 17:53:52 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3D.h"
 
-void	my_mlx_pixel_put(t_vars *vars, int x, int y, int color)
+void		ft_sprites(t_master *m, int x)
 {
-	char	*dst;
-
-	dst = NULL;
-	dst = vars->addr + (y * vars->ll + x * (vars->bpp / 8));
-	*(unsigned int*)dst = color;
+	printf("value of x: %d\n", x);
+	(void)m;
 }

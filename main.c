@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/06/25 15:15:23 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/12 14:50:52 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/13 19:29:01 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ static void		more_main(t_master *m, int argc, char **argv)
 		ft_error(m, "No .cub extension");
 	free(extension);
 	ft_get_input(fd, m);
-		// ft_error(m, "error in cub file.");
 	close(fd);
 }
 

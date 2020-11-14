@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/21 13:20:16 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/12 15:41:40 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/14 11:16:13 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,22 @@ static void	ft_get_resolution(char *res, t_master *m)
 {
 	char	*width;
 	char	*height;
-	int 	i;
-	
+	int		i;
+	double	*tmp;
+
 	i = 0;
 	while (res[i] != ' ')
 		i++;
 	width = ft_substr(res, 0, i);
 	ft_check_string(width, m);
 	m->game.sw = ft_atoi(width);
+	tmp = (double *)malloc(m->game.sw * sizeof(double)) + 1;
+	// if (tmp == NULL)
+	m->game.perparray = tmp;
+	// free(tmp);
 	while (res[i] == ' ')
 		i++;
-	height = ft_substr(res,i , ft_strlen(res));
+	height = ft_substr(res, i, ft_strlen(res));
 	ft_check_string(height, m);
 	m->game.sh = ft_atoi(height);
 	free(width);
@@ -45,13 +50,13 @@ static void	ft_get_resolution(char *res, t_master *m)
 		ft_error(m, "Error in the resolution.");
 }
 
-static void	ft_get_more_color(char *c1, char* c2, char* c3,
-			t_master *m, int which)
+static void	ft_get_more_color(char *c1, char *c2, char *c3,
+			t_master *m)
 {
 	ft_check_string(c1, m);
 	ft_check_string(c2, m);
 	ft_check_string(c3, m);
-	if (which == 0)
+	if (m->input.which == 0)
 	{
 		m->input.f[0] = ft_atoi(c1);
 		free(c1);
@@ -60,7 +65,7 @@ static void	ft_get_more_color(char *c1, char* c2, char* c3,
 		m->input.f[2] = ft_atoi(c3);
 		free(c3);
 	}
-	else if (which == 1)
+	else if (m->input.which == 1)
 	{
 		m->input.c[0] = ft_atoi(c1);
 		free(c1);
@@ -71,7 +76,7 @@ static void	ft_get_more_color(char *c1, char* c2, char* c3,
 	}
 }
 
-static void	ft_get_color(char *color, t_master *m, int which)
+static void	ft_get_color(char *color, t_master *m)
 {
 	char	*check1;
 	char	*check2;
@@ -93,20 +98,15 @@ static void	ft_get_color(char *color, t_master *m, int which)
 	while (color[i] == ' ' || color[i] == ',')
 		i++;
 	check3 = ft_substr(color, i, ft_strlen(color) - i);
-	ft_get_more_color(check1, check2, check3, m, which);
+	ft_get_more_color(check1, check2, check3, m);
 }
 
-int			ft_other_identifier(t_master *m)
+void		ft_other_identifier(t_master *m)
 {
-	// if ((ft_get_resolution(m->input.resolution, m)) == -1 ||
-	// (ft_get_color(m->input.floor, m, 0) == -1) ||
-	// (ft_get_color(m->input.ceiling, m, 1) == -1))
-	// 	return (-1);
 	ft_get_resolution(m->input.resolution, m);
-	ft_get_color(m->input.floor, m, 0);
-	ft_get_color(m->input.ceiling, m, 1);
+	m->input.which = 0;
+	ft_get_color(m->input.floor, m);
+	m->input.which = 1;
+	ft_get_color(m->input.ceiling, m);
 	ft_set_colors(m);
-	// if (ft_set_colors(m) == -1)
-	// 	return (-1);
-	return (0);
 }

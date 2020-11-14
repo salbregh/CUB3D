@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/06/25 18:11:54 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/09 18:51:06 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/14 17:08:19 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ static void	ft_dda(t_master *m)
 **	also calculate lowest and highest pixel to fill in current stripe
 */
 
-static void	ft_distance(t_master *m)
+static void	ft_distance(t_master *m, int x)
 {
 	if (m->game.side == 0)
 	{
@@ -121,6 +121,9 @@ static void	ft_distance(t_master *m)
 			m->game.perpwalldist = (m->game.map_y - m->game.pos_y +
 			(1.0 - m->game.step_y) / 2.0) / m->game.raydir_y;
 	}
+	m->game.perparray[x] = m->game.perpwalldist;
+	printf("Value of x: %d\t Value of perpwalldist: %f\n", x, m->game.perpwalldist);
+	printf("value of m->game.perparray[x] : %f\n", m->game.perparray[x]);
 }
 
 /*
@@ -133,14 +136,13 @@ void		ft_start_raycasting(t_master *m)
 	int		x;
 
 	x = 1;
-	if (ft_load_texture(m) == -1)
-		ft_error(m, "error in texture");
+	ft_load_pictures(m);
 	while (x < m->game.sw)
 	{
 		ft_start_values(m, x);
 		ft_sidedist(m);
 		ft_dda(m);
-		ft_distance(m);
+		ft_distance(m, x);
 		ft_draw(m, x);
 		x++;
 	}

@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/06/25 16:31:18 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/12 15:42:09 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/14 17:56:37 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,14 @@ typedef struct	s_vars
 	int				h_;
 	int				bpp_;
 	int				ll_;
-	//
+	// sprite
+	void			*spr;
+	char			*addr_spr;
+	int				w_spr;
+	int				h_spr;
+	int				bpp_spr;
+	int				ll_spr; // set all to null
+
 	unsigned int 	color; // nodig?
 	double			wall_x;
 	double			tex_step;
@@ -94,11 +101,13 @@ typedef struct	s_input
 	char			*floor;
 	int				f[3];
 	char			*resolution;
+	int				which;
 	char			*map;
 	int				checkmap;
 	int				lineinmap;
 	char			**mapsplit;
 	char			**x;
+	int				numberofsprites;
 }					t_input;
 
 typedef struct	s_game
@@ -128,6 +137,7 @@ typedef struct	s_game
 	double			deltadist_x;
 	double			deltadist_y;
 	double			perpwalldist;
+	double			*perparray;
 	int				step_x;
 	int				step_y;
 	int				side;
@@ -157,17 +167,21 @@ int					move_left(t_master *m);
 int					rotate_right(t_master *m);
 int					rotate_left(t_master *m);
 void				my_mlx_pixel_put(t_vars *vars, int x, int y, int color);
+void				ft_my_pixel_get(t_master *m, int x, int y);
 void				ft_draw(t_master *m, int x);
 
 // PARSER
 int					ft_get_input(int fd, t_master *m);
 void				ft_check_input(t_master *m);
 void				ft_validate_map(t_master *m);
-int					ft_other_identifier(t_master *m);
+void				ft_other_identifier(t_master *m);
 void				ft_set_colors(t_master *m);
 
 // texture crap
-int					ft_load_texture(t_master *m);
+int					ft_load_pictures(t_master *m);
 void				ft_texturing(t_master *m, int x);
+
+// sprites
+void				ft_sprites(t_master *m, int x);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/08 12:30:20 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/12 15:30:41 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/13 19:27:17 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,7 +138,5 @@ int				ft_get_input(int fd, t_master *m)
 	m->input.mapsplit = ft_split(m->input.map, '\n');
 	ft_check_input(m);
 	ft_other_identifier(m);
-	// if (ft_check_input(m) == -1 || ft_other_identifier(m) == -1) // VERANDER
-		// return (-1);
 	return (0);
 }

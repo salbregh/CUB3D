@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/09 16:52:58 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/12 15:30:15 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/13 19:27:27 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,13 +60,8 @@ static void		ft_check_position(t_master *m)
 		ft_check_more_position(m);
 }
 
-static int		ft_start_position(t_master *m)
+static void		ft_start_position(t_master *m, int x, int y)
 {
-	int		x;
-	int		y;
-
-	x = 0;
-	y = 0;
 	while (y < ft_maplines(m))
 	{
 		while (m->input.mapsplit[y][x] != '\0')
@@ -81,17 +76,18 @@ static int		ft_start_position(t_master *m)
 				m->game.pos = m->input.mapsplit[y][x];
 				m->input.mapsplit[y][x] = '0';
 			}
+			if (m->input.mapsplit[y][x] == '2')
+				m->input.numberofsprites++;
 			x++;
 		}
 		y++;
 		x = 0;
 	}
-	return (0);
 }
 
 void			ft_check_input(t_master *m)
 {
-	ft_start_position(m);
+	ft_start_position(m, 0, 0);
 	if (m->game.pos_x == 0 || m->game.pos_y == 0)
 		ft_error(m, "no player found in cub map");
 	ft_validate_map(m);

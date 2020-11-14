@@ -6,11 +6,30 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/09 10:58:51 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/09 18:51:01 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/14 17:55:44 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3D.h"
+
+void		ft_my_pixel_get(t_master *m, int x, int y)
+{
+	char	*dst;
+
+	dst = m->vars.addr_ + (x * m->vars.ll_ + y * (m->vars.bpp_ / 8));
+	m->vars.color = *(unsigned int *)dst;
+	if (m->input.mapsplit[m->game.map_y][m->game.map_x] == '2')
+		m->vars.color = 0x00FF000F;
+}
+
+void		my_mlx_pixel_put(t_vars *vars, int x, int y, int color)
+{
+	char	*dst;
+
+	dst = NULL;
+	dst = vars->addr + (y * vars->ll + x * (vars->bpp / 8));
+	*(unsigned int*)dst = color;
+}
 
 void		ft_draw(t_master *m, int x)
 {
@@ -36,5 +55,6 @@ void		ft_draw(t_master *m, int x)
 		my_mlx_pixel_put(&m->vars, x, m->game.draw_start, m->game.floorcolor);
 		m->game.draw_start++;
 	}
+	ft_sprites(m, x);
 	mlx_put_image_to_window(m->vars.mlx, m->vars.win, m->vars.img, 0, 0);
 }

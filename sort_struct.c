@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/20 13:18:50 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/10 18:08:49 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/13 18:53:01 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,13 @@ static void	ft_null_input(t_input *input)
 	input->f[1] = 0;
 	input->f[2] = 0;
 	input->resolution = NULL;
+	input->which = 0;
 	input->map = ft_strdup("");
 	input->checkmap = 0;
 	input->lineinmap = 0;
 	input->mapsplit = NULL;
 	input->x = NULL;
+	input->numberofsprites = 0;
 }
 
 static void	ft_null_game(t_game *game)
@@ -62,6 +64,7 @@ static void	ft_null_game(t_game *game)
 	game->deltadist_x = 0;
 	game->deltadist_y = 0;
 	game->perpwalldist = 0;
+	game->perparray = NULL;
 	game->step_x = 0;
 	game->step_y = 0;
 	game->side = 0;
