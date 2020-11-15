@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   ft_bzero.c                                         :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: sannealbreghs <sannealbreghs@student.co      +#+                     */
+/*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/11/22 12:43:50 by sannealbreg    #+#    #+#                */
-/*   Updated: 2019/11/22 14:30:50 by sannealbreg   ########   odam.nl         */
+/*   Created: 2020/11/15 16:07:10 by salbregh      #+#    #+#                 */
+/*   Updated: 2020/11/15 16:07:11 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 

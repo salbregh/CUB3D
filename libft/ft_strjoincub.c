@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   ft_strjoincub.c                                    :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: salbregh <marvin@codam.nl>                   +#+                     */
+/*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/11/06 13:45:13 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/01 19:15:59 by salbregh      ########   odam.nl         */
+/*   Created: 2020/11/15 16:10:22 by salbregh      #+#    #+#                 */
+/*   Updated: 2020/11/15 16:10:25 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 

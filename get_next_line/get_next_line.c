@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   get_next_line.c                                    :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: sannealbreghs <sannealbreghs@student.co      +#+                     */
+/*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/02/11 11:59:26 by sannealbreg   #+#    #+#                 */
-/*   Updated: 2020/05/21 12:10:42 by salbregh      ########   odam.nl         */
+/*   Created: 2020/11/15 16:14:22 by salbregh      #+#    #+#                 */
+/*   Updated: 2020/11/15 16:14:23 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 

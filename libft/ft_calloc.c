@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   ft_calloc.c                                        :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: sannealbreghs <sannealbreghs@student.co      +#+                     */
+/*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/11/22 12:44:37 by sannealbreg    #+#    #+#                */
-/*   Updated: 2019/11/22 13:24:09 by sannealbreg   ########   odam.nl         */
+/*   Created: 2020/11/15 16:07:17 by salbregh      #+#    #+#                 */
+/*   Updated: 2020/11/15 16:07:21 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 

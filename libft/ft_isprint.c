@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   ft_isprint.c                                       :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: salbregh <marvin@codam.nl>                   +#+                     */
+/*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/10/29 12:06:38 by salbregh       #+#    #+#                */
-/*   Updated: 2019/11/27 13:49:05 by sannealbreg   ########   odam.nl         */
+/*   Created: 2020/11/15 16:08:17 by salbregh      #+#    #+#                 */
+/*   Updated: 2020/11/15 16:08:18 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 

@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   ft_split.c                                         :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: salbregh <marvin@codam.nl>                   +#+                     */
+/*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/11/11 14:35:56 by salbregh       #+#    #+#                */
-/*   Updated: 2019/11/22 18:21:49 by salbregh      ########   odam.nl         */
+/*   Created: 2020/11/15 16:09:53 by salbregh      #+#    #+#                 */
+/*   Updated: 2020/11/15 16:09:54 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 

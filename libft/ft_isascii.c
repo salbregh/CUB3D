@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   ft_isascii.c                                       :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: salbregh <marvin@codam.nl>                   +#+                     */
+/*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/10/29 11:59:07 by salbregh       #+#    #+#                */
-/*   Updated: 2019/11/27 13:47:26 by sannealbreg   ########   odam.nl         */
+/*   Created: 2020/11/15 16:07:50 by salbregh      #+#    #+#                 */
+/*   Updated: 2020/11/15 16:07:53 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 

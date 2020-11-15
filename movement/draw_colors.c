@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/09 10:58:51 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/14 17:55:44 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/15 16:41:57 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,5 @@ void		ft_draw(t_master *m, int x)
 		my_mlx_pixel_put(&m->vars, x, m->game.draw_start, m->game.floorcolor);
 		m->game.draw_start++;
 	}
-	ft_sprites(m, x);
 	mlx_put_image_to_window(m->vars.mlx, m->vars.win, m->vars.img, 0, 0);
 }

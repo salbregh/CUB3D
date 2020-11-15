@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   ft_toupper.c                                       :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: salbregh <marvin@codam.nl>                   +#+                     */
+/*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/10/31 12:34:25 by salbregh       #+#    #+#                */
-/*   Updated: 2019/11/27 13:58:31 by sannealbreg   ########   odam.nl         */
+/*   Created: 2020/11/15 16:11:37 by salbregh      #+#    #+#                 */
+/*   Updated: 2020/11/15 16:11:38 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 

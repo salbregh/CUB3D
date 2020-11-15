@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   ft_memcmp.c                                        :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: sannealbreghs <sannealbreghs@student.co      +#+                     */
+/*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/11/22 12:49:19 by sannealbreg    #+#    #+#                */
-/*   Updated: 2019/11/22 15:35:45 by sannealbreg   ########   odam.nl         */
+/*   Created: 2020/11/15 16:08:59 by salbregh      #+#    #+#                 */
+/*   Updated: 2020/11/15 16:09:00 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 

@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   ft_strrchr.c                                       :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: sannealbreghs <sannealbreghs@student.co      +#+                     */
+/*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/11/22 12:58:13 by sannealbreg    #+#    #+#                */
-/*   Updated: 2019/11/22 14:09:28 by sannealbreg   ########   odam.nl         */
+/*   Created: 2020/11/15 16:11:11 by salbregh      #+#    #+#                 */
+/*   Updated: 2020/11/15 16:11:12 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 

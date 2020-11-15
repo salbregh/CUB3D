@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/02 18:18:30 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/14 17:57:23 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/15 16:03:11 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static void	ft_ea_we_texture(t_master *m)
 		m->vars.h_ = m->vars.h_we;
 		m->vars.bpp_ = m->vars.bpp_we;
 		m->vars.ll_ = m->vars.ll_we;
-	}	
+	}
 }
 
 static void	ft_no_so_texture(t_master *m)

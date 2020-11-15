@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/06/25 18:11:54 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/15 14:59:05 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/15 17:25:38 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,8 +122,8 @@ static void	ft_distance(t_master *m, int x)
 			(1.0 - m->game.step_y) / 2.0) / m->game.raydir_y;
 	}
 	m->sprite.perparray[x] = m->game.perpwalldist;
-	printf("Value of x: %d\t Value of perpwalldist: %f\n", x, m->game.perpwalldist);
-	printf("value of m->game.perparray[x] : %f\n", m->sprite.perparray[x]);
+	// printf("Value of x: %d\t Value of perpwalldist: %f\n", x, m->game.perpwalldist);
+	// printf("value of m->game.perparray[x] : %f\n", m->sprite.perparray[x]);
 }
 
 /*
@@ -146,6 +146,7 @@ void		ft_start_raycasting(t_master *m)
 		ft_draw(m, x);
 		x++;
 	}
+	ft_sprites(m, x);
 }
 
 // colors CHANGE THIS

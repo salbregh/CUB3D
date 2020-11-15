@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   ft_strtrim.c                                       :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: salbregh <marvin@codam.nl>                   +#+                     */
+/*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/11/26 08:09:47 by salbregh       #+#    #+#                */
-/*   Updated: 2019/11/27 13:56:22 by sannealbreg   ########   odam.nl         */
+/*   Created: 2020/11/15 16:11:20 by salbregh      #+#    #+#                 */
+/*   Updated: 2020/11/15 16:11:21 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 

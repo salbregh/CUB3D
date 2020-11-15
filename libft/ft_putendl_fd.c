@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   ft_putendl_fd.c                                    :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: sannealbreghs <sannealbreghs@student.co      +#+                     */
+/*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/11/22 12:57:06 by sannealbreg    #+#    #+#                */
-/*   Updated: 2019/11/22 13:15:00 by sannealbreg   ########   odam.nl         */
+/*   Created: 2020/11/15 16:09:38 by salbregh      #+#    #+#                 */
+/*   Updated: 2020/11/15 16:09:39 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 

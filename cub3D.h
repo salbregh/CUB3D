@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/06/25 16:31:18 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/15 14:58:48 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/15 17:30:01 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,9 @@ typedef struct	s_sprite
 	int				ll_spr; // set all to null
 	int				numberofsprites;
 	double			*perparray;
+	int				*spriteorder; // check
+	double			*spritedistance; // check
+	double			**sprite;
 }					t_sprite;
 
 typedef struct		s_input
@@ -187,5 +190,6 @@ void				ft_texturing(t_master *m, int x);
 
 // sprites
 void				ft_sprites(t_master *m, int x);
+void				ft_set_sprites(t_master *m, int x, int y);
 
 #endif

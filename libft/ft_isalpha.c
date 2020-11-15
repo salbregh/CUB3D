@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   ft_isalpha.c                                       :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: salbregh <marvin@codam.nl>                   +#+                     */
+/*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/10/29 12:11:33 by salbregh       #+#    #+#                */
-/*   Updated: 2019/11/27 13:47:11 by sannealbreg   ########   odam.nl         */
+/*   Created: 2020/11/15 16:07:39 by salbregh      #+#    #+#                 */
+/*   Updated: 2020/11/15 16:07:41 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 

@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/09 16:52:58 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/15 14:51:16 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/15 17:29:54 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ static void		ft_start_position(t_master *m, int x, int y)
 				m->input.mapsplit[y][x] = '0';
 			}
 			if (m->input.mapsplit[y][x] == '2')
-				m->sprite.numberofsprites++;
+				ft_set_sprites(m, y, x);
 			x++;
 		}
 		y++;

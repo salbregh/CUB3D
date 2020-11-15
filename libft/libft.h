@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   libft.h                                            :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: sannealbreghs <sannealbreghs@student.co      +#+                     */
+/*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/11/21 13:28:37 by sannealbreg   #+#    #+#                 */
-/*   Updated: 2020/10/22 15:09:00 by salbregh      ########   odam.nl         */
+/*   Created: 2020/11/15 16:12:13 by salbregh      #+#    #+#                 */
+/*   Updated: 2020/11/15 16:12:14 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
