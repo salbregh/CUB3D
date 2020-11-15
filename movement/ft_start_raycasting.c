@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/06/25 18:11:54 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/14 17:08:19 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/15 14:59:05 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,9 +121,9 @@ static void	ft_distance(t_master *m, int x)
 			m->game.perpwalldist = (m->game.map_y - m->game.pos_y +
 			(1.0 - m->game.step_y) / 2.0) / m->game.raydir_y;
 	}
-	m->game.perparray[x] = m->game.perpwalldist;
+	m->sprite.perparray[x] = m->game.perpwalldist;
 	printf("Value of x: %d\t Value of perpwalldist: %f\n", x, m->game.perpwalldist);
-	printf("value of m->game.perparray[x] : %f\n", m->game.perparray[x]);
+	printf("value of m->game.perparray[x] : %f\n", m->sprite.perparray[x]);
 }
 
 /*

@@ -6,14 +6,13 @@
 #    By: salbregh <salbregh@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/06/25 15:16:40 by salbregh      #+#    #+#                  #
-#    Updated: 2020/11/14 16:47:57 by salbregh      ########   odam.nl          #
+#    Updated: 2020/11/15 14:29:43 by salbregh      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 NAME =		cub3D
 
 SRCS =		main.c \
-			./movement/my_pixel_put.c \
 			./movement/ft_start_raycasting.c \
 			./movement/movement.c \
 			./movement/mlx_hooks.c \

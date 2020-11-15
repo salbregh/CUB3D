@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/06/25 16:31:18 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/14 17:56:37 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/15 14:58:48 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <math.h>
 # include <stdio.h> // DELETE
 
-typedef struct	s_move
+typedef struct		s_move
 {
 	int				up;
 	int				down;
@@ -29,7 +29,7 @@ typedef struct	s_move
 	int				rotate_right;
 }					t_move;
 
-typedef struct	s_vars
+typedef struct		s_vars
 {
 	void			*mlx;
 	void			*win;
@@ -73,13 +73,6 @@ typedef struct	s_vars
 	int				h_;
 	int				bpp_;
 	int				ll_;
-	// sprite
-	void			*spr;
-	char			*addr_spr;
-	int				w_spr;
-	int				h_spr;
-	int				bpp_spr;
-	int				ll_spr; // set all to null
 
 	unsigned int 	color; // nodig?
 	double			wall_x;
@@ -87,9 +80,21 @@ typedef struct	s_vars
 	int				tex_x;
 	int				tex_y;
 	double			tex_pos;
-}				t_vars;
+}					t_vars;
 
-typedef struct	s_input
+typedef struct	s_sprite
+{
+	void			*spr;
+	char			*addr_spr;
+	int				w_spr;
+	int				h_spr;
+	int				bpp_spr;
+	int				ll_spr; // set all to null
+	int				numberofsprites;
+	double			*perparray;
+}					t_sprite;
+
+typedef struct		s_input
 {
 	char			*no;
 	char			*so;
@@ -107,10 +112,9 @@ typedef struct	s_input
 	int				lineinmap;
 	char			**mapsplit;
 	char			**x;
-	int				numberofsprites;
 }					t_input;
 
-typedef struct	s_game
+typedef struct		s_game
 {
 	int				x;
 	int				sh;
@@ -137,18 +141,18 @@ typedef struct	s_game
 	double			deltadist_x;
 	double			deltadist_y;
 	double			perpwalldist;
-	double			*perparray;
 	int				step_x;
 	int				step_y;
 	int				side;
 }					t_game;
 
-typedef struct	s_master
+typedef struct		s_master
 {
 	t_vars			vars;
 	t_game			game;
 	t_move			move;
 	t_input			input;
+	t_sprite		sprite;
 }					t_master;
 
 void				ft_start_raycasting(t_master *master);

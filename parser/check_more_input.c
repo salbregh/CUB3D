@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/21 13:20:16 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/14 11:16:13 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/15 14:59:39 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static void	ft_get_resolution(char *res, t_master *m)
 	m->game.sw = ft_atoi(width);
 	tmp = (double *)malloc(m->game.sw * sizeof(double)) + 1;
 	// if (tmp == NULL)
-	m->game.perparray = tmp;
+	m->sprite.perparray = tmp;
 	// free(tmp);
 	while (res[i] == ' ')
 		i++;
