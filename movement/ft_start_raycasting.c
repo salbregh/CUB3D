@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/06/25 18:11:54 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/15 17:25:38 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/15 20:53:25 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,7 +146,7 @@ void		ft_start_raycasting(t_master *m)
 		ft_draw(m, x);
 		x++;
 	}
-	ft_sprites(m, x);
+	ft_sprites(m);
 }
 
 // colors CHANGE THIS

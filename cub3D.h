@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/06/25 16:31:18 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/15 17:30:01 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/15 20:49:27 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ typedef struct	s_sprite
 	int				h_spr;
 	int				bpp_spr;
 	int				ll_spr; // set all to null
-	int				numberofsprites;
+	int				numbsprite;
 	double			*perparray;
 	int				*spriteorder; // check
 	double			*spritedistance; // check
@@ -111,6 +111,7 @@ typedef struct		s_input
 	char			*resolution;
 	int				which;
 	char			*map;
+	int				maplines; // set to 0
 	int				checkmap;
 	int				lineinmap;
 	char			**mapsplit;
@@ -189,7 +190,7 @@ int					ft_load_pictures(t_master *m);
 void				ft_texturing(t_master *m, int x);
 
 // sprites
-void				ft_sprites(t_master *m, int x);
+void				ft_sprites(t_master *m);
 void				ft_set_sprites(t_master *m, int x, int y);
 
 #endif

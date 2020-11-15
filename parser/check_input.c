@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/09 16:52:58 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/15 17:29:54 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/15 20:53:46 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,8 @@ static void		ft_check_position(t_master *m)
 
 static void		ft_start_position(t_master *m, int x, int y)
 {
-	while (y < ft_maplines(m))
+	m->input.maplines = ft_maplines(m);
+	while (y < m->input.maplines)
 	{
 		while (m->input.mapsplit[y][x] != '\0')
 		{
@@ -77,7 +78,7 @@ static void		ft_start_position(t_master *m, int x, int y)
 				m->input.mapsplit[y][x] = '0';
 			}
 			if (m->input.mapsplit[y][x] == '2')
-				ft_set_sprites(m, y, x);
+				m->sprite.numbsprite++;
 			x++;
 		}
 		y++;
