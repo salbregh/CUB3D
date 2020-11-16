@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/14 16:48:07 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/15 21:15:15 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/16 12:35:02 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void		ft_set_sprites(t_master *m, int x, int y)
 				m->sprite.sprite[i][1] = y + 0.5;
 				printf("m->sprite.sprite[i][1] = %f\n", m->sprite.sprite[i][1]);
 				m->sprite.sprite[i][2] = '\0';
+				m->input.mapsplit[y][x] = '0';
 				i++;
 			}
 			x++;
@@ -58,12 +59,12 @@ void		ft_sprites(t_master *m)
 	int		i;
 
 	i = 0;
-	ft_set_sprites(m, 0, 0);
+	// ft_set_sprites(m, 0, 0);
 	m->sprite.spriteorder = (int *)malloc((sizeof(int) * m->sprite.numbsprite) + 1);
 	m->sprite.spritedistance = (double *)malloc((sizeof(double) * m->sprite.numbsprite) + 1);
 	while (i < m->sprite.numbsprite)
 	{
-		m->sprite.spriteorder[i] = i;
+		m->sprite.spriteorder[i] = i; // sprite sprite
 		m->sprite.spritedistance[i] = ((m->game.pos_x - m->sprite.sprite[i][0]) * (m->game.pos_x - m->sprite.sprite[i][0]) + (m->game.pos_y - m->sprite.sprite[i][1]) * (m->game.pos_y - m->sprite.sprite[i][1]));
 		i++;
 	}
@@ -75,4 +76,55 @@ void		ft_sprites(t_master *m)
 		i++;
 	}
 	i = 0;
+	while (i < m->sprite.numbsprite)
+	{
+		m->sprite.sprite_x = m->sprite.sprite[i][0] - m->game.pos_x;
+		m->sprite.sprite_y = m->sprite.sprite[i][1] - m->game.pos_y;
+
+		m->sprite.inverse = 1.0 / (m->game.plane_x * m->game.dir_y - m->game.dir_x * m->game.plane_y);
+		
+		m->sprite.trans_x = m->sprite.inverse * (m->game.dir_y * m->sprite.sprite_x - m->game.dir_x * m->sprite.sprite_y);
+		m->sprite.trans_y = m->sprite.inverse * (-m->game.plane_y * m->sprite.sprite_x + m->game.plane_x * m->sprite.sprite_y);
+		
+		m->sprite.screen_x = (int)((m->game.sw / 2) * (1 + m->sprite.trans_x / m->sprite.trans_y));
+		
+		m->sprite.height  = fabs(m->game.sh / m->sprite.trans_y); // (int)
+		m->sprite.drawstart_y = -m->sprite.height / 2 + m->game.sh / 2;
+		if (m->sprite.drawstart_y < 0)
+			m->sprite.drawstart_y = 0;
+		m->sprite.drawend_y = m->sprite.height / 2 + m->game.sh / 2;
+		if (m->sprite.drawend_y >= m->game.sh)
+			m->sprite.drawend_y = m->game.sh - 1;
+
+		m->sprite.width = fabs(m->game.sh / m->sprite.trans_y);
+		m->sprite.drawstart_x = -m->sprite.width / 2 + m->sprite.screen_x;
+		if (m->sprite.drawstart_x < 0)
+			m->sprite.drawstart_x = 0;
+		m->sprite.drawend_x = m->sprite.width / 2 + m->sprite.screen_x;
+		if (m->sprite.drawend_x >= m->game.sw)
+			m->sprite.drawend_x = m->game.sw - 1;
+
+		int		stripe;
+		stripe = m->sprite.drawstart_x;
+		while (stripe < m->sprite.drawend_x)
+		{
+			m->sprite.tex_x = (int)(256 * (stripe - (-m->sprite.width / 2 + m->sprite.screen_x)) * m->sprite.w_spr / m->sprite.width) / 256;
+			// printf("tex_x : %i\n", m->sprite.tex_x);
+			if (m->sprite.trans_y > 0 && stripe > 0 && stripe < m->game.sw && m->sprite.trans_y < m->sprite.perparray[stripe])
+			{
+				int y = m->sprite.drawstart_y;
+				while (y < m->sprite.drawend_y)
+				{
+					int d = y * 256 - m->game.sh * 128 + m->sprite.height * 128;
+					m->sprite.tex_y = ((d * m->sprite.h_spr) / m->sprite.height) / 256;
+					ft_my_spritepixel_get(m, m->sprite.tex_y, m->sprite.tex_x);
+					printf("COLOR : %u\n", m->sprite.color);
+					my_mlx_pixel_put(&m->vars, m->sprite.tex_x, m->sprite.tex_y, m->sprite.color);
+					y++;
+				}
+			}
+			stripe++;
+		}
+		i++;
+	}
 }

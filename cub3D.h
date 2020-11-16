@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/06/25 16:31:18 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/15 20:49:27 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/16 12:33:58 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,22 @@ typedef struct	s_sprite
 	int				*spriteorder; // check
 	double			*spritedistance; // check
 	double			**sprite;
+	// casting sprites
+	double			sprite_x;
+	double			sprite_y;
+	double			inverse;
+	double			trans_x;
+	double			trans_y;
+	int				screen_x;
+	int				height;
+	int				width;
+	int				drawstart_y;
+	int				drawend_y;
+	int				drawstart_x;
+	int				drawend_x;
+	int				tex_x;
+	int				tex_y;
+	unsigned int	color;
 }					t_sprite;
 
 typedef struct		s_input
@@ -176,6 +192,8 @@ int					rotate_right(t_master *m);
 int					rotate_left(t_master *m);
 void				my_mlx_pixel_put(t_vars *vars, int x, int y, int color);
 void				ft_my_pixel_get(t_master *m, int x, int y);
+void				ft_my_spritepixel_get(t_master *m, int x, int y);
+void				my_mlx_spritepixel_put(t_sprite *sprite, int x, int y, int color); // delete?
 void				ft_draw(t_master *m, int x);
 
 // PARSER
