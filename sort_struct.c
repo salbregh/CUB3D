@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/20 13:18:50 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/16 11:35:14 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/16 14:26:48 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,6 @@ static void	ft_null_sprite(t_sprite *sprite)
 	sprite->ll_spr = 0; // set all to null
 	sprite->numbsprite = 0;
 	sprite->perparray = 0;
-	sprite->spriteorder = NULL; // check
 	sprite->spritedistance = NULL; // check
 	sprite->sprite = NULL;
 }

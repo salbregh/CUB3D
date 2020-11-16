@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/09 10:58:51 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/16 12:33:39 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/16 14:01:55 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ void		ft_my_spritepixel_get(t_master *m, int x, int y)
 {
 	char	*dst;
 
-	dst = m->sprite.addr_spr + (x * m->sprite.ll_spr + y * (m->sprite.bpp_spr / 8));
+	dst = m->sprite.addr_spr + (x * m->sprite.ll_spr + y *
+	(m->sprite.bpp_spr / 8));
 	m->sprite.color = *(unsigned int *)dst;
 }
 
@@ -26,15 +27,6 @@ void		ft_my_pixel_get(t_master *m, int x, int y)
 
 	dst = m->vars.addr_ + (x * m->vars.ll_ + y * (m->vars.bpp_ / 8));
 	m->vars.color = *(unsigned int *)dst;
-}
-
-void		my_mlx_spritepixel_put(t_sprite *sprite, int x, int y, int color)
-{
-	char	*dst;
-
-	dst = NULL;
-	dst = sprite->addr_spr + (y * sprite->ll_spr + x * (sprite->bpp_spr / 8));
-	*(unsigned int*)dst = color;
 }
 
 void		my_mlx_pixel_put(t_vars *vars, int x, int y, int color)

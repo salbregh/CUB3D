@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/06/25 16:31:18 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/16 12:33:58 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/16 14:25:30 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,9 +92,9 @@ typedef struct	s_sprite
 	int				ll_spr; // set all to null
 	int				numbsprite;
 	double			*perparray;
-	int				*spriteorder; // check
 	double			*spritedistance; // check
 	double			**sprite;
+	double			**check;
 	// casting sprites
 	double			sprite_x;
 	double			sprite_y;
