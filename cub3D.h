@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/06/25 16:31:18 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/17 22:32:52 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/18 22:32:07 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -190,7 +190,7 @@ int					move_rigth(t_master *m);
 int					move_left(t_master *m);
 int					rotate_right(t_master *m);
 int					rotate_left(t_master *m);
-int					sprite_check(t_master *m);
+void				ft_two_back(t_master *m, int which);
 void				my_mlx_pixel_put(t_vars *vars, int x, int y, int color);
 void				ft_my_pixel_get(t_master *m, int x, int y);
 void				ft_my_spritepixel_get(t_master *m, int x, int y);
