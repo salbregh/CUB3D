@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/14 16:48:07 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/17 18:38:01 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/18 13:10:31 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,8 @@ void		ft_set_sprites(t_master *m, int x, int y)
 		{
 			if (m->input.mapsplit[y][x] == '2')
 			{
-				printf("2 found\n");
 				m->sprite.sprite[i][0] = x + 0.5;
-				printf("m->sprite.sprite[i][0] = %f\n", m->sprite.sprite[i][0]);
 				m->sprite.sprite[i][1] = y + 0.5;
-				printf("m->sprite.sprite[i][1] = %f\n", m->sprite.sprite[i][1]);
-				m->sprite.sprite[i][2] = '\0';
 				m->input.mapsplit[y][x] = '0';
 				i++;
 			}
@@ -44,20 +40,10 @@ void		ft_set_sprites(t_master *m, int x, int y)
 		y++;
 		x = 0;
 	}
-	i = 0;
-	while (i < m->sprite.numbsprite)
-	{
-		printf("i: %d\n", i);
-		printf("value of x: %f\t", m->sprite.sprite[i][0]);
-		printf("value of y: %f\n", m->sprite.sprite[i][1]);
-		i++;
-	}
 }
 
-static void	ft_sort_sprites(t_master *m)
+static void	ft_sort_sprites(t_master *m, int i, int j)
 {
-	int i;
-	int j;
 	int tmp;
 	double tmpx;
 	double tmpy;
@@ -67,11 +53,10 @@ static void	ft_sort_sprites(t_master *m)
 	while (i < m->sprite.numbsprite)
 	{
 		m->sprite.spritedistance[i] = ((m->game.pos_x - m->sprite.sprite[i][0]) * (m->game.pos_x - m->sprite.sprite[i][0]) + (m->game.pos_y - m->sprite.sprite[i][1]) * (m->game.pos_y - m->sprite.sprite[i][1]));
-		printf("DISTANCE: %f \n", m->sprite.spritedistance[i]);
 		i++;
 	}
 	i = 0;
-	j = 1;
+	// j = 1;
 	while (i < m->sprite.numbsprite - 1)
 	{
 		while (j + i < m->sprite.numbsprite)
@@ -81,11 +66,9 @@ static void	ft_sort_sprites(t_master *m)
 				tmp = m->sprite.spritedistance[j + i];
 				tmpx = m->sprite.sprite[j + i][0];
 				tmpy = m->sprite.sprite[j + i][1];
-
 				m->sprite.spritedistance[j + i] = m->sprite.spritedistance[i];
 				m->sprite.sprite[j + i][0] = m->sprite.sprite[i][0];
 				m->sprite.sprite[j + i][1] = m->sprite.sprite[i][1];
-
 				m->sprite.spritedistance[i] = tmp;
 				m->sprite.sprite[i][0] = tmpx;
 				m->sprite.sprite[i][1] = tmpy;
@@ -100,15 +83,13 @@ static void	ft_sort_sprites(t_master *m)
 void		ft_sprites(t_master *m)
 {
 	int		i;
-
-	// i = m->sprite.numbsprite;
-	ft_sort_sprites(m);
+	
+	ft_sort_sprites(m, 0, 1);
 	i = 0;
 	while (i < m->sprite.numbsprite)
 	{
-		printf("VALUE OF i : %d", i);
-		m->sprite.sprite_x = m->sprite.sprite[i ][0] - m->game.pos_x;
-		m->sprite.sprite_y = m->sprite.sprite[i ][1] - m->game.pos_y;
+		m->sprite.sprite_x = m->sprite.sprite[i][0] - m->game.pos_x;
+		m->sprite.sprite_y = m->sprite.sprite[i][1] - m->game.pos_y;
 
 		m->sprite.inverse = 1.0 / (m->game.plane_x * m->game.dir_y - m->game.dir_x * m->game.plane_y);
 		

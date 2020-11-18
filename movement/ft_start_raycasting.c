@@ -6,11 +6,35 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/06/25 18:11:54 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/16 11:30:18 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/18 14:21:47 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3D.h"
+
+// int		sprite_check(t_master *m)
+// {
+// 	int		i;
+// 	int		x;
+// 	int		y;
+
+// 	// printf("Goes in");
+// 	i = 0;
+// 	// m->input.mapsplit[m->game.map_y][m->game.map_x] 
+// 	while (i < m->sprite.numbsprite)
+// 	{
+// 		x = m->sprite.sprite[i][0];
+// 		y = m->sprite.sprite[i][1];
+// 		if (m->game.map_y == y && m->game.map_x == x)
+// 		{
+// 			// printf("it is");
+// 			return (-1);
+// 		}
+			
+// 		i++;
+// 	}
+// 	return (0);
+// }
 
 /*
 **	Declare / calculate begin values
@@ -92,8 +116,11 @@ static void	ft_dda(t_master *m)
 			m->game.map_y += m->game.step_y;
 			m->game.side = 1;
 		}
-		if (m->input.mapsplit[m->game.map_y][m->game.map_x] != '0')
+		if (m->input.mapsplit[m->game.map_y][m->game.map_x] != '0') //|| sprite_check(m) == -1) // check this
 			hit = 1;
+		// if (sprite_check(m) == -1)
+			// return ;
+		// 	hit = 1; WAAROM ALS IK DIT TOEVOEG WORDT HET EEN MUUR GVD
 	}
 }
 
@@ -121,9 +148,7 @@ static void	ft_distance(t_master *m, int x)
 			m->game.perpwalldist = (m->game.map_y - m->game.pos_y +
 			(1.0 - m->game.step_y) / 2.0) / m->game.raydir_y;
 	}
-	m->sprite.perparray[x] = m->game.perpwalldist;
-	// printf("Value of x: %d\t Value of perpwalldist: %f\n", x, m->game.perpwalldist);
-	// printf("value of m->game.perparray[x] : %f\n", m->sprite.perparray[x]);
+	m->sprite.perparray[x - 1] = m->game.perpwalldist;
 }
 
 /*
@@ -148,14 +173,3 @@ void		ft_start_raycasting(t_master *m)
 	}
 	ft_sprites(m);
 }
-
-// colors CHANGE THIS
-// unsigned int	color;
-// if (m->input.mapsplit[m->game.map_y][m->game.map_x] == '0') // open ruimte?
-// 	color = 0x0F000000;
-// if (m->input.mapsplit[m->game.map_y][m->game.map_x] == '1') // muur dus ook textures
-// 	color = 0x0FFF00FF;
-// if (m->input.mapsplit[m->game.map_y][m->game.map_x] == '2') // moet sprite worden
-// 	m->vars.color = 0x00FF000F;
-// if (m->game.side == 1)
-// 	color = color / 2;
