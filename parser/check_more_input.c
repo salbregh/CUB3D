@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/21 13:20:16 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/18 13:20:56 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/18 19:42:14 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ static void	ft_get_resolution(char *res, t_master *m)
 	width = ft_substr(res, 0, i);
 	ft_check_string(width, m);
 	m->game.sw = ft_atoi(width);
-	// m->sprite.perparray[m->game.sw] = '\0';
 	while (res[i] == ' ')
 		i++;
 	height = ft_substr(res, i, ft_strlen(res));

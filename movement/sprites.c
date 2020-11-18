@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/14 16:48:07 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/18 13:10:31 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/18 19:49:02 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,11 +80,27 @@ static void	ft_sort_sprites(t_master *m, int i, int j)
 	}
 }
 
+// void		ft_two_back(t_master *m)
+// {
+// 	int		i;
+
+// 	i = 0;
+// 	while (i < m->sprite.numbsprite)
+// 	{
+// 		m->input.mapsplit[(int)m->sprite.sprite[i][1]][(int)m->sprite.sprite[i][0]] = '2';
+// 		printf("%c",m->input.mapsplit[(int)m->sprite.sprite[i][0]][(int)m->sprite.sprite[i][1]] );
+// 		i++;
+// 	}
+// 	// m->input.mapsplit[y][x] == '2')
+// 	// 			m->sprite.numbsprite++;
+// }
+
 void		ft_sprites(t_master *m)
 {
 	int		i;
 	
 	ft_sort_sprites(m, 0, 1);
+	// ft_two_back(m);
 	i = 0;
 	while (i < m->sprite.numbsprite)
 	{

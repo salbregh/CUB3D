@@ -6,36 +6,38 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/06/30 10:23:10 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/18 14:44:02 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/18 20:02:40 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3D.h"
 
-int		sprite_check(t_master *m)
+void		ft_two_back(t_master *m, int which)
 {
-	int			i;
-	int			x;
-	int			y;
+	int		i;
 
-	// printf("Goes in");
 	i = 0;
-	// m->input.mapsplit[m->game.map_y][m->game.map_x] 
-	while (i < m->sprite.numbsprite)
+	if (which == 0)
 	{
-		x = (int)m->sprite.sprite[i][0];
-		y = (int)m->sprite.sprite[i][1];
-		printf("sprite y: %d\tpos_y: %d\n", y, (int)m->game.pos_y);
-		printf("sprite x: %d\tpos_x: %d\n", x, (int)m->game.pos_x);
-		if ((int)m->game.pos_y == y && (int)m->game.pos_x == x)
+		while (i < m->sprite.numbsprite)
 		{
-			printf("it is");
-			return (-1);
-		}
-			
+			m->input.mapsplit[(int)m->sprite.sprite[i][1]][(int)m->sprite.sprite[i][0]] = '2';
+			// printf("%c",m->input.mapsplit[(int)m->sprite.sprite[i][0]][(int)m->sprite.sprite[i][1]] );
 		i++;
+		}
 	}
-	return (0);
+	i = 0;
+	if (which == 1)
+	{
+		while (i < m->sprite.numbsprite)
+		{
+			m->input.mapsplit[(int)m->sprite.sprite[i][1]][(int)m->sprite.sprite[i][0]] = '0';
+			// printf("%c",m->input.mapsplit[(int)m->sprite.sprite[i][0]][(int)m->sprite.sprite[i][1]] );
+		i++;
+		}
+	}
+	// m->input.mapsplit[y][x] == '2')
+	// 			m->sprite.numbsprite++;
 }
 
 int		rotate_right(t_master *m)
@@ -47,8 +49,10 @@ int		rotate_right(t_master *m)
 	oldDirX = m->game.dir_x;
 	oldPlaneX = m->game.plane_x;
 	speed = 0.1;
+	ft_two_back(m, 0);
 	if (m->move.rotate_right == 1)
 	{
+		ft_two_back(m, 1);
 		m->game.dir_x = m->game.dir_x * cos(speed) - m->game.dir_y * sin(speed);
 		m->game.dir_y = oldDirX * sin(speed) + m->game.dir_y * cos(speed);
 		m->game.plane_x = m->game.plane_x * cos(speed) - m->game.plane_y * sin(speed);
@@ -67,8 +71,10 @@ int		rotate_left(t_master *m)
 	oldDirX = m->game.dir_x;
 	oldPlaneX = m->game.plane_x;
 	speed = 0.1;
+	ft_two_back(m, 0);
 	if (m->move.rotate_left == 1)
 	{
+		ft_two_back(m, 1);
 		m->game.dir_x = m->game.dir_x * cos(-speed) - m->game.dir_y * sin(-speed);
 		m->game.dir_y = oldDirX * sin(-speed) + m->game.dir_y * cos(-speed);
 		m->game.plane_x = m->game.plane_x * cos(-speed) - m->game.plane_y * sin(-speed);
@@ -82,12 +88,14 @@ int		move_up(t_master *m)
 {
 	float	speed;
 
+	ft_two_back(m, 0);
 	speed = 0.1;
 	if (m->move.up == 1)
 	{
 		if (m->input.mapsplit[(int)(m->game.pos_y + (m->game.dir_y * speed))]
-			[(int)(m->game.pos_x + (m->game.dir_x * speed))] == '0' && sprite_check(m) == 0)
+			[(int)(m->game.pos_x + (m->game.dir_x * speed))] == '0')
 		{
+			ft_two_back(m, 1);
 			m->game.pos_x = m->game.pos_x + m->game.dir_x * speed;
 			m->game.pos_y = m->game.pos_y + m->game.dir_y * speed;
 			return (1);
@@ -100,12 +108,14 @@ int		move_down(t_master *m)
 {
 	float	speed;
 
+	ft_two_back(m, 0);
 	speed = 0.1;
 	if (m->move.down == 1)
 	{
 		if (m->input.mapsplit[(int)(m->game.pos_y - (m->game.dir_y * speed))]
-			[(int)(m->game.pos_x - (m->game.dir_x * speed))] == '0')// && sprite_check(m) == 0)
+			[(int)(m->game.pos_x - (m->game.dir_x * speed))] == '0')
 		{
+			ft_two_back(m, 1);
 			m->game.pos_x = m->game.pos_x - m->game.dir_x * speed;
 			m->game.pos_y = m->game.pos_y - m->game.dir_y * speed;
 			return (1);
@@ -118,12 +128,14 @@ int	move_rigth(t_master *m)
 {
 	float	speed;
 
+	ft_two_back(m, 0);
 	speed = 0.1;
 	if (m->move.right == 1)
 	{
 		if (m->input.mapsplit[(int)(m->game.pos_y + (m->game.plane_y * speed))]
 		[(int)(m->game.pos_x + (m->game.plane_x * speed))] == '0')
 		{
+			ft_two_back(m, 1);
 			m->game.pos_x += m->game.plane_x * speed;
 			m->game.pos_y += m->game.plane_y * speed;
 			return (1);
@@ -136,12 +148,14 @@ int	move_left(t_master *m)
 {
 	float	speed;
 
+	ft_two_back(m, 0);
 	speed = 0.1;
 	if (m->move.left == 1)
 	{
 		if (m->input.mapsplit[(int)(m->game.pos_y - (m->game.plane_y * speed))]
 		[(int)(m->game.pos_x - (m->game.plane_x * speed))] == '0')
 		{
+			ft_two_back(m, 1);
 			m->game.pos_x -= m->game.plane_x * speed;
 			m->game.pos_y -= m->game.plane_y * speed;
 			return (1);
