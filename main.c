@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/06/25 15:15:23 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/15 20:46:18 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/19 16:27:01 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,13 +45,12 @@ static void		more_main(t_master *m, int argc, char **argv)
 	
 	if (argc == 3)
 	{
-		// check if argument is save
-		// if not: error
-		// if yes save the screen
-		// dont resize
+		if ((ft_strncmp(argv[2], "--save", 7) != 0))
+			ft_error(m, "Second argument is not save.");
+		m->input.save = 1;
 	}
-	else if (argc != 2)
-		ft_error(m, "No second argument.");
+	else if (argc != 2 && m->input.save == 0)
+		ft_error(m, "Invalid amount of arguments.");
 	fd = open(argv[1], O_RDONLY);
 	if (fd == -1)
 		ft_error(m, "Problem with opening file");
@@ -69,10 +68,11 @@ int				main(int argc, char **argv)
 
 	ft_sort_master(&m);
 	more_main(&m, argc, argv);
+	system("leaks cub3D");
 	m.vars.mlx = mlx_init();
 	m.vars.win = mlx_new_window(m.vars.mlx, m.game.sw, m.game.sh, "CUB3D");
 	ft_start_raycasting(&m);
-	// ft_sprites(&m); om sprite leaks te fixen
+	// ft_sprites(&m); //om sprite leaks te fixen
 	system("leaks cub3D");
 	mlx_hook(m.vars.win, 17, 0L, close_button, &m.vars);
 	mlx_hook(m.vars.win, 02, (1L << 0), key_press, &m.vars);

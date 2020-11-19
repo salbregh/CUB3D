@@ -6,11 +6,19 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/09 10:58:51 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/17 23:26:29 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/19 17:22:36 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3D.h"
+
+void		ft_my_savepixel_get(t_master *m, int x, int y)
+{
+	char	*dst;
+
+	dst = m->vars.addr + (x * m->vars.ll + y * (m->vars.bpp / 8));
+	m->input.savecolor = *(unsigned int *)dst;
+}
 
 void		ft_my_spritepixel_get(t_master *m, int x, int y)
 {

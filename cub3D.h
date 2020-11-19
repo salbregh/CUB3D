@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/06/25 16:31:18 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/18 22:32:07 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/19 17:02:31 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,8 @@ typedef struct	s_sprite
 
 typedef struct		s_input
 {
+	int				save; // new
+	unsigned int	savecolor;
 	char			*no;
 	char			*so;
 	char			*ea;
@@ -176,6 +178,7 @@ typedef struct		s_master
 }					t_master;
 
 void				ft_start_raycasting(t_master *master);
+void				ft_save(t_master *m);
 void				ft_sort_master(t_master *m);
 void				ft_error(t_master *m, char *message);
 
@@ -195,6 +198,7 @@ void				my_mlx_pixel_put(t_vars *vars, int x, int y, int color);
 void				ft_my_pixel_get(t_master *m, int x, int y);
 void				ft_my_spritepixel_get(t_master *m, int x, int y);
 void				my_mlx_spritepixel_put(t_sprite *sprite, int x, int y, int color); // delete?
+void				ft_my_savepixel_get(t_master *m, int x, int y);  // new
 void				ft_draw(t_master *m, int x);
 
 // PARSER

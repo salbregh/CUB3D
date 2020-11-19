@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/14 16:45:53 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/15 14:50:59 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/19 16:12:47 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ static void		ft_load_sprite(t_master *m, int fd)
 		ft_error(m, "cant open sprite.");
 	m->sprite.spr = mlx_png_file_to_image(m->vars.mlx, m->input.sprite, &m->sprite.w_spr, &m->sprite.h_spr);
 	m->sprite.addr_spr = mlx_get_data_addr(m->sprite.spr, &m->sprite.bpp_spr, &m->sprite.ll_spr, &m->vars.endian);
-	// printf("bpp_spr: %d\nll_spr: %d\nh_spr: %d\nw_spr: %d\n", m->vars.bpp_spr, m->vars.ll_spr, m->vars.h_spr, m->vars.w_spr);
 	close(fd);
 }
 

@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/06/30 10:23:10 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/18 20:02:40 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/19 16:13:17 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,7 @@ void		ft_two_back(t_master *m, int which)
 		while (i < m->sprite.numbsprite)
 		{
 			m->input.mapsplit[(int)m->sprite.sprite[i][1]][(int)m->sprite.sprite[i][0]] = '2';
-			// printf("%c",m->input.mapsplit[(int)m->sprite.sprite[i][0]][(int)m->sprite.sprite[i][1]] );
-		i++;
+			i++;
 		}
 	}
 	i = 0;
@@ -32,12 +31,9 @@ void		ft_two_back(t_master *m, int which)
 		while (i < m->sprite.numbsprite)
 		{
 			m->input.mapsplit[(int)m->sprite.sprite[i][1]][(int)m->sprite.sprite[i][0]] = '0';
-			// printf("%c",m->input.mapsplit[(int)m->sprite.sprite[i][0]][(int)m->sprite.sprite[i][1]] );
-		i++;
+			i++;
 		}
 	}
-	// m->input.mapsplit[y][x] == '2')
-	// 			m->sprite.numbsprite++;
 }
 
 int		rotate_right(t_master *m)

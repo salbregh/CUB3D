@@ -6,35 +6,11 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/06/25 18:11:54 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/18 14:21:47 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/19 16:11:10 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3D.h"
-
-// int		sprite_check(t_master *m)
-// {
-// 	int		i;
-// 	int		x;
-// 	int		y;
-
-// 	// printf("Goes in");
-// 	i = 0;
-// 	// m->input.mapsplit[m->game.map_y][m->game.map_x] 
-// 	while (i < m->sprite.numbsprite)
-// 	{
-// 		x = m->sprite.sprite[i][0];
-// 		y = m->sprite.sprite[i][1];
-// 		if (m->game.map_y == y && m->game.map_x == x)
-// 		{
-// 			// printf("it is");
-// 			return (-1);
-// 		}
-			
-// 		i++;
-// 	}
-// 	return (0);
-// }
 
 /*
 **	Declare / calculate begin values
@@ -116,11 +92,8 @@ static void	ft_dda(t_master *m)
 			m->game.map_y += m->game.step_y;
 			m->game.side = 1;
 		}
-		if (m->input.mapsplit[m->game.map_y][m->game.map_x] != '0') //|| sprite_check(m) == -1) // check this
+		if (m->input.mapsplit[m->game.map_y][m->game.map_x] != '0')
 			hit = 1;
-		// if (sprite_check(m) == -1)
-			// return ;
-		// 	hit = 1; WAAROM ALS IK DIT TOEVOEG WORDT HET EEN MUUR GVD
 	}
 }
 
@@ -172,4 +145,6 @@ void		ft_start_raycasting(t_master *m)
 		x++;
 	}
 	ft_sprites(m);
+	if (m->input.save == 1)
+		return (ft_save(m));
 }
