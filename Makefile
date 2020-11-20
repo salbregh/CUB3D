@@ -6,7 +6,7 @@
 #    By: salbregh <salbregh@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/06/25 15:16:40 by salbregh      #+#    #+#                  #
-#    Updated: 2020/11/19 17:41:53 by salbregh      ########   odam.nl          #
+#    Updated: 2020/11/20 10:51:30 by salbregh      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,11 +15,13 @@ NAME =		cub3D
 SRCS =		main.c \
 			./movement/ft_start_raycasting.c \
 			./movement/movement.c \
+			./movement/more_movement.c \
 			./movement/mlx_hooks.c \
 			./movement/draw_colors.c \
 			./movement/textures.c \
 			./movement/load_pictures.c \
 			./movement/sprites.c \
+			./movement/set_sprites.c \
 			./parser/get_input.c \
 			./parser/check_input.c \
 			./parser/floodfill.c \
@@ -43,10 +45,12 @@ all:		$(OFILES) $(INCLUDES)
 			make -C get_next_line/
 			cp get_next_line/libgnl.a .
 			$(CC) -Lmlx -lmlx -Llibft -lft -Lget_next_line -lgnl -framework\
-			OpenGL -framework AppKit -o $(NAME) $(OFILES) -Wall -Werror -Wextra -g -fsanitize=address
+			OpenGL -framework AppKit -o $(NAME) $(OFILES) -Wall -Werror -Wextra 
+			# -g -fsanitize=address
 
 %.o:		%.c
-			gcc -Ilibft -Imlx -c $< -o $@ -Wall -Werror -Wextra -g -fsanitize=address
+			gcc -Ilibft -Imlx -c $< -o $@ -Wall -Werror -Wextra
+			# -g -fsanitize=address
 
 clean:
 			/bin/rm -f $(OFILES)

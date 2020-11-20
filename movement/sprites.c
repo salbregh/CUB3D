@@ -6,98 +6,97 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/14 16:48:07 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/19 16:13:35 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/20 11:03:01 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3D.h"
 
-void		ft_set_sprites(t_master *m, int x, int y)
-{
-	int i;
-	i = 0;
-	m->sprite.sprite = (double **)malloc(sizeof(double *) * (m->sprite.numbsprite + 1));
-	while (i < m->sprite.numbsprite)
-	{
-		m->sprite.sprite[i] = (double *)malloc((sizeof(double) * 2) + 1);
-		i++;
-	}
-	m->sprite.sprite[i] = NULL;
-	i = 0;
-	while (y < m->input.maplines)
-	{
-		while (m->input.mapsplit[y][x] != '\0')
-		{
-			if (m->input.mapsplit[y][x] == '2')
-			{
-				m->sprite.sprite[i][0] = x + 0.5;
-				m->sprite.sprite[i][1] = y + 0.5;
-				m->input.mapsplit[y][x] = '0';
-				i++;
-			}
-			x++;
-		}
-		y++;
-		x = 0;
-	}
-}
+// HIER ZIT EEN LEAK IN
 
-static void	ft_sort_sprites(t_master *m, int i, int j)
-{
-	int tmp;
-	double tmpx;
-	double tmpy;
+// void		ft_set_sprites(t_master *m, int x, int y)
+// {
+// 	int 	i;
 
-	m->sprite.spritedistance = (double *)malloc((sizeof(double) * m->sprite.numbsprite) + 1);
-	i = 0;
-	while (i < m->sprite.numbsprite)
-	{
-		m->sprite.spritedistance[i] = ((m->game.pos_x - m->sprite.sprite[i][0]) * (m->game.pos_x - m->sprite.sprite[i][0]) + (m->game.pos_y - m->sprite.sprite[i][1]) * (m->game.pos_y - m->sprite.sprite[i][1]));
-		i++;
-	}
-	i = 0;
-	while (i < m->sprite.numbsprite - 1)
-	{
-		while (j + i < m->sprite.numbsprite)
-		{
-			if (m->sprite.spritedistance[j + i] > m->sprite.spritedistance[i])
-			{
-				tmp = m->sprite.spritedistance[j + i];
-				tmpx = m->sprite.sprite[j + i][0];
-				tmpy = m->sprite.sprite[j + i][1];
-				m->sprite.spritedistance[j + i] = m->sprite.spritedistance[i];
-				m->sprite.sprite[j + i][0] = m->sprite.sprite[i][0];
-				m->sprite.sprite[j + i][1] = m->sprite.sprite[i][1];
-				m->sprite.spritedistance[i] = tmp;
-				m->sprite.sprite[i][0] = tmpx;
-				m->sprite.sprite[i][1] = tmpy;
-			}
-			j++;
-		}
-		j = 1;
-		i++;
-	}
-}
+// 	i = 0;
+// 	m->sprite.sprite = (double **)malloc(sizeof(double *) * (m->sprite.numb + 1));
+// 	while (i < m->sprite.numb)
+// 	{
+// 		m->sprite.sprite[i] = (double *)malloc((sizeof(double) * 2) + 1);
+// 		i++;
+// 	}
+// 	m->sprite.sprite[i] = NULL;
+// 	i = 0;
+// 	while (y < m->input.maplines)
+// 	{
+// 		while (m->input.mapsplit[y][x] != '\0')
+// 		{
+// 			if (m->input.mapsplit[y][x] == '2')
+// 			{
+// 				m->sprite.sprite[i][0] = x + 0.5;
+// 				m->sprite.sprite[i][1] = y + 0.5;
+// 				m->input.mapsplit[y][x] = '0';
+// 				i++;
+// 			}
+// 			x++;
+// 		}
+// 		y++;
+// 		x = 0;
+// 	}
+// }
+
+// static void	ft_sort_sprites(t_master *m, int i, int j)
+// {
+// 	int 	tmp;
+// 	double tmpx;
+// 	double tmpy;
+
+// 	m->sprite.spritedistance = (double *)malloc((sizeof(double) * m->sprite.numb) + 1);
+// 	i = 0;
+// 	while (i < m->sprite.numb)
+// 	{
+// 		m->sprite.spritedistance[i] = ((m->game.pos_x - m->sprite.sprite[i][0]) * (m->game.pos_x - m->sprite.sprite[i][0]) + (m->game.pos_y - m->sprite.sprite[i][1]) * (m->game.pos_y - m->sprite.sprite[i][1]));
+// 		i++;
+// 	}
+// 	i = 0;
+// 	while (i < m->sprite.numb - 1)
+// 	{
+// 		while (j + i < m->sprite.numb)
+// 		{
+// 			if (m->sprite.spritedistance[j + i] > m->sprite.spritedistance[i])
+// 			{
+// 				tmp = m->sprite.spritedistance[j + i];
+// 				tmpx = m->sprite.sprite[j + i][0];
+// 				tmpy = m->sprite.sprite[j + i][1];
+// 				m->sprite.spritedistance[j + i] = m->sprite.spritedistance[i];
+// 				m->sprite.sprite[j + i][0] = m->sprite.sprite[i][0];
+// 				m->sprite.sprite[j + i][1] = m->sprite.sprite[i][1];
+// 				m->sprite.spritedistance[i] = tmp;
+// 				m->sprite.sprite[i][0] = tmpx;
+// 				m->sprite.sprite[i][1] = tmpy;
+// 			}
+// 			j++;
+// 		}
+// 		j = 1;
+// 		i++;
+// 	}
+// }
 
 void		ft_sprites(t_master *m)
 {
 	int		i;
 	
 	ft_sort_sprites(m, 0, 1);
-	// ft_two_back(m);
 	i = 0;
-	while (i < m->sprite.numbsprite)
+	while (i < m->sprite.numb)
 	{
+		// ft_start_values(m);
 		m->sprite.sprite_x = m->sprite.sprite[i][0] - m->game.pos_x;
 		m->sprite.sprite_y = m->sprite.sprite[i][1] - m->game.pos_y;
-
 		m->sprite.inverse = 1.0 / (m->game.plane_x * m->game.dir_y - m->game.dir_x * m->game.plane_y);
-		
 		m->sprite.trans_x = m->sprite.inverse * (m->game.dir_y * m->sprite.sprite_x - m->game.dir_x * m->sprite.sprite_y);
 		m->sprite.trans_y = m->sprite.inverse * (-m->game.plane_y * m->sprite.sprite_x + m->game.plane_x * m->sprite.sprite_y);
-		
 		m->sprite.screen_x = (int)((m->game.sw / 2) * (1 + m->sprite.trans_x / m->sprite.trans_y));
-		
 		m->sprite.height  = fabs(m->game.sh / m->sprite.trans_y);
 	 	m->sprite.drawstart_y = -m->sprite.height / 2 + m->game.sh / 2;
 		if (m->sprite.drawstart_y < 0)
@@ -105,7 +104,6 @@ void		ft_sprites(t_master *m)
 		m->sprite.drawend_y = m->sprite.height / 2 + m->game.sh / 2;
 		if (m->sprite.drawend_y >= m->game.sh)
 			m->sprite.drawend_y = m->game.sh - 1;
-
 		m->sprite.width = fabs(m->game.sh / m->sprite.trans_y);
 		m->sprite.drawstart_x = -m->sprite.width / 2 + m->sprite.screen_x;
 		if (m->sprite.drawstart_x < 0)
@@ -136,4 +134,5 @@ void		ft_sprites(t_master *m)
 		}
 		i++;
 	}
+	free(m->sprite.distance);
 }

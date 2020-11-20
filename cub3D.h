@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/06/25 16:31:18 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/19 17:02:31 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/20 11:03:07 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,9 +90,9 @@ typedef struct	s_sprite
 	int				h_spr;
 	int				bpp_spr;
 	int				ll_spr; // set all to null
-	int				numbsprite;
+	int				numb;
 	double			*perparray;
-	double			*spritedistance; // check
+	double			*distance; // check
 	double			**sprite;
 	double			**check;
 	// casting sprites
@@ -186,7 +186,7 @@ void				ft_error(t_master *m, char *message);
 int					key_press(int keycode, t_master *master);
 int					close_button(t_master *master);
 int					key_release(int keycode, t_master *m);
-int					move_bitch(t_master *m);
+int					move(t_master *m);
 int					move_up(t_master *m);
 int					move_down(t_master *m);
 int					move_rigth(t_master *m);
@@ -215,5 +215,6 @@ void				ft_texturing(t_master *m, int x);
 // sprites
 void				ft_sprites(t_master *m);
 void				ft_set_sprites(t_master *m, int x, int y);
+void				ft_sort_sprites(t_master *m, int i, int j);
 
 #endif

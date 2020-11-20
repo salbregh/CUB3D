@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/21 12:48:51 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/14 17:33:00 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/20 10:08:41 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ int	close_button(t_master *m)
 {
 	mlx_clear_window(m->vars.mlx, m->vars.win);
 	mlx_destroy_window(m->vars.mlx, m->vars.win);
-	// clear all structs
 	free(m->vars.mlx);
 	exit(0);
 }
@@ -40,12 +39,8 @@ int	key_release(int keycode, t_master *m)
 
 int	key_press(int keycode, t_master *m)
 {
-	// printf("keycode: %i\n", keycode);
 	if (keycode == 53)
-	{
-		mlx_destroy_window(m->vars.mlx, m->vars.win);
-		exit(0);
-	}
+		close_button(m);
 	if (keycode == 13)
 		m->move.up = 1;
 	if (keycode == 1)
@@ -61,7 +56,7 @@ int	key_press(int keycode, t_master *m)
 	return (0);
 }
 
-int	move_bitch(t_master *m)
+int	move(t_master *m)
 {
 	if (move_up(m) == 1 || move_down(m) == 1 ||
 	move_rigth(m) == 1 || move_left(m) == 1 ||

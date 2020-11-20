@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/21 13:20:16 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/19 16:34:41 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/20 09:52:45 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,14 +100,14 @@ void		ft_other_identifier(t_master *m)
 {
 	int		checkx;
 	int		checky;
-	
+
 	ft_get_resolution(m->input.resolution, m);
 	mlx_get_screen_size(m->vars.mlx, &checkx, &checky);
 	if (m->game.sw > checkx && m->input.save == 0)
 		m->game.sw = checkx;
 	if (m->game.sh > checky && m->input.save == 0)
 		m->game.sh = checky;
-	m->sprite.perparray = (double *)malloc((m->game.sw)* sizeof(double) + 1);
+	m->sprite.perparray = (double *)malloc((m->game.sw) * sizeof(double) + 1);
 	m->input.which = 0;
 	ft_get_color(m->input.floor, m);
 	m->input.which = 1;

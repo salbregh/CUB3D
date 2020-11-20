@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/02 18:18:30 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/15 16:03:11 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/20 10:22:40 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,14 +56,16 @@ static void	ft_no_so_texture(t_master *m)
 	}
 }
 
-void	ft_texturing(t_master *m, int x)
+void		ft_texturing(t_master *m, int x)
 {
 	ft_no_so_texture(m);
 	ft_ea_we_texture(m);
 	if (m->game.side == 0)
-		m->vars.wall_x = m->game.pos_y + m->game.perpwalldist * m->game.raydir_y;
+		m->vars.wall_x = m->game.pos_y + m->game.perpwalldist *
+		m->game.raydir_y;
 	else
-		m->vars.wall_x = m->game.pos_x + m->game.perpwalldist * m->game.raydir_x;
+		m->vars.wall_x = m->game.pos_x + m->game.perpwalldist *
+		m->game.raydir_x;
 	m->vars.wall_x -= (int)m->vars.wall_x;
 	m->vars.tex_y = (int)(m->vars.wall_x * (double)m->vars.w_);
 	if (m->game.side == 0 && m->game.raydir_x > 0)
@@ -71,7 +73,8 @@ void	ft_texturing(t_master *m, int x)
 	if (m->game.side == 0 && m->game.raydir_y < 0)
 		m->vars.tex_y = m->vars.w_ - m->vars.tex_y - 1;
 	m->vars.tex_step = 1.0 * m->vars.h_ / m->game.line_height;
-	m->vars.tex_pos = (m->game.draw_start - m->game.sh / 2 + m->game.line_height / 2) * m->vars.tex_step;
+	m->vars.tex_pos = (m->game.draw_start - m->game.sh / 2 +
+	m->game.line_height / 2) * m->vars.tex_step;
 	while (m->game.draw_start < m->game.draw_end)
 	{
 		m->vars.tex_x = (int)m->vars.tex_pos;

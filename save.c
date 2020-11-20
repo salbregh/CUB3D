@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/19 16:07:05 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/19 17:21:25 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/19 18:11:35 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ static void	ft_drawpic(t_master *m, int fd)
 	int		y;
 	
 	x = 0;
-	y = m->game.sh;
-	while (y > 0)
+	y = m->game.sh - 1;
+	while (y >= 0)
 	{
 		while (x < m->game.sw)
 		{
