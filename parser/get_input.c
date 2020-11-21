@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/08 12:30:20 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/13 19:27:17 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/21 23:06:44 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,12 @@ static void		ft_check_identifier(char *line, t_master *m)
 	{
 		if (m->input.lineinmap == 1)
 			ft_error(m, "Empty line in map.");
+		while (*line)
+		{
+			if (*line != '1' && *line != '2' && *line != '0' && *line != ' ')
+				ft_error(m, "Invalid character in mapline");
+			line++;
+		}
 		m->input.checkmap = 1;
 		m->input.map = ft_strjoincub(tmp, line);
 		free(tmp);

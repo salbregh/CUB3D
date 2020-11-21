@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/19 16:07:05 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/19 18:11:35 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/21 22:43:48 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void	ft_drawpic(t_master *m, int fd)
 {
 	int		x;
 	int		y;
-	
+
 	x = 0;
 	y = m->game.sh - 1;
 	while (y >= 0)
@@ -37,7 +37,7 @@ static void	ft_bitmapinfoheader(t_master *m, int fd)
 {
 	int		i;
 	char	bitheader[40];
-	
+
 	i = 0;
 	while (i < 40)
 	{

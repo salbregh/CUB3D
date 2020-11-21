@@ -3,7 +3,7 @@ NO ./pictures/eagle.png
 SO ./pictures/bluestone.png
 WE ./pictures/wood.png
 EA ./pictures/greystone.png
-S ./pics/barrel.png
+S ./pictures/barrel.png
 F 220,100,0
 C 225,30,0
 

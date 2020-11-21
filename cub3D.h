@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/06/25 16:31:18 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/20 11:03:07 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/21 21:51:34 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -216,5 +216,6 @@ void				ft_texturing(t_master *m, int x);
 void				ft_sprites(t_master *m);
 void				ft_set_sprites(t_master *m, int x, int y);
 void				ft_sort_sprites(t_master *m, int i, int j);
+void				set_array(t_master *m);
 
 #endif
