@@ -6,12 +6,11 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/22 13:09:53 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/22 13:13:39 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/22 13:41:25 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3D.h"
-#include <stdio.h> // delete
 
 static char*	ft_trim_paths(char *line, char *set)
 {
@@ -81,7 +80,7 @@ static void		ft_check_path(char *line, t_master *m)
 		ft_error(m, "Problem with the identifiers in the map.");
 };
 
-static void	ft_check_mapline(t_master *m, char *tmp, char *line)
+static void		ft_check_mapline(t_master *m, char *tmp, char *line)
 {
 	char *check;
 	
@@ -92,10 +91,7 @@ static void	ft_check_mapline(t_master *m, char *tmp, char *line)
 	{
 		if (*check != ' ' && *check != '1' && *check != '2' && *check != '0'
 		&& *check != 'E' && *check != 'N' && *check != 'S' && *check != 'W')
-		{
-			printf(">>%c<<\n", *check);
 			ft_error(m, "Invalid character in map");
-		}
 		check++;
 	}
 	m->input.checkmap = 1;
@@ -103,7 +99,7 @@ static void	ft_check_mapline(t_master *m, char *tmp, char *line)
 	free(tmp);
 }
 
-void		ft_check_identifier(char *line, t_master *m)
+void			ft_check_identifier(char *line, t_master *m)
 {
 	char		*tmp;
 	int			i;
@@ -115,9 +111,7 @@ void		ft_check_identifier(char *line, t_master *m)
 		ft_strstr(line, "R") || ft_strstr(line, "C") || ft_strstr(line, "F"))
 		ft_check_path(line, m);
 	else if (ft_strchr(line, '1'))
-	{
 		ft_check_mapline(m, tmp, line);
-	}
 	else
 	{
 		if (m->input.checkmap == 1)

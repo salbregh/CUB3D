@@ -6,7 +6,7 @@
 #    By: salbregh <salbregh@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/11/22 13:08:56 by salbregh      #+#    #+#                  #
-#    Updated: 2020/11/22 13:08:57 by salbregh      ########   odam.nl          #
+#    Updated: 2020/11/22 13:39:24 by salbregh      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,7 +45,8 @@ all:		$(OFILES) $(INCLUDES)
 			make -C get_next_line/
 			cp get_next_line/libgnl.a .
 			$(CC) -Lmlx -lmlx -Llibft -lft -Lget_next_line -lgnl -framework\
-			OpenGL -framework AppKit -o $(NAME) $(OFILES) -Wall -Werror -Wextra -g -fsanitize=address
+			OpenGL -framework AppKit -o $(NAME) $(OFILES) -Wall -Werror -Wextra -g 
+			#-fsanitize=address
 
 %.o:		%.c
 			gcc -Ilibft -Imlx -c $< -o $@ -Wall -Werror -Wextra 
