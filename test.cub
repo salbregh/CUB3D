@@ -1,11 +1,11 @@
-R  1000 1000
+R  1000 1010
 NO     ./pictures/purplestone.png
 SO ./pictures/redbrick.png
 WE ./pictures/greystone.png
 EA ./pictures/wood.png
 
 
-F  0,0,0     
+F  0 , 0 ,0
 C  0,0,50    
 
      

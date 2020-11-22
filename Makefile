@@ -6,22 +6,22 @@
 #    By: salbregh <salbregh@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/11/22 13:08:56 by salbregh      #+#    #+#                  #
-#    Updated: 2020/11/22 13:39:24 by salbregh      ########   odam.nl          #
+#    Updated: 2020/11/22 16:57:20 by salbregh      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 NAME =		cub3D
 
 SRCS =		main.c \
-			./movement/ft_start_raycasting.c \
-			./movement/movement.c \
-			./movement/more_movement.c \
-			./movement/mlx_hooks.c \
-			./movement/draw_colors.c \
-			./movement/textures.c \
-			./movement/load_pictures.c \
-			./movement/sprites.c \
-			./movement/set_sprites.c \
+			./raycasting/ft_start_raycasting.c \
+			./raycasting/movement.c \
+			./raycasting/more_movement.c \
+			./raycasting/mlx_hooks.c \
+			./raycasting/draw_colors.c \
+			./raycasting/textures.c \
+			./raycasting/load_pictures.c \
+			./raycasting/sprites.c \
+			./parser/set_sprites.c \
 			./parser/get_input.c \
 			./parser/check_input.c \
 			./parser/floodfill.c \
@@ -45,12 +45,10 @@ all:		$(OFILES) $(INCLUDES)
 			make -C get_next_line/
 			cp get_next_line/libgnl.a .
 			$(CC) -Lmlx -lmlx -Llibft -lft -Lget_next_line -lgnl -framework\
-			OpenGL -framework AppKit -o $(NAME) $(OFILES) -Wall -Werror -Wextra -g 
-			#-fsanitize=address
+			OpenGL -framework AppKit -o $(NAME) $(OFILES) -Wall -Werror -Wextra -g -fsanitize=address
 
 %.o:		%.c
-			gcc -Ilibft -Imlx -c $< -o $@ -Wall -Werror -Wextra 
-			#-g -fsanitize=address
+			gcc -Ilibft -Imlx -c $< -o $@ -Wall -Werror -Wextra -g -fsanitize=address
 
 clean:
 			/bin/rm -f $(OFILES)

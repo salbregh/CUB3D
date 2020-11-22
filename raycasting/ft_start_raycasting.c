@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/06/25 18:11:54 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/22 11:11:58 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/22 17:21:55 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 
 static void	ft_start_values(t_master *m, int x)
 {
-	m->game.camera_x = (2 * x) / (double)m->game.sw - 1;
+	m->game.camera_x = 2 * (x / (double)m->game.sw) - 1;
 	m->game.raydir_x = m->game.dir_x + m->game.plane_x * m->game.camera_x;
 	m->game.raydir_y = m->game.dir_y + m->game.plane_y * m->game.camera_x;
 	m->game.map_x = (int)m->game.pos_x;
@@ -121,7 +121,7 @@ static void	ft_distance(t_master *m, int x)
 			m->game.perpwalldist = (m->game.map_y - m->game.pos_y +
 			(1.0 - m->game.step_y) / 2.0) / m->game.raydir_y;
 	}
-	m->sprite.perparray[x - 1] = m->game.perpwalldist;
+	m->sprite.perparray[x] = m->game.perpwalldist;
 }
 
 /*
@@ -133,8 +133,8 @@ void		ft_start_raycasting(t_master *m)
 {
 	int		x;
 
-	x = 1;
-	ft_load_pictures(m);
+	x = 0;
+	// ft_load_pictures(m);
 	while (x < m->game.sw)
 	{
 		ft_start_values(m, x);

@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/22 13:11:02 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/22 13:11:18 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/22 16:21:05 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 static void	ft_check_string(char *str, t_master *m)
 {
+	if (!*str)
+		ft_error(m, "Invalid map input.");
 	while (*str)
 	{
 		if (!(*str >= '0' && *str <= '9'))
@@ -81,16 +83,19 @@ static void	ft_get_color(char *color, t_master *m)
 
 	i = 0;
 	j = 0;
+	check1 = NULL;
+	check2 = NULL;
+	check3 = NULL;
 	while (color[i] != ' ' && color[i] != ',')
 		i++;
 	check1 = ft_substr(color, 0, i);
-	while (color[i] == ' ' || color[i] == ',')
+	while ((color[i] == ' ' || color[i] == ',') && color[i])
 		i++;
 	j = i;
-	while (color[i] != ' ' && color[i] != ',')
+	while ((color[i] != ' ' && color[i] != ',') && color[i])
 		i++;
 	check2 = ft_substr(color, j, i - j);
-	while (color[i] == ' ' || color[i] == ',')
+	while ((color[i] == ' ' || color[i] == ',') && color[i])
 		i++;
 	check3 = ft_substr(color, i, ft_strlen(color) - i);
 	ft_get_more_color(check1, check2, check3, m);

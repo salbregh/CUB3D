@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/22 13:06:25 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/22 13:06:58 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/22 17:08:11 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,11 @@ int				main(int argc, char **argv)
 	more_main(&m, argc, argv);
 	m.vars.mlx = mlx_init();
 	m.vars.win = mlx_new_window(m.vars.mlx, m.game.sw, m.game.sh, "CUB3D");
+	ft_load_pictures(&m);
+	m.vars.img = mlx_new_image(m.vars.mlx, m.game.sw, m.game.sh);
+	m.vars.addr = mlx_get_data_addr(m.vars.img, &m.vars.bpp,
+	&m.vars.ll, &m.vars.endian);
 	ft_start_raycasting(&m);
-	// system("leaks cub3D");
 	mlx_hook(m.vars.win, 17, 0L, close_button, &m.vars);
 	mlx_hook(m.vars.win, 02, (1L << 0), key_press, &m.vars);
 	mlx_loop_hook(m.vars.mlx, move, &m);

@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/22 13:11:43 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/22 13:11:45 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/22 17:01:00 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 static void	ft_null_input(t_input *input)
 {
+	input->save = 0;
+	input->savecolor = 0;
 	input->no = NULL;
 	input->so = NULL;
 	input->ea = NULL;
@@ -30,16 +32,15 @@ static void	ft_null_input(t_input *input)
 	input->res = NULL;
 	input->which = 0;
 	input->map = ft_strdup("");
+	input->maplines = 0;
 	input->checkmap = 0;
 	input->lineinmap = 0;
 	input->mapsplit = NULL;
 	input->x = NULL;
-	// input->numberofsprites = 0;
 }
 
 static void	ft_null_game(t_game *game)
 {
-	game->x = 1;
 	game->pos_y = 0;
 	game->pos_x = 0;
 	game->pos = 0;
@@ -64,7 +65,6 @@ static void	ft_null_game(t_game *game)
 	game->deltadist_x = 0;
 	game->deltadist_y = 0;
 	game->perpwalldist = 0;
-	// game->perparray = NULL;
 	game->step_x = 0;
 	game->step_y = 0;
 	game->side = 0;
@@ -89,14 +89,36 @@ static void	ft_null_vars(t_vars *vars)
 	vars->bpp = 0;
 	vars->ll = 0;
 	vars->endian = 0;
-	// texture variables
-	vars->tex_no = 0;
-	vars->addr_no = 0;
+	vars->tex_no = NULL;
+	vars->addr_no = NULL;
 	vars->w_no = 0;
 	vars->h_no = 0;
 	vars->bpp_no = 0;
 	vars->ll_no = 0;
-	// add so ea and we
+	vars->tex_so = NULL;
+	vars->addr_so = NULL;
+	vars->w_so = 0;
+	vars->h_so = 0;
+	vars->bpp_so = 0;
+	vars->ll_so = 0;
+	vars->tex_ea = NULL;
+	vars->addr_ea = NULL;
+	vars->w_ea = 0;
+	vars->h_ea = 0;
+	vars->bpp_ea = 0;
+	vars->ll_ea = 0;
+	vars->tex_we = NULL;
+	vars->addr_we = NULL;
+	vars->w_we = 0;
+	vars->h_we = 0;
+	vars->bpp_we = 0;
+	vars->ll_we = 0;
+	vars->tex_ = NULL;
+	vars->addr_ = NULL;
+	vars->w_ = 0;
+	vars->h_ = 0;
+	vars->bpp_ = 0;
+	vars->ll_ = 0;
 	vars->wall_x = 0;
 	vars->tex_step = 0;
 	vars->color = 0;
@@ -112,11 +134,26 @@ static void	ft_null_sprite(t_sprite *sprite)
 	sprite->w_spr = 0;
 	sprite->h_spr = 0;
 	sprite->bpp_spr = 0;
-	sprite->ll_spr = 0; // set all to null
+	sprite->ll_spr = 0;
 	sprite->numb = 0;
 	sprite->perparray = 0;
-	sprite->distance = NULL; // check
+	sprite->distance = NULL;
 	sprite->sprite = NULL;
+	sprite->sprite_x = 0;
+	sprite->sprite_y = 0;
+	sprite->inverse = 0;
+	sprite->trans_x = 0;
+	sprite->trans_y = 0;
+	sprite->screen_x = 0;
+	sprite->height = 0;
+	sprite->width = 0;
+	sprite->drawstart_y = 0;
+	sprite->drawend_y = 0;
+	sprite->drawstart_x = 0;
+	sprite->drawend_x = 0;
+	sprite->tex_x = 0;
+	sprite->tex_y = 0;
+	sprite->color = 0;
 }
 
 void		ft_sort_master(t_master *m)

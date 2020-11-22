@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/22 13:09:19 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/22 13:09:20 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/22 16:23:53 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,43 +36,37 @@ typedef struct		s_vars
 	int				bpp;
 	int				ll;
 	int				endian;
-	// north texture
 	void			*tex_no;
 	char			*addr_no;
 	int				w_no;
 	int				h_no;
 	int				bpp_no;
 	int				ll_no;
-	// south texture;
 	void			*tex_so;
 	char			*addr_so;
 	int				w_so;
 	int				h_so;
 	int				bpp_so;
 	int				ll_so;
-	// east texture
 	void			*tex_ea;
 	char			*addr_ea;
 	int				w_ea;
 	int				h_ea;
 	int				bpp_ea;
 	int				ll_ea;
-	// west texture
 	void			*tex_we;
 	char			*addr_we;
 	int				w_we;
 	int				h_we;
 	int				bpp_we;
 	int				ll_we;
-	// texture to use
 	void			*tex_;
 	char			*addr_;
 	int				w_;
 	int				h_;
 	int				bpp_;
 	int				ll_;
-
-	unsigned int 	color; // nodig?
+	unsigned int	color;
 	double			wall_x;
 	double			tex_step;
 	int				tex_x;
@@ -80,20 +74,18 @@ typedef struct		s_vars
 	double			tex_pos;
 }					t_vars;
 
-typedef struct	s_sprite
+typedef struct		s_sprite
 {
 	void			*spr;
 	char			*addr_spr;
 	int				w_spr;
 	int				h_spr;
 	int				bpp_spr;
-	int				ll_spr; // set all to null
+	int				ll_spr;
 	int				numb;
 	double			*perparray;
-	double			*distance; // check
+	double			*distance;
 	double			**sprite;
-	double			**check;
-	// casting sprites
 	double			sprite_x;
 	double			sprite_y;
 	double			inverse;
@@ -113,7 +105,7 @@ typedef struct	s_sprite
 
 typedef struct		s_input
 {
-	int				save; // new
+	int				save;
 	unsigned int	savecolor;
 	char			*no;
 	char			*so;
@@ -127,7 +119,7 @@ typedef struct		s_input
 	char			*res;
 	int				which;
 	char			*map;
-	int				maplines; // set to 0
+	int				maplines;
 	int				checkmap;
 	int				lineinmap;
 	char			**mapsplit;
@@ -136,7 +128,6 @@ typedef struct		s_input
 
 typedef struct		s_game
 {
-	int				x;
 	int				sh;
 	int				sw;
 	int				draw_start;
@@ -180,7 +171,7 @@ void				ft_save(t_master *m);
 void				ft_sort_master(t_master *m);
 void				ft_error(t_master *m, char *message);
 
-// MOVEMENT .C
+// raycasting
 int					key_press(int keycode, t_master *master);
 int					close_button(t_master *master);
 int					key_release(int keycode, t_master *m);
@@ -195,8 +186,8 @@ void				ft_two_back(t_master *m, int which);
 void				my_mlx_pixel_put(t_vars *vars, int x, int y, int color);
 void				ft_my_pixel_get(t_master *m, int x, int y);
 void				ft_my_spritepixel_get(t_master *m, int x, int y);
-void				my_mlx_spritepixel_put(t_sprite *sprite, int x, int y, int color); // delete?
-void				ft_my_savepixel_get(t_master *m, int x, int y);  // new
+void				my_mlx_spritepixel_put(t_sprite *sprite, int x, int y, int color);
+void				ft_my_savepixel_get(t_master *m, int x, int y);
 void				ft_draw(t_master *m, int x);
 
 // PARSER

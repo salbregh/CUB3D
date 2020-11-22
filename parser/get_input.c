@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/22 13:09:53 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/22 13:41:25 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/22 15:36:17 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,8 +107,8 @@ void			ft_check_identifier(char *line, t_master *m)
 	tmp = m->input.map;
 	i = 0;
 	if (ft_strstr(line, "NO") || ft_strstr(line, "SO") || ft_strstr(line, "WE")
-		|| ft_strstr(line, "EA") || ft_strstr(line, "S ") ||
-		ft_strstr(line, "R") || ft_strstr(line, "C") || ft_strstr(line, "F"))
+	|| ft_strstr(line, "EA") || ft_strstr(line, "S ") ||
+	ft_strstr(line, "R") || ft_strstr(line, "C") || ft_strstr(line, "F"))
 		ft_check_path(line, m);
 	else if (ft_strchr(line, '1'))
 		ft_check_mapline(m, tmp, line);
@@ -119,7 +119,7 @@ void			ft_check_identifier(char *line, t_master *m)
 		while (line[i])
 		{
 			if (line[i] != ' ' && line[i] != '\0')
-				ft_error(m, "Invalid test in file.");
+				ft_error(m, "Invalid character in file.");
 			i++;
 		}
 	}

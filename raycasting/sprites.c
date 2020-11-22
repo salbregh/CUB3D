@@ -6,11 +6,58 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/14 16:48:07 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/21 22:34:00 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/22 15:41:04 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3D.h"
+
+static void	ft_set_distance(t_master *m, int i)
+{
+	m->sprite.distance = (double *)malloc((sizeof(double) * m->sprite.numb));
+	while (i < m->sprite.numb)
+	{
+		m->sprite.distance[i] = ((m->game.pos_x - m->sprite.sprite[i][0]) *
+		(m->game.pos_x - m->sprite.sprite[i][0]) + (m->game.pos_y -
+		m->sprite.sprite[i][1]) * (m->game.pos_y - m->sprite.sprite[i][1]));
+		i++;
+	}
+}
+
+static void	ft_set_tmp(t_master *m, int j, int i)
+{
+	int		tmp;
+	double	tmpx;
+	double	tmpy;
+
+	tmp = m->sprite.distance[j + i];
+	tmpx = m->sprite.sprite[j + i][0];
+	tmpy = m->sprite.sprite[j + i][1];
+	m->sprite.distance[j + i] = m->sprite.distance[i];
+	m->sprite.sprite[j + i][0] = m->sprite.sprite[i][0];
+	m->sprite.sprite[j + i][1] = m->sprite.sprite[i][1];
+	m->sprite.distance[i] = tmp;
+	m->sprite.sprite[i][0] = tmpx;
+	m->sprite.sprite[i][1] = tmpy;
+}
+
+void		ft_sort_sprites(t_master *m, int i, int j)
+{
+	ft_set_distance(m, i);
+	i = 0;
+	while (i < m->sprite.numb - 1)
+	{
+		while (j + i < m->sprite.numb)
+		{
+			if (m->sprite.distance[j + i] > m->sprite.distance[i])
+				ft_set_tmp(m, j, i);
+			j++;
+		}
+		j = 1;
+		i++;
+	}
+	free(m->sprite.distance);
+}
 
 static void	ft_start_value(t_master *m, int i)
 {
