@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/22 13:08:01 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/22 13:08:11 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/22 13:11:33 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,10 +86,6 @@ void		ft_save(t_master *m)
 	int		fd;
 
 	fd = open("screenshot.bmp", O_CREAT | O_RDWR | O_TRUNC, S_IRWXU);
-<<<<<<< HEAD
-=======
-	printf("value of fd: %d", fd);
->>>>>>> c3ee3fa123f37c553e158ec1ee6ed164df4b5181
 	if (fd == -1)
 		ft_error(m, "Something wrong with screenshot.");
 	ft_bitheader(m, fd);

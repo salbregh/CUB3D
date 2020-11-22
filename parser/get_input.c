@@ -5,12 +5,8 @@
 /*                                                     +:+                    */
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/10/08 12:30:20 by salbregh      #+#    #+#                 */
-<<<<<<< HEAD
-/*   Updated: 2020/11/22 13:04:56 by salbregh      ########   odam.nl         */
-=======
-/*   Updated: 2020/11/22 10:42:43 by salbregh      ########   odam.nl         */
->>>>>>> c3ee3fa123f37c553e158ec1ee6ed164df4b5181
+/*   Created: 2020/11/22 13:09:53 by salbregh      #+#    #+#                 */
+/*   Updated: 2020/11/22 13:13:39 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,12 +88,12 @@ static void	ft_check_mapline(t_master *m, char *tmp, char *line)
 	check = line;
 	if (m->input.lineinmap == 1)
 		ft_error(m, "Empty line in map.");
-	while (check)
+	while (*check)
 	{
 		if (*check != ' ' && *check != '1' && *check != '2' && *check != '0'
 		&& *check != 'E' && *check != 'N' && *check != 'S' && *check != 'W')
 		{
-			printf("%c\n", *check);
+			printf(">>%c<<\n", *check);
 			ft_error(m, "Invalid character in map");
 		}
 		check++;
@@ -120,28 +116,7 @@ void		ft_check_identifier(char *line, t_master *m)
 		ft_check_path(line, m);
 	else if (ft_strchr(line, '1'))
 	{
-<<<<<<< HEAD
 		ft_check_mapline(m, tmp, line);
-		// if (m->input.lineinmap == 1)
-		// 	ft_error(m, "Empty line in map.");
-		// // if (ft_strchr ) 
-		// m->input.checkmap = 1;
-		// m->input.map = ft_strjoincub(tmp, line);
-		// free(tmp);
-=======
-		if (m->input.lineinmap == 1)
-			ft_error(m, "Empty line in map.");
-		// while (*line)
-		// { // make this ft_strchr iets anders dan al deze waardes
-		// 	// if (*line != '1' && *line != '2' && *line != '0' && *line != ' '
-		// 	// 	&& *line != 'N' && *line != 'S' && *line != 'E' && *line != 'W')
-		// 	// 	ft_error(m, "Invalid character in mapline");
-		// 	// line++;
-		// }
-		m->input.checkmap = 1;
-		m->input.map = ft_strjoincub(tmp, line);
-		free(tmp);
->>>>>>> c3ee3fa123f37c553e158ec1ee6ed164df4b5181
 	}
 	else
 	{

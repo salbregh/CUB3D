@@ -5,12 +5,8 @@
 /*                                                     +:+                    */
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/10/21 13:20:16 by salbregh      #+#    #+#                 */
-<<<<<<< HEAD
-/*   Updated: 2020/11/22 12:34:32 by salbregh      ########   odam.nl         */
-=======
-/*   Updated: 2020/11/20 09:52:45 by salbregh      ########   odam.nl         */
->>>>>>> c3ee3fa123f37c553e158ec1ee6ed164df4b5181
+/*   Created: 2020/11/22 13:11:02 by salbregh      #+#    #+#                 */
+/*   Updated: 2020/11/22 13:11:18 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,11 +101,7 @@ void		ft_other_identifier(t_master *m)
 	int		checkx;
 	int		checky;
 
-<<<<<<< HEAD
 	ft_get_resolution(m->input.res, m);
-=======
-	ft_get_resolution(m->input.resolution, m);
->>>>>>> c3ee3fa123f37c553e158ec1ee6ed164df4b5181
 	mlx_get_screen_size(m->vars.mlx, &checkx, &checky);
 	if (m->game.sw > checkx && m->input.save == 0)
 		m->game.sw = checkx;

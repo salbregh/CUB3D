@@ -5,12 +5,8 @@
 /*                                                     +:+                    */
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/10/20 13:18:50 by salbregh      #+#    #+#                 */
-<<<<<<< HEAD
-/*   Updated: 2020/11/22 12:34:51 by salbregh      ########   odam.nl         */
-=======
-/*   Updated: 2020/11/20 11:03:15 by salbregh      ########   odam.nl         */
->>>>>>> c3ee3fa123f37c553e158ec1ee6ed164df4b5181
+/*   Created: 2020/11/22 13:11:43 by salbregh      #+#    #+#                 */
+/*   Updated: 2020/11/22 13:11:45 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
