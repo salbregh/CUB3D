@@ -6,7 +6,11 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/06/25 16:31:18 by salbregh      #+#    #+#                 */
+<<<<<<< HEAD
 /*   Updated: 2020/11/22 12:38:58 by salbregh      ########   odam.nl         */
+=======
+/*   Updated: 2020/11/21 21:51:34 by salbregh      ########   odam.nl         */
+>>>>>>> c3ee3fa123f37c553e158ec1ee6ed164df4b5181
 /*                                                                            */
 /* ************************************************************************** */
 

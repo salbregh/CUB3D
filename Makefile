@@ -6,7 +6,11 @@
 #    By: salbregh <salbregh@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/06/25 15:16:40 by salbregh      #+#    #+#                  #
+<<<<<<< HEAD
 #    Updated: 2020/11/22 12:18:33 by salbregh      ########   odam.nl          #
+=======
+#    Updated: 2020/11/21 22:49:46 by salbregh      ########   odam.nl          #
+>>>>>>> c3ee3fa123f37c553e158ec1ee6ed164df4b5181
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,7 +52,8 @@ all:		$(OFILES) $(INCLUDES)
 			OpenGL -framework AppKit -o $(NAME) $(OFILES) -Wall -Werror -Wextra -g -fsanitize=address
 
 %.o:		%.c
-			gcc -Ilibft -Imlx -c $< -o $@ -Wall -Werror -Wextra -g -fsanitize=address
+			gcc -Ilibft -Imlx -c $< -o $@ -Wall -Werror -Wextra 
+			#-g -fsanitize=address
 
 clean:
 			/bin/rm -f $(OFILES)
