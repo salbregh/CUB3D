@@ -4,11 +4,11 @@ NO ./pictures/nothing.png
 
 SO ./pictures/eagle.png
 
-WE ./pictures/moss.png
+WE ./pictures/mossy.png
 
 EA ./pictures/wood.png
 
-S ./pics/pillar.png
+S ./pictures/pillar.png
 
 F 0,0,0
 C 255,255,255

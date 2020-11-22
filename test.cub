@@ -1,6 +1,6 @@
-R   500 500
-NO     ./pictures/bluestone.png
-SO ./pictures/mossy.png
+R  1000 1000
+NO     ./pictures/purplestone.png
+SO ./pictures/redbrick.png
 WE ./pictures/greystone.png
 EA ./pictures/wood.png
 
@@ -10,6 +10,7 @@ C  0,0,50
 
      
 S ./pictures/pillar.png
+
 
 111111111111
 100000000001
@@ -25,7 +26,6 @@ S ./pictures/pillar.png
        100000000001
        10000N000001
        111111111111
-
 
 
 

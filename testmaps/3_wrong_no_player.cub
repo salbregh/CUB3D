@@ -1,12 +1,12 @@
 R 500 300
-NO ./pics/eagle.png
-SO ./pics/bluestone.png
-WE ./pics/wood.png
-EA ./pics/greystone.png
-S ./pics/barrel.png
+NO ./pictures/eagle.png
+SO ./pictures/bluestone.png
+WE ./pictures/wood.png
+EA ./pictures/greystone.png
+S ./pictures/barrel.png
 F 102,102,153
 C 240,248,255
 
-111
-111
-111
+111a
+1N1a
+111aaa

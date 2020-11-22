@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/09 16:52:58 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/16 12:15:38 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/20 11:04:00 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,13 +78,13 @@ static void		ft_start_position(t_master *m, int x, int y)
 				m->input.mapsplit[y][x] = '0';
 			}
 			if (m->input.mapsplit[y][x] == '2')
-				m->sprite.numbsprite++;
+				m->sprite.numb++;
 			x++;
 		}
 		y++;
 		x = 0;
 	}
-	ft_set_sprites(m, 0, 0); // to make 2 a 0 in the sprites while already saved the sprite locations
+	ft_set_sprites(m, 0, 0);
 }
 
 void			ft_check_input(t_master *m)

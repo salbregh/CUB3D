@@ -6,11 +6,12 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/08 12:30:20 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/13 19:27:17 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/22 13:04:56 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3D.h"
+#include <stdio.h> // delete
 
 static char*	ft_trim_paths(char *line, char *set)
 {
@@ -56,10 +57,10 @@ static char*	ft_trim_rest(char *line, char *set)
 	return (tmp1);
 }
 
-static int		ft_check_path(char *line, t_master *m)
+static void		ft_check_path(char *line, t_master *m)
 {
 	if (m->input.checkmap == 1)
-		return (-1);
+		ft_error(m, "Identifiers found after map.");
 	else if (ft_strstr(line, "NO") && m->input.no == NULL)
 		m->input.no = ft_trim_paths(line, "NO");
 	else if (ft_strstr(line, "SO") && m->input.so == NULL)
@@ -74,35 +75,54 @@ static int		ft_check_path(char *line, t_master *m)
 		m->input.floor = ft_trim_rest(line, "F");
 	else if (ft_strstr(line, "C") && m->input.ceiling == NULL)
 		m->input.ceiling = ft_trim_rest(line, "C");
-	else if (ft_strstr(line, "R") && m->input.resolution == NULL)
-		m->input.resolution = ft_trim_rest(line, "R");
+	else if (ft_strstr(line, "R") && m->input.res == NULL)
+		m->input.res = ft_trim_rest(line, "R");
 	else
-		return (-1);
-	return (0);
+		ft_error(m, "Problem with the identifiers in the map.");
 };
 
-static void		ft_check_identifier(char *line, t_master *m)
+static void	ft_check_mapline(t_master *m, char *tmp, char *line)
+{
+	char *check;
+	
+	check = line;
+	if (m->input.lineinmap == 1)
+		ft_error(m, "Empty line in map.");
+	while (check)
+	{
+		if (*check != ' ' && *check != '1' && *check != '2' && *check != '0'
+		&& *check != 'E' && *check != 'N' && *check != 'S' && *check != 'W')
+		{
+			printf("%c\n", *check);
+			ft_error(m, "Invalid character in map");
+		}
+		check++;
+	}
+	m->input.checkmap = 1;
+	m->input.map = ft_strjoincub(tmp, line);
+	free(tmp);
+}
+
+void		ft_check_identifier(char *line, t_master *m)
 {
 	char		*tmp;
 	int			i;
 
 	tmp = m->input.map;
 	i = 0;
-	if ((ft_strstr(line, "NO")) || (ft_strstr(line, "SO")) ||
-		(ft_strstr(line, "WE")) || (ft_strstr(line, "EA")) ||
-		(ft_strstr(line, "S ")) || (ft_strstr(line, "R")) ||
-		(ft_strstr(line, "C")) || (ft_strstr(line, "F")))
-		{
-		if (ft_check_path(line, m) == -1)
-			ft_error(m, "Problem with the identifiers in the map.");
-		}
+	if (ft_strstr(line, "NO") || ft_strstr(line, "SO") || ft_strstr(line, "WE")
+		|| ft_strstr(line, "EA") || ft_strstr(line, "S ") ||
+		ft_strstr(line, "R") || ft_strstr(line, "C") || ft_strstr(line, "F"))
+		ft_check_path(line, m);
 	else if (ft_strchr(line, '1'))
 	{
-		if (m->input.lineinmap == 1)
-			ft_error(m, "Empty line in map.");
-		m->input.checkmap = 1;
-		m->input.map = ft_strjoincub(tmp, line);
-		free(tmp);
+		ft_check_mapline(m, tmp, line);
+		// if (m->input.lineinmap == 1)
+		// 	ft_error(m, "Empty line in map.");
+		// // if (ft_strchr ) 
+		// m->input.checkmap = 1;
+		// m->input.map = ft_strjoincub(tmp, line);
+		// free(tmp);
 	}
 	else
 	{
@@ -115,28 +135,4 @@ static void		ft_check_identifier(char *line, t_master *m)
 			i++;
 		}
 	}
-}
-
-int				ft_get_input(int fd, t_master *m)
-{
-	int		linereturn;
-	char	*line;
-	
-	line = NULL;
-	linereturn = 1;
-	while (linereturn != 0)
-	{
-		linereturn = get_next_line(fd, &line);
-		ft_check_identifier(&*line, m);
-		free(line);
-	}
-	if (m->input.no == NULL || m->input.so == NULL ||
-		m->input.we == NULL || m->input.ea == NULL ||
-		m->input.sprite == NULL || m->input.resolution == NULL ||
-		m->input.ceiling == NULL || m->input.floor == NULL)
-			ft_error(m, "Missing identifier.");
-	m->input.mapsplit = ft_split(m->input.map, '\n');
-	ft_check_input(m);
-	ft_other_identifier(m);
-	return (0);
 }

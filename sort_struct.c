@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/20 13:18:50 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/16 14:26:48 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/22 12:34:51 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static void	ft_null_input(t_input *input)
 	input->f[0] = 0;
 	input->f[1] = 0;
 	input->f[2] = 0;
-	input->resolution = NULL;
+	input->res = NULL;
 	input->which = 0;
 	input->map = ft_strdup("");
 	input->checkmap = 0;
@@ -113,9 +113,9 @@ static void	ft_null_sprite(t_sprite *sprite)
 	sprite->h_spr = 0;
 	sprite->bpp_spr = 0;
 	sprite->ll_spr = 0; // set all to null
-	sprite->numbsprite = 0;
+	sprite->numb = 0;
 	sprite->perparray = 0;
-	sprite->spritedistance = NULL; // check
+	sprite->distance = NULL; // check
 	sprite->sprite = NULL;
 }
 

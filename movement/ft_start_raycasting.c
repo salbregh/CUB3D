@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/06/25 18:11:54 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/16 11:30:18 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/22 11:11:58 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,9 +121,7 @@ static void	ft_distance(t_master *m, int x)
 			m->game.perpwalldist = (m->game.map_y - m->game.pos_y +
 			(1.0 - m->game.step_y) / 2.0) / m->game.raydir_y;
 	}
-	m->sprite.perparray[x] = m->game.perpwalldist;
-	// printf("Value of x: %d\t Value of perpwalldist: %f\n", x, m->game.perpwalldist);
-	// printf("value of m->game.perparray[x] : %f\n", m->sprite.perparray[x]);
+	m->sprite.perparray[x - 1] = m->game.perpwalldist;
 }
 
 /*
@@ -147,15 +145,6 @@ void		ft_start_raycasting(t_master *m)
 		x++;
 	}
 	ft_sprites(m);
+	if (m->input.save == 1)
+		return (ft_save(m));
 }
-
-// colors CHANGE THIS
-// unsigned int	color;
-// if (m->input.mapsplit[m->game.map_y][m->game.map_x] == '0') // open ruimte?
-// 	color = 0x0F000000;
-// if (m->input.mapsplit[m->game.map_y][m->game.map_x] == '1') // muur dus ook textures
-// 	color = 0x0FFF00FF;
-// if (m->input.mapsplit[m->game.map_y][m->game.map_x] == '2') // moet sprite worden
-// 	m->vars.color = 0x00FF000F;
-// if (m->game.side == 1)
-// 	color = color / 2;

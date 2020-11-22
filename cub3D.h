@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/06/25 16:31:18 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/16 14:25:30 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/22 12:38:58 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,7 @@
 # include "libft/libft.h"
 # include "get_next_line/get_next_line.h"
 # include "mlx/mlx.h"
-
 # include <math.h>
-# include <stdio.h> // DELETE
 
 typedef struct		s_move
 {
@@ -90,9 +88,9 @@ typedef struct	s_sprite
 	int				h_spr;
 	int				bpp_spr;
 	int				ll_spr; // set all to null
-	int				numbsprite;
+	int				numb;
 	double			*perparray;
-	double			*spritedistance; // check
+	double			*distance; // check
 	double			**sprite;
 	double			**check;
 	// casting sprites
@@ -115,6 +113,8 @@ typedef struct	s_sprite
 
 typedef struct		s_input
 {
+	int				save; // new
+	unsigned int	savecolor;
 	char			*no;
 	char			*so;
 	char			*ea;
@@ -124,7 +124,7 @@ typedef struct		s_input
 	int				c[3];
 	char			*floor;
 	int				f[3];
-	char			*resolution;
+	char			*res;
 	int				which;
 	char			*map;
 	int				maplines; // set to 0
@@ -176,6 +176,7 @@ typedef struct		s_master
 }					t_master;
 
 void				ft_start_raycasting(t_master *master);
+void				ft_save(t_master *m);
 void				ft_sort_master(t_master *m);
 void				ft_error(t_master *m, char *message);
 
@@ -183,25 +184,28 @@ void				ft_error(t_master *m, char *message);
 int					key_press(int keycode, t_master *master);
 int					close_button(t_master *master);
 int					key_release(int keycode, t_master *m);
-int					move_bitch(t_master *m);
+int					move(t_master *m);
 int					move_up(t_master *m);
 int					move_down(t_master *m);
 int					move_rigth(t_master *m);
 int					move_left(t_master *m);
 int					rotate_right(t_master *m);
 int					rotate_left(t_master *m);
+void				ft_two_back(t_master *m, int which);
 void				my_mlx_pixel_put(t_vars *vars, int x, int y, int color);
 void				ft_my_pixel_get(t_master *m, int x, int y);
 void				ft_my_spritepixel_get(t_master *m, int x, int y);
 void				my_mlx_spritepixel_put(t_sprite *sprite, int x, int y, int color); // delete?
+void				ft_my_savepixel_get(t_master *m, int x, int y);  // new
 void				ft_draw(t_master *m, int x);
 
 // PARSER
-int					ft_get_input(int fd, t_master *m);
+void				ft_get_input(int fd, t_master *m);
 void				ft_check_input(t_master *m);
 void				ft_validate_map(t_master *m);
 void				ft_other_identifier(t_master *m);
 void				ft_set_colors(t_master *m);
+void				ft_check_identifier(char *line, t_master *m);
 
 // texture crap
 int					ft_load_pictures(t_master *m);
@@ -210,5 +214,7 @@ void				ft_texturing(t_master *m, int x);
 // sprites
 void				ft_sprites(t_master *m);
 void				ft_set_sprites(t_master *m, int x, int y);
+void				ft_sort_sprites(t_master *m, int i, int j);
+void				set_array(t_master *m);
 
 #endif
