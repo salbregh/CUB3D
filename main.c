@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/22 13:06:25 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/23 13:20:24 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/23 16:01:04 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ void			ft_get_input(int fd, t_master *m)
 	|| m->input.ea == NULL || m->input.sprite == NULL || m->input.res == NULL
 	|| m->input.ceiling == NULL || m->input.floor == NULL)
 		ft_error(m, "Missing identifier.");
+	if (m->input.checkmap != 1)
+		ft_error(m, "Map missing.");
 	m->input.mapsplit = ft_split(m->input.map, '\n');
 	ft_check_input(m);
 	ft_other_identifier(m);

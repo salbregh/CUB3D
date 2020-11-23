@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/22 13:11:02 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/22 16:21:05 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/23 17:09:49 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 static void	ft_check_string(char *str, t_master *m)
 {
 	if (!*str)
-		ft_error(m, "Invalid map input.");
+		ft_error(m, "Invalid map input, value missing in identifier.");
 	while (*str)
 	{
 		if (!(*str >= '0' && *str <= '9'))
-			ft_error(m, "Invalid character.");
+			ft_error(m, "Invalid character in map.");
 		str++;
 	}
 }
@@ -70,6 +70,9 @@ static void	ft_get_more_color(char *c1, char *c2, char *c3,
 		free(c2);
 		m->input.c[2] = ft_atoi(c3);
 		free(c3);
+		if (m->input.c[0] > 255 || m->input.c[1] > 255
+		|| m->input.c[2] > 255)
+			ft_error(m, "Color value incorrect.");
 	}
 }
 
