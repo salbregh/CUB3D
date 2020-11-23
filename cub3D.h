@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/22 13:09:19 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/22 16:23:53 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/23 11:55:24 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ typedef struct		s_sprite
 	double			*perparray;
 	double			*distance;
 	double			**sprite;
+	double			**sprarray;
 	double			sprite_x;
 	double			sprite_y;
 	double			inverse;
@@ -186,7 +187,8 @@ void				ft_two_back(t_master *m, int which);
 void				my_mlx_pixel_put(t_vars *vars, int x, int y, int color);
 void				ft_my_pixel_get(t_master *m, int x, int y);
 void				ft_my_spritepixel_get(t_master *m, int x, int y);
-void				my_mlx_spritepixel_put(t_sprite *sprite, int x, int y, int color);
+void				my_mlx_spritepixel_put(t_sprite *sprite, int x,
+					int y, int color);
 void				ft_my_savepixel_get(t_master *m, int x, int y);
 void				ft_draw(t_master *m, int x);
 
@@ -199,7 +201,7 @@ void				ft_set_colors(t_master *m);
 void				ft_check_identifier(char *line, t_master *m);
 
 // texture crap
-int					ft_load_pictures(t_master *m);
+void				ft_load_pictures(t_master *m);
 void				ft_texturing(t_master *m, int x);
 
 // sprites

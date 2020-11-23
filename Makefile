@@ -6,7 +6,7 @@
 #    By: salbregh <salbregh@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/11/22 13:08:56 by salbregh      #+#    #+#                  #
-#    Updated: 2020/11/22 16:57:20 by salbregh      ########   odam.nl          #
+#    Updated: 2020/11/23 11:53:59 by salbregh      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,16 +45,18 @@ all:		$(OFILES) $(INCLUDES)
 			make -C get_next_line/
 			cp get_next_line/libgnl.a .
 			$(CC) -Lmlx -lmlx -Llibft -lft -Lget_next_line -lgnl -framework\
-			OpenGL -framework AppKit -o $(NAME) $(OFILES) -Wall -Werror -Wextra -g -fsanitize=address
+			OpenGL -framework AppKit -o $(NAME) $(OFILES) -Wall -Werror -Wextra\
+			-g -fsanitize=address
 
 %.o:		%.c
-			gcc -Ilibft -Imlx -c $< -o $@ -Wall -Werror -Wextra -g -fsanitize=address
+			gcc -Ilibft -Imlx -c $< -o $@ -Wall -Werror -Wextra\
+			-g -fsanitize=address
 
 clean:
 			/bin/rm -f $(OFILES)
 			make clean -C libft/
 			make clean -C mlx/
-			make clean -C get_next_line/
+			make clean -C get_next_line
 
 fclean:		clean
 			/bin/rm -f mlx/libmlx.dylib

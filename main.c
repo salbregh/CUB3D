@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/22 13:06:25 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/22 17:08:11 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/23 12:08:04 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,5 +76,7 @@ int				main(int argc, char **argv)
 	mlx_loop_hook(m.vars.mlx, move, &m);
 	mlx_hook(m.vars.win, 03, (1L << 1), key_release, &m.vars);
 	mlx_loop(m.vars.mlx);
+	free(m.sprite.sprite);
+	ft_sort_master(&m);
 	return (0);
 }

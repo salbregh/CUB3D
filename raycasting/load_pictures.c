@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/14 16:45:53 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/22 17:06:27 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/23 11:23:24 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ static void		ft_ea_we_texture(t_master *m, int fd)
 	close(fd);
 }
 
-int				ft_load_pictures(t_master *m)
+void			ft_load_pictures(t_master *m)
 {
 	int fd;
 
@@ -72,8 +72,4 @@ int				ft_load_pictures(t_master *m)
 	ft_no_so_texture(m, fd);
 	ft_ea_we_texture(m, fd);
 	ft_load_sprite(m, fd);
-	// m->vars.img = mlx_new_image(m->vars.mlx, m->game.sw, m->game.sh);
-	// m->vars.addr = mlx_get_data_addr(m->vars.img, &m->vars.bpp,
-	// &m->vars.ll, &m->vars.endian);
-	return (0);
 }

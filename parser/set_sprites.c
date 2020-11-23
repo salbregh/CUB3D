@@ -6,13 +6,13 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/20 10:40:51 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/22 15:43:18 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/23 12:00:45 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3D.h"
 
-void		set_array(t_master *m) // change to ft_split
+void		set_array(t_master *m)
 {
 	int		i;
 
