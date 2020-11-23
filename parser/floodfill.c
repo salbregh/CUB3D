@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/14 14:00:24 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/22 15:57:04 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/23 14:43:57 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,17 @@ static char	**ft_floodfill(char **map, int x, int y)
 
 void		ft_validate_map(t_master *m)
 {
+	int	i;
+
 	m->input.x = ft_split(m->input.map, '\n');
+	m->input.x[(int)m->game.pos_y][(int)m->game.pos_x] = '0';
 	m->input.x = ft_floodfill(m->input.x, m->game.pos_x, m->game.pos_y);
 	ft_check_map(m->input.x, m);
+	i = 0;
+	while (i < m->input.maplines)
+	{
+		free(m->input.x[i]);
+		i++;
+	}
+	free(m->input.x);
 }

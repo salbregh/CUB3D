@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/06/25 18:11:54 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/22 17:21:55 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/23 13:02:59 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,7 +134,6 @@ void		ft_start_raycasting(t_master *m)
 	int		x;
 
 	x = 0;
-	// ft_load_pictures(m);
 	while (x < m->game.sw)
 	{
 		ft_start_values(m, x);
