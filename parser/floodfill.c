@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/14 14:00:24 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/29 21:11:56 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/29 21:39:02 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	ft_check_x(char **map, int x, int y, t_master *m)
 {
-	if (y == 0 || x == 0)
+	if (y == 0 || x == 0 || y == m->input.maplines - 1)
 		ft_error(m, "0 not surrounded");
 	if (map[y][x + 1] != '1' && map[y][x + 1] != 'x')
 		ft_error(m, "0 not surrounded.");
@@ -59,7 +59,7 @@ static char	**ft_floodfill(char **map, int x, int y, t_master *m)
 	int		i;
 
 	i = 0;
-	if (x >= 0 && y >= 0 && y < 13 && map[y][x] &&
+	if (x >= 0 && y >= 0 && y <= m->input.maplines - 1 && map[y][x] &&
 		(map[y][x] == '0' || map[y][x] == '2' || map[y][x] == 'N' ||
 		map[y][x] == 'S' || map[y][x] == 'E' || map[y][x] == 'W'))
 	{
@@ -82,7 +82,6 @@ void		ft_validate_map(t_master *m)
 
 	m->input.x = ft_split(m->input.map, '\n');
 	m->input.x[(int)(m->game.pos_y - 0.5)][(int)(m->game.pos_x - 0.5)] = '0';
-	ft_set_sprites(m, 0, 0);
 	m->input.x = ft_floodfill(m->input.x, m->game.pos_x, m->game.pos_y, m);
 	ft_check_map(m->input.x, m);
 	i = 0;
