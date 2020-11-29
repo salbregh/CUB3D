@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/22 16:00:44 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/23 16:45:12 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/29 20:23:04 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,8 @@ static void		ft_check_position(t_master *m)
 		ft_check_more_position(m);
 }
 
+#include <stdio.h>
+
 static void		ft_start_position(t_master *m, int x, int y)
 {
 	m->input.maplines = ft_maplines(m);
@@ -83,6 +85,13 @@ static void		ft_start_position(t_master *m, int x, int y)
 		}
 		y++;
 		x = 0;
+	}
+	printf("Check mapsplit after position check: \n");
+	int i = 0;
+	while (i < m->input.maplines)
+	{
+		printf("%s\n", m->input.mapsplit[i]);
+		i++;
 	}
 	ft_set_sprites(m, 0, 0);
 }
