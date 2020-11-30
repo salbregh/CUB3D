@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/22 13:09:19 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/23 14:56:07 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/30 18:09:49 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,8 +128,8 @@ typedef struct		s_input
 
 typedef struct		s_game
 {
-	int				sh;
-	int				sw;
+	intmax_t			sh;
+	intmax_t			sw;
 	int				draw_start;
 	int				draw_end;
 	int				ceilingcolor;

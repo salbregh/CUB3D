@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/22 16:00:44 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/29 21:32:36 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/30 16:57:16 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,6 @@ static void		ft_check_position(t_master *m)
 	else
 		ft_check_more_position(m);
 }
-
-#include <stdio.h>
 
 static void		ft_start_position(t_master *m, int x, int y)
 {

@@ -6,22 +6,29 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/22 13:06:25 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/23 16:01:04 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/30 16:55:53 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
+#include <stdio.h>
+
 void			ft_get_input(int fd, t_master *m)
 {
 	int		linereturn;
 	char	*line;
+	int		in;
 
+	in = 0;
 	line = NULL;
 	linereturn = 1;
 	while (linereturn != 0)
 	{
 		linereturn = get_next_line(fd, &line);
+		if (in == 0 && linereturn < 0)
+			ft_error(m, "Cant read from file.");
+		in = 1;
 		ft_check_identifier(&*line, m);
 		free(line);
 	}
@@ -50,7 +57,7 @@ static void		more_main(t_master *m, int argc, char **argv)
 	else if (argc != 2 && m->input.save == 0)
 		ft_error(m, "Invalid amount of arguments.");
 	fd = open(argv[1], O_RDONLY);
-	if (fd == -1)
+	if (fd < 0)
 		ft_error(m, "Problem with opening file");
 	extension = ft_substr(argv[1], ft_strlen(argv[1]) - 4, ft_strlen(argv[1]));
 	if (ft_strncmp(extension, ".cub", 4) != 0)
