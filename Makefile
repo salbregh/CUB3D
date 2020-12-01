@@ -6,7 +6,7 @@
 #    By: salbregh <salbregh@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/11/22 13:08:56 by salbregh      #+#    #+#                  #
-#    Updated: 2020/11/23 11:53:59 by salbregh      ########   odam.nl          #
+#    Updated: 2020/11/23 16:13:46 by salbregh      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,8 @@ SRCS =		main.c \
 			./parser/set_colors.c \
 			error.c \
 			save.c \
-			sort_struct.c
+			sort_struct.c \
+			sort_more_struct.c
 			
 OFILES =	$(SRCS:.c=.o)
 

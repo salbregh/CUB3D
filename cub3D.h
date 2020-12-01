@@ -5,8 +5,8 @@
 /*                                                     +:+                    */
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/11/22 13:09:19 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/12/01 13:47:24 by salbregh      ########   odam.nl         */
+/*   Created: 2020/12/01 21:23:33 by salbregh      #+#    #+#                 */
+/*   Updated: 2020/12/01 21:23:48 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,6 @@ typedef struct		s_sprite
 	double			*perparray;
 	double			*distance;
 	double			**sprite;
-	double			**sprarray;
 	double			sprite_x;
 	double			sprite_y;
 	double			inverse;
@@ -129,8 +128,8 @@ typedef struct		s_input
 
 typedef struct		s_game
 {
-	int				sh;
-	int				sw;
+	intmax_t			sh;
+	intmax_t			sw;
 	int				draw_start;
 	int				draw_end;
 	int				ceilingcolor;
@@ -169,7 +168,6 @@ typedef struct		s_master
 
 void				ft_start_raycasting(t_master *master);
 void				ft_save(t_master *m);
-void				ft_sort_master(t_master *m);
 void				ft_error(t_master *m, char *message);
 int					key_press(int keycode, t_master *master);
 int					close_button(t_master *master);
@@ -201,5 +199,13 @@ void				ft_sprites(t_master *m);
 void				ft_set_sprites(t_master *m, int x, int y);
 void				ft_sort_sprites(t_master *m, int i, int j);
 void				set_array(t_master *m);
+
+void				ft_sort_master(t_master *m, int free);
+void				ft_null_sprite(t_sprite *sprite);
+void				ft_null_vars(t_vars *vars);
+void				ft_null_move(t_move *move);
+void				ft_null_game(t_game *game);
+void				ft_null_input(t_input *input);
+void				ft_free_all(t_master *m);
 
 #endif
