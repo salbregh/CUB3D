@@ -6,11 +6,19 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/22 13:08:01 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/30 18:14:10 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/30 19:27:07 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "../cub3D.h"
+
+void		ft_error(t_master *m, char *message)
+{
+	ft_putstr_fd("Error: ", 1);
+	ft_putstr_fd(message, 1);
+	ft_sort_master(m, 1);
+	exit(0);
+}
 
 static void	ft_drawpic(t_master *m, int fd)
 {

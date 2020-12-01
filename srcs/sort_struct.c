@@ -6,11 +6,11 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/22 13:11:43 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/23 14:59:46 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/30 19:24:08 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "../cub3D.h"
 
 static void	ft_null_more_game(t_game *game)
 {

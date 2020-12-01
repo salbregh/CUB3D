@@ -6,11 +6,11 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/23 13:05:22 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/23 15:12:43 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/30 19:41:02 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "../cub3D.h"
 
 static void	ft_free_more(t_master *m)
 {
@@ -53,7 +53,7 @@ void		ft_free_all(t_master *m)
 	ft_free_more(m);
 }
 
-void	ft_null_input(t_input *input)
+void		ft_null_input(t_input *input)
 {
 	input->save = 0;
 	input->savecolor = 0;
@@ -80,7 +80,7 @@ void	ft_null_input(t_input *input)
 	input->x = NULL;
 }
 
-void	ft_null_move(t_move *move)
+void		ft_null_move(t_move *move)
 {
 	move->up = 0;
 	move->down = 0;
@@ -90,7 +90,7 @@ void	ft_null_move(t_move *move)
 	move->rotate_right = 0;
 }
 
-void	ft_null_sprite(t_sprite *sprite)
+void		ft_null_sprite(t_sprite *sprite)
 {
 	sprite->spr = NULL;
 	sprite->addr_spr = NULL;

@@ -6,13 +6,11 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/22 13:06:25 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/30 16:55:53 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/30 19:25:29 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
-
-#include <stdio.h>
+#include "../cub3D.h"
 
 void			ft_get_input(int fd, t_master *m)
 {

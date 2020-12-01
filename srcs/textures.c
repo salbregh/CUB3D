@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/02 18:18:30 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/12/01 13:47:53 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/11/22 17:54:39 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,9 +68,9 @@ void		ft_texturing(t_master *m, int x)
 		m->game.raydir_x;
 	m->vars.wall_x -= (int)m->vars.wall_x;
 	m->vars.tex_y = (int)(m->vars.wall_x * (double)m->vars.w_);
-	if (m->game.side == 0 && m->game.raydir_x < 0)
+	if (m->game.side == 0 && m->game.raydir_x > 0)
 		m->vars.tex_y = m->vars.w_ - m->vars.tex_y - 1;
-	if (m->game.side == 1 && m->game.raydir_y > 0)
+	if (m->game.side == 1 && m->game.raydir_y < 0)
 		m->vars.tex_y = m->vars.w_ - m->vars.tex_y - 1;
 	m->vars.tex_step = 1.0 * m->vars.h_ / m->game.line_height;
 	m->vars.tex_pos = (m->game.draw_start - m->game.sh / 2 +

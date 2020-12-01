@@ -5,27 +5,23 @@
 /*                                                     +:+                    */
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/11/22 13:09:53 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/22 15:36:17 by salbregh      ########   odam.nl         */
+/*   Created: 2020/11/30 19:34:45 by salbregh      #+#    #+#                 */
+/*   Updated: 2020/11/30 20:40:16 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3D.h"
 
-static char*	ft_trim_paths(char *line, char *set)
+static char		*ft_trim_paths(char *line, char *set)
 {
 	char	*tmp1;
+	int		i;
 	char	*tmp2;
-	
-	tmp1 = NULL;
+
 	tmp2 = NULL;
-	line = ft_strtrim(line, " ");
-	if (line[0] != '.')
-	{
-		tmp1 = ft_strtrim(line, set);
-		free(line);
-	}
-	if (tmp1[0] == ' ')
+	i = 0;
+	tmp1 = ft_strtrim(line, set);
+	if (tmp1[0] == ' ' || tmp1[ft_strlen(tmp1)] == ' ')
 	{
 		tmp2 = ft_strtrim(tmp1, " ");
 		free(tmp1);
@@ -34,11 +30,11 @@ static char*	ft_trim_paths(char *line, char *set)
 	return (tmp1);
 }
 
-static char*	ft_trim_rest(char *line, char *set)
+static char		*ft_trim_rest(char *line, char *set)
 {
 	char	*tmp1;
 	char	*tmp2;
-	
+
 	tmp1 = NULL;
 	tmp2 = NULL;
 	line = ft_strtrim(line, " ");
@@ -78,12 +74,12 @@ static void		ft_check_path(char *line, t_master *m)
 		m->input.res = ft_trim_rest(line, "R");
 	else
 		ft_error(m, "Problem with the identifiers in the map.");
-};
+}
 
 static void		ft_check_mapline(t_master *m, char *tmp, char *line)
 {
 	char *check;
-	
+
 	check = line;
 	if (m->input.lineinmap == 1)
 		ft_error(m, "Empty line in map.");
