@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/14 14:00:24 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/29 21:39:02 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/12/01 21:37:16 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,7 @@ static char	**ft_floodfill(char **map, int x, int y, t_master *m)
 
 	i = 0;
 	if (x >= 0 && y >= 0 && y <= m->input.maplines - 1 && map[y][x] &&
-		(map[y][x] == '0' || map[y][x] == '2' || map[y][x] == 'N' ||
-		map[y][x] == 'S' || map[y][x] == 'E' || map[y][x] == 'W'))
+		(map[y][x] == '0' || map[y][x] == '2'))
 	{
 		map[y][x] = 'x';
 		ft_floodfill(map, x + 1, y, m);

@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/21 12:48:51 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/30 19:31:10 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/12/01 21:50:09 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int	close_button(t_master *m)
 {
 	mlx_clear_window(m->vars.mlx, m->vars.win);
 	mlx_destroy_window(m->vars.mlx, m->vars.win);
+	free(m->vars.mlx);
 	ft_sort_master(m, 1);
 	exit(0);
 }

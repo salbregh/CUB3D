@@ -6,7 +6,7 @@
 #    By: salbregh <salbregh@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/11/22 13:08:56 by salbregh      #+#    #+#                  #
-#    Updated: 2020/11/30 20:47:00 by salbregh      ########   odam.nl          #
+#    Updated: 2020/12/01 22:30:25 by salbregh      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,8 +28,7 @@ SRCS =		./srcs/main.c \
 			./srcs/check_more_input.c \
 			./srcs/set_colors.c \
 			./srcs/save.c \
-			./srcs/sort_struct.c \
-			./srcs/sort_more_struct.c
+			./srcs/sort_struct.c
 
 OFILES =	$(SRCS:.c=.o)
 
@@ -46,8 +45,8 @@ $(NAME):	$(OFILES) $(INCLUDES)
 			cp mlx/libmlx.dylib .
 			make -C get_next_line/
 			cp get_next_line/libgnl.a .
-			$(CC) -Lmlx -lmlx -Llibft -lft -Lget_next_line -lgnl -framework\
-			OpenGL -framework AppKit -o $(NAME) $(OFILES) -Wall -Werror -Wextra
+			$(CC) -Lmlx -lmlx -Llibft -lft -Lget_next_line -lgnl \
+			-o $(NAME) $(OFILES) -Wall -Werror -Wextra
 
 %.o:		%.c
 			gcc -Ilibft -Imlx -c $< -o $@ -Wall -Werror -Wextra

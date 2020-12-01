@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/22 13:06:25 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/30 19:25:29 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/12/01 21:46:00 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void			ft_get_input(int fd, t_master *m)
 		if (in == 0 && linereturn < 0)
 			ft_error(m, "Cant read from file.");
 		in = 1;
-		ft_check_identifier(&*line, m);
+		ft_check_identifier(line, m);
 		free(line);
 	}
 	if (m->input.no == NULL || m->input.so == NULL || m->input.we == NULL
