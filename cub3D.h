@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/22 13:09:19 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/23 11:55:24 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/12/01 13:47:24 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -171,8 +171,6 @@ void				ft_start_raycasting(t_master *master);
 void				ft_save(t_master *m);
 void				ft_sort_master(t_master *m);
 void				ft_error(t_master *m, char *message);
-
-// raycasting
 int					key_press(int keycode, t_master *master);
 int					close_button(t_master *master);
 int					key_release(int keycode, t_master *m);
@@ -191,20 +189,14 @@ void				my_mlx_spritepixel_put(t_sprite *sprite, int x,
 					int y, int color);
 void				ft_my_savepixel_get(t_master *m, int x, int y);
 void				ft_draw(t_master *m, int x);
-
-// PARSER
 void				ft_get_input(int fd, t_master *m);
 void				ft_check_input(t_master *m);
 void				ft_validate_map(t_master *m);
 void				ft_other_identifier(t_master *m);
 void				ft_set_colors(t_master *m);
 void				ft_check_identifier(char *line, t_master *m);
-
-// texture crap
 void				ft_load_pictures(t_master *m);
 void				ft_texturing(t_master *m, int x);
-
-// sprites
 void				ft_sprites(t_master *m);
 void				ft_set_sprites(t_master *m, int x, int y);
 void				ft_sort_sprites(t_master *m, int i, int j);
