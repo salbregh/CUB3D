@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/22 13:06:25 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/12/01 21:46:00 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/12/02 23:44:20 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void			ft_get_input(int fd, t_master *m)
 	in = 0;
 	line = NULL;
 	linereturn = 1;
+	m->input.map = ft_strdup("");
 	while (linereturn != 0)
 	{
 		linereturn = get_next_line(fd, &line);

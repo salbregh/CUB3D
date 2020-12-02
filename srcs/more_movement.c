@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/20 10:16:01 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/20 11:03:43 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/12/02 23:45:42 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int		rotate_right(t_master *m)
 
 	olddir_x = m->game.dir_x;
 	oldplane_x = m->game.plane_x;
-	speed = 0.1;
+	speed = 0.05;
 	ft_two_back(m, 0);
 	if (m->move.rotate_right == 1)
 	{
@@ -70,7 +70,7 @@ int		rotate_left(t_master *m)
 
 	olddir_x = m->game.dir_x;
 	oldplane_x = m->game.plane_x;
-	speed = 0.1;
+	speed = 0.05;
 	ft_two_back(m, 0);
 	if (m->move.rotate_left == 1)
 	{

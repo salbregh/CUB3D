@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/06/30 10:23:10 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/11/23 12:41:12 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/12/02 23:46:10 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int		move_up(t_master *m)
 	float	speed;
 
 	ft_two_back(m, 0);
-	speed = 0.2;
+	speed = 0.1;
 	if (m->move.up == 1)
 	{
 		if (m->input.mapsplit[(int)(m->game.pos_y + (m->game.dir_y * speed))]
@@ -37,7 +37,7 @@ int		move_down(t_master *m)
 	float	speed;
 
 	ft_two_back(m, 0);
-	speed = 0.2;
+	speed = 0.1;
 	if (m->move.down == 1)
 	{
 		if (m->input.mapsplit[(int)(m->game.pos_y - (m->game.dir_y * speed))]
@@ -57,7 +57,7 @@ int		move_rigth(t_master *m)
 	float	speed;
 
 	ft_two_back(m, 0);
-	speed = 0.2;
+	speed = 0.1;
 	if (m->move.right == 1)
 	{
 		if (m->input.mapsplit[(int)(m->game.pos_y + (m->game.plane_y * speed))]
@@ -77,7 +77,7 @@ int		move_left(t_master *m)
 	float	speed;
 
 	ft_two_back(m, 0);
-	speed = 0.2;
+	speed = 0.1;
 	if (m->move.left == 1)
 	{
 		if (m->input.mapsplit[(int)(m->game.pos_y - (m->game.plane_y * speed))]

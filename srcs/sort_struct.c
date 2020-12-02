@@ -6,7 +6,7 @@
 /*   By: salbregh <salbregh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/22 13:11:43 by salbregh      #+#    #+#                 */
-/*   Updated: 2020/12/01 22:22:30 by salbregh      ########   odam.nl         */
+/*   Updated: 2020/12/02 23:44:26 by salbregh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void		ft_sort_master(t_master *m, int free)
 	ft_memset(&move, 0, sizeof(t_move));
 	m->move = move;
 	ft_memset(&input, 0, sizeof(t_input));
-	input.map = ft_strdup(""); // veranderdit
+	// input.map = ft_strdup(""); // veranderdit
 	m->input = input;
 	ft_memset(&sprite, 0, sizeof(t_sprite));
 	m->sprite = sprite;
