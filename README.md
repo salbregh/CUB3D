@@ -44,7 +44,7 @@ A big part of this program is to validate the map before parsing. The following 
     * except for the map content, each type of element can be seperated by one or more empty lines </li>
     <li> except for the map content which always has to be last, each type of element can be set in any order in the file </li>
     <li> Except for the map, each type of information from an element can be separatedby one or more space </li>
-    <li> Each element (except the map) firsts information is the type identifier (com-posed by one or two character(s)), followed by all specific informations for eachobject in a strict order such as : <code>NO ./path_to_north_texture</code> </li>
+    <li> Each element (except the map) firsts information is the type identifier, followed by all specific informations for each object in a strict order such as : <code>NO ./path_to_north_texture</code> </li>
 </ul>
 If a misconfiguration is encountered in the map, the program must return an error message.
 
