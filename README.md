@@ -53,7 +53,7 @@ As the project is now a very simplistic version of the game, I would like to add
 
 <h2>Possible errors</h2>
 You might get the following error <br>
-<i>xcrun: error: invalid active developer path (/Library/Developer/CommandLineTools), missing xcrun at: /Library/Developer/CommandLineTools/usr/bin/xcrun</i> <br> 
+<code>xcrun: error: invalid active developer path (/Library/Developer/CommandLineTools), missing xcrun at: /Library/Developer/CommandLineTools/usr/bin/xcrun</code> <br> 
 <br>
 If this occurs, install the following: <br>
 <code> xcode-select --install </code>
