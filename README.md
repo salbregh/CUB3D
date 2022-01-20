@@ -49,7 +49,7 @@ A big part of this program is to validate the map before parsing. The following 
 If a misconfiguration is encountered in the map, the program must return an error message.
 
 <h2>Future goals for this project </h2>
-As the project is now a very simplistic version of the game, I would like to add in more features to make it more like the actual wolfenstein3D. Think of adding a scooter, eneniem and opening doors.
+As the project is now a very simplistic version of the game, I would like to add in more features to make it more like the actual wolfenstein3D. Think of adding a shooter, enemies and opening doors to different rooms.
 
 <h2>Possible errors</h2>
 You might get the following error <br>
